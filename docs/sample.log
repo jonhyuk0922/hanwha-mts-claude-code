@@ -1,0 +1,900 @@
+2026-09-18T08:59:57.000+09:00 INFO  [boot] mts-gateway 2.14.3 starting (node v24.8.0, pid 41822)
+2026-09-18T08:59:57.220+09:00 INFO  [boot] config loaded: env=staging region=kr-seoul quote_source=mock
+2026-09-18T08:59:57.400+09:00 INFO  [boot] listening on :8080 (http) :8081 (ws)
+2026-09-18T08:59:58.040+09:00 INFO  [boot] market session=PRE_OPEN opens_at=09:00:00
+2026-09-18T09:00:00.940+09:00 INFO  [market] session=OPEN
+2026-09-18T09:00:04.036+09:00 WARN  [req-000001] GET /api/quotes/000270 200 815ms slow_response threshold=500ms client=mts-ios-3.4.1
+2026-09-18T09:00:06.281+09:00 WARN  [req-000002] POST /api/orders 422 oid=240901 code=000660 qty=300 available=50 reason=QTY_EXCEEDS_AVAILABLE client=mts-web-2.1.0
+2026-09-18T09:00:06.698+09:00 INFO  [req-000003] POST /api/orders 201 oid=240902 code=003550 side=BUY qty=1 183ms client=mts-android-3.3.9
+2026-09-18T09:00:07.471+09:00 INFO  [req-000004] GET /api/account/balance 200 42ms client=mts-web-2.1.0
+2026-09-18T09:00:10.360+09:00 INFO  [req-000005] GET /api/quotes/051910 200 20ms client=mts-android-3.3.9
+2026-09-18T09:00:11.783+09:00 INFO  [req-000006] POST /api/orders 201 oid=240903 code=000660 side=SELL qty=5 60ms client=mts-android-3.3.9
+2026-09-18T09:00:13.210+09:00 INFO  [req-000007] GET /api/quotes/105560 200 52ms client=mts-ios-3.4.0
+2026-09-18T09:00:14.641+09:00 INFO  [req-000008] GET /api/quotes/005380 200 49ms client=mts-ios-3.4.1
+2026-09-18T09:00:17.252+09:00 INFO  [req-000009] GET /api/quotes/055550 200 59ms client=mts-ios-3.4.1
+2026-09-18T09:00:17.958+09:00 INFO  [req-000010] GET /api/quotes/005930 200 16ms client=mts-ios-3.4.0
+2026-09-18T09:00:20.468+09:00 INFO  [req-000011] GET /api/orders/240903 200 11ms client=mts-ios-3.4.1
+2026-09-18T09:00:21.018+09:00 INFO  [req-000012] GET /api/orderbook/055550?depth=10 200 17ms client=mts-android-3.3.9
+2026-09-18T09:00:21.378+09:00 INFO  [req-000013] GET /api/orderbook/000270?depth=10 200 39ms client=mts-web-2.1.0
+2026-09-18T09:00:22.017+09:00 INFO  [req-000014] GET /api/account/balance 200 51ms client=mts-web-2.1.0
+2026-09-18T09:00:23.511+09:00 INFO  [req-000015] GET /api/candles/005930?interval=1d&count=60 200 85ms client=mts-ios-3.4.0
+2026-09-18T09:00:26.148+09:00 INFO  [req-000016] GET /api/orderbook/051910?depth=10 200 73ms client=mts-ios-3.4.1
+2026-09-18T09:00:27.359+09:00 INFO  [req-000017] GET /api/quotes/051910 200 10ms client=mts-android-3.3.9
+2026-09-18T09:00:27.660+09:00 INFO  [req-000018] GET /api/candles/003550?interval=1d&count=60 200 111ms client=mts-android-3.3.9
+2026-09-18T09:00:28.065+09:00 INFO  [req-000019] GET /api/quotes/000270 200 11ms client=mts-web-2.1.0
+2026-09-18T09:00:30.994+09:00 INFO  [req-000020] GET /api/quotes/055550 200 25ms client=mts-ios-3.4.0
+2026-09-18T09:00:32.568+09:00 INFO  [req-000021] GET /api/orders/240903 200 24ms client=mts-ios-3.4.1
+2026-09-18T09:00:34.935+09:00 INFO  [req-000022] GET /api/watchlist 200 13ms rows=5 client=mts-ios-3.4.1
+2026-09-18T09:00:36.170+09:00 INFO  [req-000023] GET /api/quotes/035420 200 5ms client=mts-android-3.3.9
+2026-09-18T09:00:39.099+09:00 INFO  [req-000024] GET /api/orders/240903 200 17ms client=mts-android-3.3.9
+2026-09-18T09:00:40.827+09:00 DEBUG [req-000025] GET /api/session/heartbeat 200 7ms client=mts-ios-3.4.1
+2026-09-18T09:00:42.399+09:00 DEBUG [req-000026] GET /api/session/heartbeat 200 10ms client=mts-android-3.3.9
+2026-09-18T09:00:44.342+09:00 INFO  [req-000027] GET /api/watchlist 200 32ms rows=6 client=mts-web-2.1.0
+2026-09-18T09:00:46.259+09:00 INFO  [req-000028] GET /api/quotes/055550 200 26ms client=mts-android-3.4.1
+2026-09-18T09:00:48.249+09:00 INFO  [req-000029] GET /api/quotes/005930 200 15ms client=mts-ios-3.4.1
+2026-09-18T09:00:48.899+09:00 INFO  [req-000030] GET /api/account/balance 200 22ms client=mts-android-3.4.1
+2026-09-18T09:00:50.612+09:00 INFO  [req-000031] GET /api/watchlist 200 6ms rows=7 client=mts-web-2.1.0
+2026-09-18T09:00:51.843+09:00 WARN  [quote-feed] out_of_order code=051910 ts=1789689651390 prev_ts=1789689651843 delta=-453ms applied=true
+2026-09-18T09:00:54.864+09:00 WARN  [req-000033] GET /api/quotes/005380 200 1094ms slow_response threshold=500ms client=mts-android-3.3.9
+2026-09-18T09:00:55.547+09:00 INFO  [req-000034] GET /api/orderbook/055550?depth=10 200 73ms client=mts-android-3.3.9
+2026-09-18T09:00:58.677+09:00 INFO  [req-000035] GET /api/watchlist 200 37ms rows=7 client=mts-web-2.1.0
+2026-09-18T09:01:00.822+09:00 INFO  [req-000036] GET /api/watchlist 200 45ms rows=5 client=mts-ios-3.4.0
+2026-09-18T09:01:02.707+09:00 INFO  [req-000037] GET /api/orderbook/035420?depth=10 200 50ms client=mts-android-3.4.1
+2026-09-18T09:01:03.680+09:00 ERROR [req-000038] GET /api/quotes/055550 504 upstream_timeout after=3000ms source=quote-feed client=mts-ios-3.4.0
+2026-09-18T09:01:05.884+09:00 DEBUG [req-000039] WS /ws/quotes subscribe code=005380 conn=8459 client=mts-web-2.1.0
+2026-09-18T09:01:07.445+09:00 DEBUG [req-000040] WS /ws/quotes subscribe code=003550 conn=9571 client=mts-web-2.1.0
+2026-09-18T09:01:08.688+09:00 INFO  [req-000041] GET /api/orders/240903 200 11ms client=mts-android-3.4.1
+2026-09-18T09:01:11.454+09:00 INFO  [req-000042] GET /api/orderbook/005380?depth=10 200 75ms client=mts-android-3.4.1
+2026-09-18T09:01:13.871+09:00 INFO  [req-000043] GET /api/watchlist 200 38ms rows=9 client=mts-ios-3.4.0
+2026-09-18T09:01:15.017+09:00 INFO  [req-000044] GET /api/watchlist 200 16ms rows=8 client=mts-ios-3.4.1
+2026-09-18T09:01:16.141+09:00 INFO  [req-000045] GET /api/orders/240903 200 9ms client=mts-android-3.3.9
+2026-09-18T09:01:17.359+09:00 INFO  [req-000046] GET /api/orders/240903 200 16ms client=mts-ios-3.4.1
+2026-09-18T09:01:17.620+09:00 INFO  [req-000047] GET /api/account/balance 200 61ms client=mts-android-3.3.9
+2026-09-18T09:01:18.746+09:00 INFO  [req-000048] GET /api/orderbook/005380?depth=10 200 36ms client=mts-android-3.4.1
+2026-09-18T09:01:20.265+09:00 DEBUG [req-000049] WS /ws/quotes subscribe code=051910 conn=2877 client=mts-ios-3.4.1
+2026-09-18T09:01:22.364+09:00 INFO  [req-000050] GET /api/quotes/000270 200 5ms client=mts-ios-3.4.0
+2026-09-18T09:01:24.655+09:00 INFO  [req-000051] GET /api/quotes/035420 200 22ms client=mts-android-3.4.1
+2026-09-18T09:01:26.794+09:00 INFO  [req-000052] GET /api/orders/240903 200 17ms client=mts-ios-3.4.1
+2026-09-18T09:01:29.566+09:00 INFO  [req-000053] GET /api/watchlist 200 26ms rows=12 client=mts-ios-3.4.0
+2026-09-18T09:01:30.668+09:00 INFO  [req-000054] GET /api/watchlist 200 24ms rows=7 client=mts-android-3.3.9
+2026-09-18T09:01:31.592+09:00 INFO  [req-000055] POST /api/orders 201 oid=240904 code=105560 side=SELL qty=50 53ms client=mts-android-3.3.9
+2026-09-18T09:01:34.172+09:00 DEBUG [req-000056] WS /ws/quotes subscribe code=003550 conn=3180 client=mts-web-2.1.0
+2026-09-18T09:01:35.306+09:00 INFO  [req-000057] GET /api/watchlist 200 28ms rows=9 client=mts-ios-3.4.0
+2026-09-18T09:01:36.066+09:00 INFO  [req-000058] GET /api/orderbook/051910?depth=10 200 53ms client=mts-ios-3.4.1
+2026-09-18T09:01:38.591+09:00 INFO  [req-000059] POST /api/orders 201 oid=240905 code=055550 side=SELL qty=10 116ms client=mts-web-2.1.0
+2026-09-18T09:01:39.958+09:00 WARN  [quote-feed] out_of_order code=005930 ts=1789689699651 prev_ts=1789689699958 delta=-307ms applied=true
+2026-09-18T09:01:41.509+09:00 INFO  [req-000061] GET /api/quotes/105560 200 4ms client=mts-web-2.1.0
+2026-09-18T09:01:42.186+09:00 WARN  [req-000062] GET /api/quotes/000660 200 939ms slow_response threshold=500ms client=mts-android-3.3.9
+2026-09-18T09:01:45.259+09:00 DEBUG [req-000063] GET /api/session/heartbeat 200 2ms client=mts-ios-3.4.1
+2026-09-18T09:01:46.944+09:00 INFO  [req-000064] POST /api/orders 201 oid=240906 code=055550 side=BUY qty=1 93ms client=mts-android-3.3.9
+2026-09-18T09:01:49.820+09:00 INFO  [req-000065] GET /api/quotes/000270 200 24ms client=mts-android-3.3.9
+2026-09-18T09:01:52.013+09:00 INFO  [req-000066] GET /api/quotes/005380 200 31ms client=mts-android-3.3.9
+2026-09-18T09:01:53.341+09:00 INFO  [req-000067] GET /api/candles/005380?interval=1d&count=60 200 74ms client=mts-android-3.3.9
+2026-09-18T09:01:54.275+09:00 INFO  [req-000068] GET /api/orderbook/000270?depth=10 200 51ms client=mts-ios-3.4.1
+2026-09-18T09:01:56.699+09:00 INFO  [req-000069] GET /api/quotes/003550 200 19ms client=mts-web-2.1.0
+2026-09-18T09:01:57.717+09:00 INFO  [req-000070] GET /api/candles/005380?interval=1d&count=60 200 41ms client=mts-android-3.3.9
+2026-09-18T09:01:58.261+09:00 INFO  [req-000071] GET /api/watchlist 200 24ms rows=9 client=mts-android-3.3.9
+2026-09-18T09:01:59.093+09:00 INFO  [req-000072] GET /api/quotes/005380 200 30ms client=mts-ios-3.4.0
+2026-09-18T09:02:02.091+09:00 DEBUG [req-000073] WS /ws/quotes subscribe code=005380 conn=8533 client=mts-ios-3.4.1
+2026-09-18T09:02:04.293+09:00 INFO  [req-000074] GET /api/quotes/000270 200 23ms client=mts-web-2.1.0
+2026-09-18T09:02:06.332+09:00 INFO  [req-000075] GET /api/candles/051910?interval=1d&count=60 200 56ms client=mts-ios-3.4.1
+2026-09-18T09:02:06.988+09:00 INFO  [req-000076] GET /api/orderbook/005930?depth=10 200 24ms client=mts-ios-3.4.0
+2026-09-18T09:02:08.311+09:00 INFO  [req-000077] GET /api/candles/035420?interval=1d&count=60 200 35ms client=mts-android-3.4.1
+2026-09-18T09:02:09.878+09:00 INFO  [req-000078] POST /api/orders 201 oid=240907 code=000270 side=SELL qty=5 52ms client=mts-web-2.1.0
+2026-09-18T09:02:11.349+09:00 WARN  [quote-feed] out_of_order code=035420 ts=1789689731101 prev_ts=1789689731349 delta=-248ms applied=true
+2026-09-18T09:02:12.548+09:00 INFO  [req-000080] GET /api/quotes/003550 200 59ms client=mts-android-3.4.1
+2026-09-18T09:02:14.605+09:00 INFO  [req-000081] GET /api/quotes/000660 200 54ms client=mts-android-3.4.1
+2026-09-18T09:02:16.344+09:00 INFO  [req-000082] GET /api/quotes/051910 200 60ms client=mts-web-2.1.0
+2026-09-18T09:02:19.409+09:00 INFO  [req-000083] GET /api/orderbook/035420?depth=10 200 54ms client=mts-android-3.4.1
+2026-09-18T09:02:19.770+09:00 INFO  [req-000084] GET /api/quotes/068270 200 6ms client=mts-ios-3.4.1
+2026-09-18T09:02:20.491+09:00 INFO  [req-000085] POST /api/orders 201 oid=240908 code=051910 side=SELL qty=50 176ms client=mts-android-3.3.9
+2026-09-18T09:02:20.955+09:00 INFO  [req-000086] GET /api/account/balance 200 17ms client=mts-web-2.1.0
+2026-09-18T09:02:22.552+09:00 INFO  [req-000087] GET /api/orderbook/051910?depth=10 200 61ms client=mts-ios-3.4.0
+2026-09-18T09:02:24.090+09:00 INFO  [req-000088] GET /api/watchlist 200 28ms rows=7 client=mts-android-3.4.1
+2026-09-18T09:02:25.945+09:00 INFO  [req-000089] GET /api/quotes/000270 200 25ms client=mts-android-3.4.1
+2026-09-18T09:02:27.542+09:00 INFO  [req-000090] GET /api/watchlist 200 21ms rows=12 client=mts-android-3.4.1
+2026-09-18T09:02:28.860+09:00 INFO  [req-000091] GET /api/watchlist 200 42ms rows=7 client=mts-android-3.4.1
+2026-09-18T09:02:30.442+09:00 WARN  [req-000092] GET /api/quotes/005930 200 1248ms slow_response threshold=500ms client=mts-android-3.4.1
+2026-09-18T09:02:32.549+09:00 INFO  [req-000093] GET /api/candles/000660?interval=1d&count=60 200 130ms client=mts-android-3.4.1
+2026-09-18T09:02:35.185+09:00 INFO  [req-000094] GET /api/quotes/003550 200 56ms client=mts-android-3.4.1
+2026-09-18T09:02:36.039+09:00 INFO  [req-000095] GET /api/quotes/105560 200 48ms client=mts-web-2.1.0
+2026-09-18T09:02:37.464+09:00 INFO  [req-000096] GET /api/quotes/005930 200 47ms client=mts-android-3.3.9
+2026-09-18T09:02:40.595+09:00 INFO  [req-000097] GET /api/orderbook/068270?depth=10 200 77ms client=mts-ios-3.4.0
+2026-09-18T09:02:43.608+09:00 INFO  [req-000098] GET /api/orderbook/000660?depth=10 200 17ms client=mts-android-3.4.1
+2026-09-18T09:02:46.695+09:00 INFO  [req-000099] GET /api/quotes/005930 200 19ms client=mts-web-2.1.0
+2026-09-18T09:02:49.763+09:00 INFO  [req-000100] GET /api/account/balance 200 56ms client=mts-android-3.3.9
+2026-09-18T09:02:51.846+09:00 INFO  [req-000101] GET /api/orderbook/035420?depth=10 200 7ms client=mts-ios-3.4.1
+2026-09-18T09:02:52.481+09:00 INFO  [req-000102] GET /api/watchlist 200 8ms rows=6 client=mts-ios-3.4.0
+2026-09-18T09:02:52.642+09:00 INFO  [req-000103] GET /api/candles/000270?interval=1d&count=60 200 24ms client=mts-android-3.4.1
+2026-09-18T09:02:55.597+09:00 DEBUG [req-000104] GET /api/session/heartbeat 200 7ms client=mts-web-2.1.0
+2026-09-18T09:02:58.489+09:00 INFO  [req-000105] GET /api/quotes/105560 200 27ms client=mts-ios-3.4.1
+2026-09-18T09:03:00.078+09:00 DEBUG [req-000106] GET /api/session/heartbeat 200 10ms client=mts-android-3.3.9
+2026-09-18T09:03:01.886+09:00 WARN  [req-000107] GET /api/quotes/068270 200 2298ms slow_response threshold=500ms client=mts-android-3.3.9
+2026-09-18T09:03:03.973+09:00 INFO  [req-000108] GET /api/quotes/068270 200 49ms client=mts-ios-3.4.0
+2026-09-18T09:03:04.809+09:00 INFO  [req-000109] GET /api/quotes/051910 200 51ms client=mts-ios-3.4.1
+2026-09-18T09:03:07.436+09:00 INFO  [req-000110] GET /api/candles/005380?interval=1d&count=60 200 65ms client=mts-web-2.1.0
+2026-09-18T09:03:07.855+09:00 INFO  [req-000111] GET /api/candles/051910?interval=1d&count=60 200 94ms client=mts-web-2.1.0
+2026-09-18T09:03:08.957+09:00 WARN  [req-000112] GET /api/quotes/105560 200 1056ms slow_response threshold=500ms client=mts-ios-3.4.1
+2026-09-18T09:03:09.861+09:00 ERROR [ws] disconnect conn=6284 code=1006 reason=abnormal_closure client=mts-ios-3.4.0
+2026-09-18T09:03:10.269+09:00 INFO  [req-000114] GET /api/orderbook/068270?depth=10 200 52ms client=mts-android-3.3.9
+2026-09-18T09:03:11.476+09:00 ERROR [req-000115] GET /api/quotes/000660 504 upstream_timeout after=3000ms source=quote-feed client=mts-android-3.3.9
+2026-09-18T09:03:12.628+09:00 WARN  [req-000116] GET /api/quotes/105560 200 2484ms slow_response threshold=500ms client=mts-ios-3.4.0
+2026-09-18T09:03:14.855+09:00 INFO  [req-000117] GET /api/candles/005380?interval=1d&count=60 200 84ms client=mts-android-3.3.9
+2026-09-18T09:03:16.583+09:00 INFO  [req-000118] POST /api/orders 201 oid=240909 code=005380 side=SELL qty=20 106ms client=mts-android-3.4.1
+2026-09-18T09:03:18.274+09:00 INFO  [req-000119] GET /api/account/balance 200 61ms client=mts-ios-3.4.1
+2026-09-18T09:03:19.205+09:00 INFO  [req-000120] GET /api/orderbook/035420?depth=10 200 53ms client=mts-ios-3.4.0
+2026-09-18T09:03:20.959+09:00 INFO  [req-000121] GET /api/watchlist 200 31ms rows=8 client=mts-web-2.1.0
+2026-09-18T09:03:21.758+09:00 INFO  [req-000122] GET /api/quotes/005930 200 41ms client=mts-android-3.4.1
+2026-09-18T09:03:22.776+09:00 INFO  [req-000123] GET /api/watchlist 200 37ms rows=12 client=mts-android-3.4.1
+2026-09-18T09:03:25.552+09:00 INFO  [req-000124] POST /api/orders 201 oid=240910 code=105560 side=SELL qty=50 162ms client=mts-ios-3.4.1
+2026-09-18T09:03:27.803+09:00 INFO  [req-000125] GET /api/orderbook/005380?depth=10 200 38ms client=mts-android-3.3.9
+2026-09-18T09:03:30.369+09:00 INFO  [req-000126] GET /api/quotes/105560 200 40ms client=mts-android-3.3.9
+2026-09-18T09:03:32.273+09:00 INFO  [req-000127] GET /api/account/balance 200 18ms client=mts-ios-3.4.1
+2026-09-18T09:03:34.630+09:00 INFO  [req-000128] GET /api/quotes/000660 200 4ms client=mts-android-3.4.1
+2026-09-18T09:03:35.020+09:00 INFO  [req-000129] GET /api/orderbook/035420?depth=10 200 32ms client=mts-web-2.1.0
+2026-09-18T09:03:37.985+09:00 DEBUG [req-000130] WS /ws/quotes subscribe code=035420 conn=1559 client=mts-web-2.1.0
+2026-09-18T09:03:38.432+09:00 INFO  [req-000131] GET /api/quotes/000270 200 24ms client=mts-android-3.3.9
+2026-09-18T09:03:39.052+09:00 DEBUG [req-000132] GET /api/session/heartbeat 200 5ms client=mts-android-3.4.1
+2026-09-18T09:03:41.574+09:00 INFO  [req-000133] GET /api/candles/000660?interval=1d&count=60 200 76ms client=mts-android-3.3.9
+2026-09-18T09:03:44.756+09:00 INFO  [req-000134] POST /api/orders 201 oid=240911 code=000270 side=SELL qty=10 103ms client=mts-android-3.3.9
+2026-09-18T09:03:44.948+09:00 INFO  [req-000135] GET /api/orderbook/105560?depth=10 200 44ms client=mts-ios-3.4.1
+2026-09-18T09:03:46.596+09:00 INFO  [req-000136] GET /api/candles/055550?interval=1d&count=60 200 62ms client=mts-ios-3.4.0
+2026-09-18T09:03:48.590+09:00 INFO  [req-000137] GET /api/watchlist 200 8ms rows=6 client=mts-web-2.1.0
+2026-09-18T09:03:50.648+09:00 INFO  [req-000138] GET /api/watchlist 200 36ms rows=12 client=mts-ios-3.4.1
+2026-09-18T09:03:52.355+09:00 INFO  [req-000139] GET /api/quotes/005380 200 34ms client=mts-android-3.3.9
+2026-09-18T09:03:54.455+09:00 INFO  [req-000140] GET /api/watchlist 200 28ms rows=6 client=mts-ios-3.4.0
+2026-09-18T09:03:55.664+09:00 WARN  [req-000141] GET /api/quotes/035420 200 2226ms slow_response threshold=500ms client=mts-android-3.3.9
+2026-09-18T09:03:57.844+09:00 INFO  [req-000142] GET /api/orderbook/105560?depth=10 200 18ms client=mts-ios-3.4.0
+2026-09-18T09:04:00.258+09:00 DEBUG [req-000143] GET /api/session/heartbeat 200 4ms client=mts-ios-3.4.0
+2026-09-18T09:04:01.389+09:00 INFO  [req-000144] POST /api/orders 201 oid=240912 code=005380 side=SELL qty=20 114ms client=mts-web-2.1.0
+2026-09-18T09:04:04.068+09:00 INFO  [req-000145] GET /api/candles/051910?interval=1d&count=60 200 128ms client=mts-ios-3.4.1
+2026-09-18T09:04:07.011+09:00 WARN  [quote-feed] out_of_order code=005380 ts=1789689846329 prev_ts=1789689847011 delta=-682ms applied=true
+2026-09-18T09:04:08.385+09:00 DEBUG [req-000147] WS /ws/quotes subscribe code=055550 conn=6540 client=mts-web-2.1.0
+2026-09-18T09:04:08.835+09:00 INFO  [req-000148] GET /api/watchlist 200 38ms rows=12 client=mts-web-2.1.0
+2026-09-18T09:04:10.552+09:00 INFO  [req-000149] GET /api/orderbook/105560?depth=10 200 35ms client=mts-android-3.3.9
+2026-09-18T09:04:11.018+09:00 INFO  [req-000150] GET /api/orderbook/003550?depth=10 200 55ms client=mts-android-3.3.9
+2026-09-18T09:04:12.201+09:00 INFO  [req-000151] GET /api/quotes/051910 200 23ms client=mts-web-2.1.0
+2026-09-18T09:04:15.141+09:00 INFO  [req-000152] GET /api/orders/240912 200 14ms client=mts-web-2.1.0
+2026-09-18T09:04:18.209+09:00 INFO  [req-000153] GET /api/orderbook/068270?depth=10 200 58ms client=mts-ios-3.4.1
+2026-09-18T09:04:20.218+09:00 INFO  [req-000154] GET /api/watchlist 200 5ms rows=12 client=mts-web-2.1.0
+2026-09-18T09:04:22.884+09:00 INFO  [req-000155] GET /api/orders/240912 200 16ms client=mts-ios-3.4.0
+2026-09-18T09:04:23.136+09:00 INFO  [req-000156] GET /api/watchlist 200 12ms rows=9 client=mts-android-3.4.1
+2026-09-18T09:04:24.799+09:00 INFO  [req-000157] GET /api/quotes/105560 200 60ms client=mts-ios-3.4.0
+2026-09-18T09:04:27.032+09:00 INFO  [req-000158] GET /api/quotes/051910 200 14ms client=mts-ios-3.4.1
+2026-09-18T09:04:27.567+09:00 INFO  [req-000159] GET /api/quotes/000270 200 10ms client=mts-ios-3.4.1
+2026-09-18T09:04:29.559+09:00 DEBUG [req-000160] WS /ws/quotes subscribe code=005930 conn=4188 client=mts-ios-3.4.1
+2026-09-18T09:04:31.481+09:00 INFO  [req-000161] GET /api/quotes/000270 200 32ms client=mts-android-3.4.1
+2026-09-18T09:04:32.328+09:00 WARN  [req-000162] GET /api/quotes/005380 200 1114ms slow_response threshold=500ms client=mts-web-2.1.0
+2026-09-18T09:04:33.546+09:00 INFO  [req-000163] GET /api/account/balance 200 10ms client=mts-android-3.4.1
+2026-09-18T09:04:34.171+09:00 INFO  [req-000164] GET /api/orders/240912 200 8ms client=mts-android-3.4.1
+2026-09-18T09:04:35.781+09:00 INFO  [req-000165] GET /api/orderbook/105560?depth=10 200 35ms client=mts-android-3.4.1
+2026-09-18T09:04:38.530+09:00 INFO  [req-000166] GET /api/candles/035420?interval=1d&count=60 200 112ms client=mts-ios-3.4.0
+2026-09-18T09:04:40.533+09:00 INFO  [req-000167] GET /api/quotes/000270 200 51ms client=mts-android-3.3.9
+2026-09-18T09:04:40.995+09:00 INFO  [req-000168] GET /api/quotes/035420 200 52ms client=mts-web-2.1.0
+2026-09-18T09:04:41.366+09:00 INFO  [req-000169] POST /api/orders 201 oid=240913 code=003550 side=BUY qty=100 189ms client=mts-web-2.1.0
+2026-09-18T09:04:43.837+09:00 INFO  [req-000170] GET /api/orderbook/005930?depth=10 200 51ms client=mts-ios-3.4.1
+2026-09-18T09:04:45.530+09:00 INFO  [req-000171] GET /api/watchlist 200 32ms rows=7 client=mts-android-3.4.1
+2026-09-18T09:04:46.078+09:00 INFO  [req-000172] POST /api/orders 201 oid=240914 code=005930 side=BUY qty=5 114ms client=mts-ios-3.4.1
+2026-09-18T09:04:48.430+09:00 INFO  [req-000173] GET /api/quotes/005930 200 38ms client=mts-ios-3.4.0
+2026-09-18T09:04:51.422+09:00 INFO  [req-000174] GET /api/orderbook/005930?depth=10 200 71ms client=mts-android-3.4.1
+2026-09-18T09:04:53.948+09:00 INFO  [req-000175] GET /api/quotes/068270 200 46ms client=mts-ios-3.4.1
+2026-09-18T09:04:55.425+09:00 DEBUG [req-000176] WS /ws/quotes subscribe code=003550 conn=9758 client=mts-android-3.4.1
+2026-09-18T09:04:56.670+09:00 DEBUG [req-000177] WS /ws/quotes subscribe code=055550 conn=5070 client=mts-android-3.3.9
+2026-09-18T09:04:58.444+09:00 WARN  [quote-feed] out_of_order code=035420 ts=1789689897683 prev_ts=1789689898444 delta=-761ms applied=true
+2026-09-18T09:04:59.050+09:00 WARN  [req-000179] GET /api/quotes/005930 200 1899ms slow_response threshold=500ms client=mts-ios-3.4.0
+2026-09-18T09:05:01.102+09:00 INFO  [req-000180] GET /api/orderbook/051910?depth=10 200 72ms client=mts-web-2.1.0
+2026-09-18T09:05:03.417+09:00 INFO  [req-000181] GET /api/orderbook/105560?depth=10 200 6ms client=mts-ios-3.4.1
+2026-09-18T09:05:03.736+09:00 WARN  [quote-feed] out_of_order code=051910 ts=1789689903696 prev_ts=1789689903736 delta=-40ms applied=true
+2026-09-18T09:05:06.277+09:00 DEBUG [req-000183] GET /api/session/heartbeat 200 6ms client=mts-android-3.3.9
+2026-09-18T09:05:07.768+09:00 WARN  [req-000184] GET /api/quotes/105560 200 1154ms slow_response threshold=500ms client=mts-android-3.4.1
+2026-09-18T09:05:09.401+09:00 INFO  [req-000185] GET /api/quotes/000660 200 54ms client=mts-android-3.4.1
+2026-09-18T09:05:11.409+09:00 INFO  [req-000186] GET /api/watchlist 200 28ms rows=7 client=mts-ios-3.4.0
+2026-09-18T09:05:13.886+09:00 INFO  [req-000187] GET /api/quotes/068270 200 50ms client=mts-ios-3.4.0
+2026-09-18T09:05:16.817+09:00 INFO  [req-000188] GET /api/quotes/005930 200 26ms client=mts-ios-3.4.0
+2026-09-18T09:05:17.480+09:00 INFO  [req-000189] GET /api/orders/240914 200 11ms client=mts-web-2.1.0
+2026-09-18T09:05:19.798+09:00 INFO  [req-000190] GET /api/quotes/005930 200 42ms client=mts-ios-3.4.1
+2026-09-18T09:05:21.684+09:00 INFO  [req-000191] GET /api/orderbook/000270?depth=10 200 18ms client=mts-web-2.1.0
+2026-09-18T09:05:24.679+09:00 INFO  [req-000192] GET /api/quotes/000270 200 38ms client=mts-ios-3.4.1
+2026-09-18T09:05:25.106+09:00 INFO  [req-000193] POST /api/orders 201 oid=240915 code=051910 side=SELL qty=5 51ms client=mts-android-3.3.9
+2026-09-18T09:05:26.541+09:00 INFO  [req-000194] GET /api/quotes/005930 200 49ms client=mts-ios-3.4.1
+2026-09-18T09:05:28.252+09:00 INFO  [req-000195] GET /api/quotes/005930 200 25ms client=mts-ios-3.4.0
+2026-09-18T09:05:28.848+09:00 DEBUG [req-000196] WS /ws/quotes subscribe code=005380 conn=6818 client=mts-ios-3.4.1
+2026-09-18T09:05:29.458+09:00 INFO  [req-000197] GET /api/orderbook/005380?depth=10 200 77ms client=mts-android-3.4.1
+2026-09-18T09:05:29.983+09:00 INFO  [req-000198] GET /api/candles/068270?interval=1d&count=60 200 41ms client=mts-ios-3.4.1
+2026-09-18T09:05:31.509+09:00 INFO  [req-000199] GET /api/orders/240915 200 13ms client=mts-ios-3.4.0
+2026-09-18T09:05:33.276+09:00 INFO  [req-000200] GET /api/orderbook/068270?depth=10 200 30ms client=mts-web-2.1.0
+2026-09-18T09:05:33.613+09:00 INFO  [req-000201] GET /api/quotes/003550 200 48ms client=mts-android-3.3.9
+2026-09-18T09:05:36.109+09:00 INFO  [req-000202] GET /api/quotes/003550 200 17ms client=mts-web-2.1.0
+2026-09-18T09:05:37.250+09:00 ERROR [req-000203] GET /api/quotes/000270 504 upstream_timeout after=3000ms source=quote-feed client=mts-ios-3.4.1
+2026-09-18T09:05:37.981+09:00 INFO  [req-000204] POST /api/orders 201 oid=240916 code=005930 side=SELL qty=20 188ms client=mts-web-2.1.0
+2026-09-18T09:05:40.793+09:00 INFO  [req-000205] GET /api/orders/240916 200 5ms client=mts-ios-3.4.0
+2026-09-18T09:05:42.050+09:00 INFO  [req-000206] GET /api/quotes/005930 200 9ms client=mts-android-3.3.9
+2026-09-18T09:05:42.618+09:00 WARN  [req-000207] GET /api/quotes/035420 200 830ms slow_response threshold=500ms client=mts-ios-3.4.0
+2026-09-18T09:05:45.021+09:00 ERROR [ws] disconnect conn=4525 code=1006 reason=abnormal_closure client=mts-android-3.3.9
+2026-09-18T09:05:46.587+09:00 INFO  [req-000209] GET /api/orderbook/000660?depth=10 200 54ms client=mts-ios-3.4.0
+2026-09-18T09:05:46.942+09:00 INFO  [req-000210] GET /api/quotes/051910 200 13ms client=mts-web-2.1.0
+2026-09-18T09:05:47.393+09:00 INFO  [req-000211] GET /api/quotes/003550 200 33ms client=mts-android-3.3.9
+2026-09-18T09:05:49.465+09:00 INFO  [req-000212] GET /api/watchlist 200 19ms rows=6 client=mts-android-3.4.1
+2026-09-18T09:05:50.437+09:00 INFO  [req-000213] POST /api/orders 201 oid=240917 code=055550 side=SELL qty=50 156ms client=mts-ios-3.4.1
+2026-09-18T09:05:51.077+09:00 INFO  [req-000214] GET /api/quotes/068270 200 6ms client=mts-android-3.4.1
+2026-09-18T09:05:53.738+09:00 INFO  [req-000215] GET /api/orderbook/055550?depth=10 200 64ms client=mts-android-3.3.9
+2026-09-18T09:05:55.286+09:00 INFO  [req-000216] GET /api/account/balance 200 51ms client=mts-ios-3.4.0
+2026-09-18T09:05:58.160+09:00 INFO  [req-000217] GET /api/watchlist 200 19ms rows=8 client=mts-ios-3.4.1
+2026-09-18T09:05:58.534+09:00 INFO  [req-000218] POST /api/orders 201 oid=240918 code=055550 side=BUY qty=50 191ms client=mts-web-2.1.0
+2026-09-18T09:05:59.638+09:00 INFO  [req-000219] GET /api/candles/005930?interval=1d&count=60 200 99ms client=mts-ios-3.4.1
+2026-09-18T09:06:01.092+09:00 INFO  [req-000220] GET /api/quotes/051910 200 20ms client=mts-web-2.1.0
+2026-09-18T09:06:01.652+09:00 INFO  [req-000221] GET /api/quotes/005930 200 58ms client=mts-android-3.3.9
+2026-09-18T09:06:03.453+09:00 INFO  [req-000222] GET /api/quotes/005380 200 53ms client=mts-ios-3.4.0
+2026-09-18T09:06:05.478+09:00 INFO  [req-000223] GET /api/orderbook/000270?depth=10 200 29ms client=mts-android-3.3.9
+2026-09-18T09:06:07.797+09:00 INFO  [req-000224] GET /api/candles/000270?interval=1d&count=60 200 55ms client=mts-android-3.3.9
+2026-09-18T09:06:10.215+09:00 INFO  [req-000225] POST /api/orders 201 oid=240919 code=003550 side=BUY qty=100 90ms client=mts-web-2.1.0
+2026-09-18T09:06:11.361+09:00 INFO  [req-000226] GET /api/quotes/105560 200 23ms client=mts-ios-3.4.1
+2026-09-18T09:06:13.243+09:00 DEBUG [req-000227] WS /ws/quotes subscribe code=035420 conn=1567 client=mts-ios-3.4.1
+2026-09-18T09:06:15.513+09:00 INFO  [req-000228] GET /api/candles/055550?interval=1d&count=60 200 124ms client=mts-ios-3.4.0
+2026-09-18T09:06:17.526+09:00 DEBUG [req-000229] GET /api/session/heartbeat 200 4ms client=mts-android-3.4.1
+2026-09-18T09:06:19.621+09:00 INFO  [req-000230] POST /api/orders 201 oid=240920 code=000270 side=SELL qty=1 59ms client=mts-android-3.4.1
+2026-09-18T09:06:19.896+09:00 INFO  [req-000231] GET /api/quotes/000660 200 44ms client=mts-android-3.4.1
+2026-09-18T09:06:21.655+09:00 INFO  [req-000232] GET /api/watchlist 200 23ms rows=12 client=mts-ios-3.4.0
+2026-09-18T09:06:22.489+09:00 INFO  [req-000233] GET /api/watchlist 200 43ms rows=9 client=mts-web-2.1.0
+2026-09-18T09:06:25.419+09:00 INFO  [req-000234] GET /api/watchlist 200 10ms rows=9 client=mts-ios-3.4.1
+2026-09-18T09:06:28.165+09:00 INFO  [req-000235] GET /api/quotes/055550 200 51ms client=mts-web-2.1.0
+2026-09-18T09:06:29.182+09:00 INFO  [req-000236] GET /api/quotes/003550 200 11ms client=mts-ios-3.4.1
+2026-09-18T09:06:31.358+09:00 WARN  [req-000237] POST /api/orders 422 oid=240921 code=051910 qty=300 available=100 reason=QTY_EXCEEDS_AVAILABLE client=mts-ios-3.4.0
+2026-09-18T09:06:34.377+09:00 INFO  [req-000238] GET /api/account/balance 200 9ms client=mts-web-2.1.0
+2026-09-18T09:06:35.341+09:00 INFO  [req-000239] GET /api/candles/005930?interval=1d&count=60 200 22ms client=mts-web-2.1.0
+2026-09-18T09:06:37.296+09:00 INFO  [req-000240] GET /api/account/balance 200 13ms client=mts-web-2.1.0
+2026-09-18T09:06:37.688+09:00 INFO  [req-000241] POST /api/orders 201 oid=240922 code=105560 side=SELL qty=10 171ms client=mts-ios-3.4.1
+2026-09-18T09:06:38.645+09:00 ERROR [req-000242] GET /api/candles/068270?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-android-3.3.9
+2026-09-18T09:06:39.126+09:00 INFO  [req-000243] GET /api/quotes/105560 200 48ms client=mts-ios-3.4.0
+2026-09-18T09:06:41.920+09:00 DEBUG [req-000244] WS /ws/quotes subscribe code=035420 conn=7377 client=mts-web-2.1.0
+2026-09-18T09:06:43.685+09:00 INFO  [req-000245] GET /api/quotes/000660 200 6ms client=mts-web-2.1.0
+2026-09-18T09:06:44.206+09:00 INFO  [req-000246] GET /api/orderbook/005380?depth=10 200 48ms client=mts-ios-3.4.0
+2026-09-18T09:06:44.792+09:00 INFO  [req-000247] GET /api/candles/005380?interval=1d&count=60 200 38ms client=mts-android-3.4.1
+2026-09-18T09:06:46.190+09:00 WARN  [req-000248] POST /api/orders 422 oid=240923 code=003550 qty=200 available=50 reason=QTY_EXCEEDS_AVAILABLE client=mts-web-2.1.0
+2026-09-18T09:06:48.392+09:00 INFO  [req-000249] GET /api/quotes/055550 200 44ms client=mts-ios-3.4.0
+2026-09-18T09:06:50.138+09:00 INFO  [req-000250] GET /api/quotes/003550 200 19ms client=mts-android-3.4.1
+2026-09-18T09:06:50.714+09:00 ERROR [req-000251] GET /api/quotes/035420 504 upstream_timeout after=3000ms source=quote-feed client=mts-android-3.4.1
+2026-09-18T09:06:51.367+09:00 INFO  [req-000252] GET /api/candles/105560?interval=1d&count=60 200 111ms client=mts-ios-3.4.1
+2026-09-18T09:06:51.811+09:00 DEBUG [req-000253] WS /ws/quotes subscribe code=055550 conn=5202 client=mts-web-2.1.0
+2026-09-18T09:06:54.942+09:00 WARN  [quote-feed] out_of_order code=003550 ts=1789690014751 prev_ts=1789690014942 delta=-191ms applied=true
+2026-09-18T09:06:57.592+09:00 INFO  [req-000255] GET /api/watchlist 200 41ms rows=9 client=mts-android-3.3.9
+2026-09-18T09:06:59.195+09:00 INFO  [req-000256] GET /api/quotes/035420 200 53ms client=mts-android-3.4.1
+2026-09-18T09:07:02.131+09:00 INFO  [req-000257] GET /api/quotes/005930 200 50ms client=mts-ios-3.4.1
+2026-09-18T09:07:05.012+09:00 INFO  [req-000258] GET /api/watchlist 200 23ms rows=8 client=mts-web-2.1.0
+2026-09-18T09:07:07.936+09:00 INFO  [req-000259] GET /api/orderbook/055550?depth=10 200 36ms client=mts-android-3.3.9
+2026-09-18T09:07:08.675+09:00 INFO  [req-000260] GET /api/quotes/051910 200 13ms client=mts-ios-3.4.1
+2026-09-18T09:07:09.058+09:00 WARN  [req-000261] POST /api/orders 422 oid=240924 code=068270 qty=100 available=50 reason=QTY_EXCEEDS_AVAILABLE client=mts-ios-3.4.1
+2026-09-18T09:07:09.554+09:00 INFO  [req-000262] GET /api/quotes/051910 200 34ms client=mts-ios-3.4.0
+2026-09-18T09:07:12.100+09:00 INFO  [req-000263] GET /api/quotes/005930 200 54ms client=mts-web-2.1.0
+2026-09-18T09:07:13.931+09:00 INFO  [req-000264] POST /api/orders 201 oid=240925 code=068270 side=SELL qty=100 88ms client=mts-web-2.1.0
+2026-09-18T09:07:15.703+09:00 DEBUG [req-000265] GET /api/session/heartbeat 200 6ms client=mts-ios-3.4.1
+2026-09-18T09:07:18.215+09:00 INFO  [req-000266] GET /api/quotes/005930 200 13ms client=mts-android-3.3.9
+2026-09-18T09:07:19.409+09:00 INFO  [req-000267] GET /api/quotes/051910 200 23ms client=mts-android-3.4.1
+2026-09-18T09:07:20.810+09:00 INFO  [req-000268] GET /api/orderbook/003550?depth=10 200 28ms client=mts-android-3.3.9
+2026-09-18T09:07:22.254+09:00 INFO  [req-000269] GET /api/quotes/105560 200 45ms client=mts-android-3.4.1
+2026-09-18T09:07:25.405+09:00 INFO  [req-000270] GET /api/quotes/105560 200 18ms client=mts-ios-3.4.1
+2026-09-18T09:07:26.883+09:00 INFO  [req-000271] GET /api/quotes/055550 200 11ms client=mts-web-2.1.0
+2026-09-18T09:07:28.181+09:00 INFO  [req-000272] POST /api/orders 201 oid=240926 code=005930 side=SELL qty=300 78ms client=mts-ios-3.4.1
+2026-09-18T09:07:31.265+09:00 INFO  [req-000273] GET /api/account/balance 200 49ms client=mts-ios-3.4.1
+2026-09-18T09:07:33.957+09:00 INFO  [req-000274] GET /api/candles/055550?interval=1d&count=60 200 122ms client=mts-ios-3.4.1
+2026-09-18T09:07:36.597+09:00 INFO  [req-000275] GET /api/quotes/035420 200 37ms client=mts-android-3.4.1
+2026-09-18T09:07:38.094+09:00 ERROR [req-000276] GET /api/quotes/003550 504 upstream_timeout after=3000ms source=quote-feed client=mts-ios-3.4.1
+2026-09-18T09:07:39.368+09:00 INFO  [req-000277] GET /api/quotes/000270 200 41ms client=mts-ios-3.4.1
+2026-09-18T09:07:40.125+09:00 INFO  [req-000278] GET /api/orderbook/000270?depth=10 200 31ms client=mts-android-3.4.1
+2026-09-18T09:07:41.300+09:00 INFO  [req-000279] GET /api/account/balance 200 42ms client=mts-ios-3.4.0
+2026-09-18T09:07:43.643+09:00 INFO  [req-000280] GET /api/quotes/035420 200 16ms client=mts-web-2.1.0
+2026-09-18T09:07:46.151+09:00 DEBUG [req-000281] WS /ws/quotes subscribe code=055550 conn=2745 client=mts-ios-3.4.0
+2026-09-18T09:07:48.115+09:00 INFO  [req-000282] GET /api/quotes/035420 200 31ms client=mts-ios-3.4.0
+2026-09-18T09:07:48.800+09:00 INFO  [req-000283] GET /api/quotes/051910 200 53ms client=mts-android-3.4.1
+2026-09-18T09:07:49.218+09:00 WARN  [req-000284] POST /api/orders 422 oid=240927 code=000660 qty=300 available=200 reason=QTY_EXCEEDS_AVAILABLE client=mts-android-3.4.1
+2026-09-18T09:07:50.527+09:00 DEBUG [req-000285] GET /api/session/heartbeat 200 12ms client=mts-android-3.4.1
+2026-09-18T09:07:52.106+09:00 INFO  [req-000286] GET /api/quotes/055550 200 26ms client=mts-android-3.3.9
+2026-09-18T09:07:54.590+09:00 INFO  [req-000287] GET /api/quotes/035420 200 52ms client=mts-ios-3.4.0
+2026-09-18T09:07:56.029+09:00 INFO  [req-000288] GET /api/orderbook/005380?depth=10 200 20ms client=mts-android-3.3.9
+2026-09-18T09:07:56.568+09:00 INFO  [req-000289] GET /api/orders/240927 200 15ms client=mts-android-3.4.1
+2026-09-18T09:07:58.853+09:00 WARN  [req-000290] GET /api/quotes/003550 200 884ms slow_response threshold=500ms client=mts-web-2.1.0
+2026-09-18T09:07:59.831+09:00 ERROR [ws] disconnect conn=9565 code=1006 reason=abnormal_closure client=mts-web-2.1.0
+2026-09-18T09:08:02.735+09:00 INFO  [req-000292] GET /api/candles/005380?interval=1d&count=60 200 88ms client=mts-ios-3.4.1
+2026-09-18T09:08:04.045+09:00 INFO  [req-000293] GET /api/quotes/035420 200 32ms client=mts-ios-3.4.0
+2026-09-18T09:08:05.420+09:00 ERROR [req-000294] GET /api/quotes/000270 504 upstream_timeout after=3000ms source=quote-feed client=mts-android-3.3.9
+2026-09-18T09:08:07.005+09:00 INFO  [req-000295] POST /api/orders 201 oid=240928 code=051910 side=BUY qty=5 153ms client=mts-ios-3.4.0
+2026-09-18T09:08:08.157+09:00 INFO  [req-000296] GET /api/quotes/035420 200 13ms client=mts-ios-3.4.0
+2026-09-18T09:08:10.605+09:00 DEBUG [req-000297] GET /api/session/heartbeat 200 6ms client=mts-android-3.3.9
+2026-09-18T09:08:12.297+09:00 INFO  [req-000298] GET /api/quotes/035420 200 35ms client=mts-web-2.1.0
+2026-09-18T09:08:14.860+09:00 INFO  [req-000299] GET /api/orderbook/005930?depth=10 200 21ms client=mts-android-3.4.1
+2026-09-18T09:08:17.203+09:00 ERROR [req-000300] GET /api/quotes/051910 504 upstream_timeout after=3000ms source=quote-feed client=mts-android-3.3.9
+2026-09-18T09:08:19.624+09:00 INFO  [req-000301] GET /api/watchlist 200 34ms rows=5 client=mts-web-2.1.0
+2026-09-18T09:08:20.811+09:00 INFO  [req-000302] GET /api/orderbook/055550?depth=10 200 25ms client=mts-web-2.1.0
+2026-09-18T09:08:23.368+09:00 WARN  [req-000303] GET /api/quotes/105560 200 2394ms slow_response threshold=500ms client=mts-android-3.3.9
+2026-09-18T09:08:24.888+09:00 INFO  [req-000304] GET /api/orderbook/005380?depth=10 200 69ms client=mts-ios-3.4.0
+2026-09-18T09:08:27.676+09:00 INFO  [req-000305] POST /api/orders 201 oid=240929 code=105560 side=SELL qty=1 173ms client=mts-android-3.3.9
+2026-09-18T09:08:29.383+09:00 INFO  [req-000306] GET /api/quotes/000660 200 28ms client=mts-android-3.4.1
+2026-09-18T09:08:29.919+09:00 INFO  [req-000307] GET /api/orderbook/000660?depth=10 200 39ms client=mts-android-3.3.9
+2026-09-18T09:08:30.170+09:00 INFO  [req-000308] GET /api/watchlist 200 28ms rows=6 client=mts-android-3.4.1
+2026-09-18T09:08:30.377+09:00 INFO  [req-000309] GET /api/candles/005380?interval=1d&count=60 200 93ms client=mts-ios-3.4.1
+2026-09-18T09:08:33.199+09:00 INFO  [req-000310] POST /api/orders 201 oid=240930 code=005930 side=BUY qty=300 176ms client=mts-ios-3.4.0
+2026-09-18T09:08:33.447+09:00 INFO  [req-000311] GET /api/quotes/005930 200 46ms client=mts-ios-3.4.1
+2026-09-18T09:08:33.747+09:00 ERROR [req-000312] GET /api/quotes/051910 504 upstream_timeout after=3000ms source=quote-feed client=mts-web-2.1.0
+2026-09-18T09:08:34.428+09:00 WARN  [req-000313] GET /api/quotes/051910 200 820ms slow_response threshold=500ms client=mts-android-3.4.1
+2026-09-18T09:08:36.526+09:00 WARN  [quote-feed] out_of_order code=051910 ts=1789690116196 prev_ts=1789690116526 delta=-330ms applied=true
+2026-09-18T09:08:37.863+09:00 INFO  [req-000315] GET /api/quotes/000660 200 12ms client=mts-ios-3.4.0
+2026-09-18T09:08:38.065+09:00 INFO  [req-000316] GET /api/orderbook/051910?depth=10 200 73ms client=mts-web-2.1.0
+2026-09-18T09:08:39.927+09:00 INFO  [req-000317] POST /api/orders 201 oid=240931 code=068270 side=SELL qty=1 60ms client=mts-android-3.3.9
+2026-09-18T09:08:41.570+09:00 INFO  [req-000318] GET /api/watchlist 200 6ms rows=5 client=mts-android-3.3.9
+2026-09-18T09:08:42.013+09:00 INFO  [req-000319] GET /api/orders/240931 200 19ms client=mts-ios-3.4.0
+2026-09-18T09:08:42.989+09:00 INFO  [req-000320] POST /api/orders 201 oid=240932 code=000270 side=BUY qty=20 182ms client=mts-android-3.4.1
+2026-09-18T09:08:44.723+09:00 INFO  [req-000321] GET /api/quotes/005380 200 5ms client=mts-ios-3.4.1
+2026-09-18T09:08:47.452+09:00 WARN  [req-000322] GET /api/quotes/055550 200 1559ms slow_response threshold=500ms client=mts-ios-3.4.0
+2026-09-18T09:08:49.557+09:00 DEBUG [req-000323] GET /api/session/heartbeat 200 2ms client=mts-android-3.3.9
+2026-09-18T09:08:51.959+09:00 INFO  [req-000324] GET /api/quotes/005930 200 4ms client=mts-android-3.4.1
+2026-09-18T09:08:52.452+09:00 INFO  [req-000325] GET /api/watchlist 200 19ms rows=9 client=mts-android-3.4.1
+2026-09-18T09:08:54.096+09:00 INFO  [req-000326] GET /api/quotes/068270 200 11ms client=mts-android-3.4.1
+2026-09-18T09:08:55.670+09:00 INFO  [req-000327] POST /api/orders 201 oid=240933 code=000660 side=BUY qty=50 84ms client=mts-android-3.4.1
+2026-09-18T09:08:58.393+09:00 INFO  [req-000328] POST /api/orders 201 oid=240934 code=000270 side=BUY qty=100 177ms client=mts-web-2.1.0
+2026-09-18T09:09:01.096+09:00 WARN  [req-000329] GET /api/quotes/035420 200 2487ms slow_response threshold=500ms client=mts-ios-3.4.0
+2026-09-18T09:09:02.761+09:00 INFO  [req-000330] GET /api/candles/035420?interval=1d&count=60 200 83ms client=mts-android-3.3.9
+2026-09-18T09:09:03.164+09:00 INFO  [req-000331] GET /api/quotes/105560 200 30ms client=mts-ios-3.4.1
+2026-09-18T09:09:03.962+09:00 DEBUG [req-000332] GET /api/session/heartbeat 200 12ms client=mts-ios-3.4.0
+2026-09-18T09:09:06.464+09:00 DEBUG [req-000333] WS /ws/quotes subscribe code=055550 conn=2509 client=mts-ios-3.4.1
+2026-09-18T09:09:06.688+09:00 INFO  [req-000334] GET /api/orders/240934 200 3ms client=mts-ios-3.4.1
+2026-09-18T09:09:07.836+09:00 DEBUG [req-000335] WS /ws/quotes subscribe code=105560 conn=8104 client=mts-ios-3.4.1
+2026-09-18T09:09:09.273+09:00 INFO  [req-000336] GET /api/quotes/005380 200 28ms client=mts-android-3.4.1
+2026-09-18T09:09:10.365+09:00 INFO  [req-000337] GET /api/quotes/003550 200 5ms client=mts-web-2.1.0
+2026-09-18T09:09:11.422+09:00 WARN  [req-000338] POST /api/orders 422 oid=240935 code=105560 qty=100 available=50 reason=QTY_EXCEEDS_AVAILABLE client=mts-ios-3.4.1
+2026-09-18T09:09:14.321+09:00 INFO  [req-000339] GET /api/quotes/068270 200 42ms client=mts-ios-3.4.0
+2026-09-18T09:09:15.727+09:00 WARN  [quote-feed] out_of_order code=003550 ts=1789690155184 prev_ts=1789690155727 delta=-543ms applied=true
+2026-09-18T09:09:17.336+09:00 INFO  [req-000341] GET /api/orderbook/105560?depth=10 200 34ms client=mts-ios-3.4.1
+2026-09-18T09:09:19.473+09:00 INFO  [req-000342] GET /api/orderbook/003550?depth=10 200 79ms client=mts-ios-3.4.1
+2026-09-18T09:09:20.750+09:00 DEBUG [req-000343] WS /ws/quotes subscribe code=000270 conn=2243 client=mts-android-3.3.9
+2026-09-18T09:09:22.455+09:00 INFO  [req-000344] GET /api/quotes/005930 200 55ms client=mts-ios-3.4.1
+2026-09-18T09:09:25.393+09:00 INFO  [req-000345] GET /api/orderbook/005380?depth=10 200 23ms client=mts-android-3.4.1
+2026-09-18T09:09:27.398+09:00 INFO  [req-000346] GET /api/candles/003550?interval=1d&count=60 200 46ms client=mts-ios-3.4.1
+2026-09-18T09:09:28.746+09:00 INFO  [req-000347] GET /api/orderbook/000270?depth=10 200 55ms client=mts-ios-3.4.1
+2026-09-18T09:09:30.990+09:00 INFO  [req-000348] GET /api/quotes/055550 200 27ms client=mts-android-3.3.9
+2026-09-18T09:09:31.173+09:00 INFO  [req-000349] GET /api/quotes/000660 200 45ms client=mts-android-3.4.1
+2026-09-18T09:09:31.353+09:00 INFO  [req-000350] GET /api/quotes/051910 200 56ms client=mts-android-3.4.1
+2026-09-18T09:09:33.216+09:00 DEBUG [req-000351] WS /ws/quotes subscribe code=068270 conn=3198 client=mts-android-3.3.9
+2026-09-18T09:09:35.317+09:00 INFO  [req-000352] POST /api/orders 201 oid=240936 code=003550 side=BUY qty=10 89ms client=mts-ios-3.4.0
+2026-09-18T09:09:37.951+09:00 INFO  [req-000353] POST /api/orders 201 oid=240937 code=068270 side=SELL qty=5 86ms client=mts-ios-3.4.1
+2026-09-18T09:09:40.363+09:00 INFO  [req-000354] GET /api/candles/068270?interval=1d&count=60 200 26ms client=mts-ios-3.4.0
+2026-09-18T09:09:41.952+09:00 INFO  [req-000355] GET /api/quotes/005380 200 38ms client=mts-android-3.4.1
+2026-09-18T09:09:42.735+09:00 INFO  [req-000356] GET /api/watchlist 200 38ms rows=7 client=mts-android-3.4.1
+2026-09-18T09:09:44.872+09:00 INFO  [req-000357] GET /api/quotes/105560 200 44ms client=mts-ios-3.4.0
+2026-09-18T09:09:46.531+09:00 DEBUG [req-000358] GET /api/session/heartbeat 200 12ms client=mts-android-3.3.9
+2026-09-18T09:09:48.799+09:00 INFO  [req-000359] GET /api/watchlist 200 35ms rows=9 client=mts-web-2.1.0
+2026-09-18T09:09:49.530+09:00 INFO  [req-000360] GET /api/quotes/051910 200 16ms client=mts-ios-3.4.1
+2026-09-18T09:09:52.212+09:00 DEBUG [req-000361] GET /api/session/heartbeat 200 10ms client=mts-android-3.3.9
+2026-09-18T09:09:54.417+09:00 INFO  [req-000362] GET /api/orderbook/068270?depth=10 200 71ms client=mts-web-2.1.0
+2026-09-18T09:09:57.198+09:00 INFO  [req-000363] GET /api/quotes/000270 200 10ms client=mts-ios-3.4.0
+2026-09-18T09:10:00.138+09:00 INFO  [req-000364] GET /api/orderbook/005380?depth=10 200 19ms client=mts-android-3.4.1
+2026-09-18T09:10:02.543+09:00 INFO  [req-000365] GET /api/orderbook/005930?depth=10 200 39ms client=mts-ios-3.4.0
+2026-09-18T09:10:03.593+09:00 DEBUG [req-000366] WS /ws/quotes subscribe code=068270 conn=8437 client=mts-web-2.1.0
+2026-09-18T09:10:04.918+09:00 INFO  [req-000367] GET /api/candles/055550?interval=1d&count=60 200 140ms client=mts-ios-3.4.1
+2026-09-18T09:10:05.772+09:00 INFO  [req-000368] GET /api/orders/240937 200 22ms client=mts-ios-3.4.0
+2026-09-18T09:10:05.928+09:00 DEBUG [req-000369] GET /api/session/heartbeat 200 9ms client=mts-ios-3.4.0
+2026-09-18T09:10:06.913+09:00 INFO  [req-000370] GET /api/account/balance 200 43ms client=mts-ios-3.4.1
+2026-09-18T09:10:08.618+09:00 INFO  [req-000371] GET /api/quotes/005930 200 8ms client=mts-web-2.1.0
+2026-09-18T09:10:10.761+09:00 INFO  [req-000372] GET /api/quotes/035420 200 39ms client=mts-ios-3.4.0
+2026-09-18T09:10:12.034+09:00 ERROR [ws] disconnect conn=4124 code=1006 reason=abnormal_closure client=mts-android-3.4.1
+2026-09-18T09:10:14.265+09:00 INFO  [req-000374] POST /api/orders 201 oid=240938 code=005380 side=BUY qty=1 113ms client=mts-android-3.4.1
+2026-09-18T09:10:15.370+09:00 WARN  [req-000375] GET /api/quotes/003550 200 1095ms slow_response threshold=500ms client=mts-ios-3.4.1
+2026-09-18T09:10:16.149+09:00 INFO  [req-000376] GET /api/quotes/068270 200 39ms client=mts-android-3.4.1
+2026-09-18T09:10:16.668+09:00 WARN  [req-000377] GET /api/quotes/105560 200 1824ms slow_response threshold=500ms client=mts-ios-3.4.1
+2026-09-18T09:10:17.917+09:00 INFO  [req-000378] GET /api/quotes/055550 200 52ms client=mts-ios-3.4.0
+2026-09-18T09:10:18.738+09:00 INFO  [req-000379] GET /api/account/balance 200 56ms client=mts-ios-3.4.1
+2026-09-18T09:10:20.153+09:00 INFO  [req-000380] GET /api/watchlist 200 16ms rows=5 client=mts-ios-3.4.1
+2026-09-18T09:10:23.352+09:00 INFO  [req-000381] GET /api/quotes/005930 200 38ms client=mts-ios-3.4.0
+2026-09-18T09:10:25.040+09:00 DEBUG [req-000382] WS /ws/quotes subscribe code=051910 conn=2832 client=mts-ios-3.4.1
+2026-09-18T09:10:25.305+09:00 INFO  [req-000383] POST /api/orders 201 oid=240939 code=068270 side=BUY qty=100 67ms client=mts-web-2.1.0
+2026-09-18T09:10:25.462+09:00 INFO  [req-000384] GET /api/quotes/003550 200 50ms client=mts-android-3.3.9
+2026-09-18T09:10:26.767+09:00 INFO  [req-000385] GET /api/watchlist 200 42ms rows=8 client=mts-web-2.1.0
+2026-09-18T09:10:27.806+09:00 ERROR [req-000386] GET /api/candles/000660?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-android-3.3.9
+2026-09-18T09:10:30.017+09:00 INFO  [req-000387] GET /api/candles/068270?interval=1d&count=60 200 129ms client=mts-android-3.4.1
+2026-09-18T09:10:30.202+09:00 WARN  [req-000388] GET /api/quotes/005930 200 2413ms slow_response threshold=500ms client=mts-android-3.4.1
+2026-09-18T09:10:33.257+09:00 INFO  [req-000389] GET /api/account/balance 200 61ms client=mts-android-3.4.1
+2026-09-18T09:10:35.931+09:00 INFO  [req-000390] GET /api/orderbook/055550?depth=10 200 12ms client=mts-web-2.1.0
+2026-09-18T09:10:36.395+09:00 DEBUG [req-000391] GET /api/session/heartbeat 200 12ms client=mts-ios-3.4.1
+2026-09-18T09:10:38.373+09:00 INFO  [req-000392] GET /api/orders/240939 200 29ms client=mts-android-3.3.9
+2026-09-18T09:10:41.099+09:00 INFO  [req-000393] GET /api/orders/240939 200 8ms client=mts-ios-3.4.1
+2026-09-18T09:10:43.779+09:00 WARN  [req-000394] POST /api/orders 422 oid=240940 code=005380 qty=200 available=50 reason=QTY_EXCEEDS_AVAILABLE client=mts-android-3.4.1
+2026-09-18T09:10:46.114+09:00 WARN  [req-000395] POST /api/orders 422 oid=240941 code=051910 qty=200 available=100 reason=QTY_EXCEEDS_AVAILABLE client=mts-ios-3.4.1
+2026-09-18T09:10:46.343+09:00 INFO  [req-000396] GET /api/quotes/000270 200 7ms client=mts-ios-3.4.1
+2026-09-18T09:10:47.545+09:00 INFO  [req-000397] GET /api/orderbook/005380?depth=10 200 74ms client=mts-ios-3.4.1
+2026-09-18T09:10:48.470+09:00 INFO  [req-000398] GET /api/orders/240941 200 17ms client=mts-web-2.1.0
+2026-09-18T09:10:50.043+09:00 INFO  [req-000399] GET /api/quotes/000660 200 27ms client=mts-ios-3.4.0
+2026-09-18T09:10:52.381+09:00 INFO  [req-000400] GET /api/orderbook/005930?depth=10 200 63ms client=mts-android-3.4.1
+2026-09-18T09:10:55.531+09:00 WARN  [quote-feed] out_of_order code=005380 ts=1789690255447 prev_ts=1789690255531 delta=-84ms applied=true
+2026-09-18T09:10:58.343+09:00 INFO  [req-000402] GET /api/quotes/035420 200 9ms client=mts-ios-3.4.0
+2026-09-18T09:10:59.157+09:00 INFO  [req-000403] GET /api/quotes/051910 200 35ms client=mts-ios-3.4.0
+2026-09-18T09:10:59.423+09:00 INFO  [req-000404] GET /api/candles/005380?interval=1d&count=60 200 78ms client=mts-android-3.4.1
+2026-09-18T09:11:00.255+09:00 INFO  [req-000405] GET /api/quotes/005930 200 13ms client=mts-ios-3.4.0
+2026-09-18T09:11:02.900+09:00 INFO  [req-000406] GET /api/watchlist 200 28ms rows=6 client=mts-android-3.4.1
+2026-09-18T09:11:04.551+09:00 INFO  [req-000407] GET /api/orders/240941 200 4ms client=mts-web-2.1.0
+2026-09-18T09:11:05.027+09:00 INFO  [req-000408] POST /api/orders 201 oid=240942 code=035420 side=SELL qty=50 148ms client=mts-ios-3.4.1
+2026-09-18T09:11:07.578+09:00 DEBUG [req-000409] GET /api/session/heartbeat 200 2ms client=mts-web-2.1.0
+2026-09-18T09:11:10.262+09:00 INFO  [req-000410] GET /api/orders/240942 200 12ms client=mts-ios-3.4.0
+2026-09-18T09:11:12.448+09:00 INFO  [req-000411] GET /api/orderbook/000270?depth=10 200 55ms client=mts-ios-3.4.1
+2026-09-18T09:11:13.226+09:00 INFO  [req-000412] GET /api/quotes/003550 200 39ms client=mts-android-3.3.9
+2026-09-18T09:11:15.610+09:00 INFO  [req-000413] GET /api/account/balance 200 51ms client=mts-android-3.3.9
+2026-09-18T09:11:17.311+09:00 DEBUG [req-000414] GET /api/session/heartbeat 200 7ms client=mts-web-2.1.0
+2026-09-18T09:11:20.097+09:00 INFO  [req-000415] GET /api/quotes/000270 200 57ms client=mts-android-3.4.1
+2026-09-18T09:11:23.027+09:00 INFO  [req-000416] GET /api/quotes/051910 200 8ms client=mts-android-3.3.9
+2026-09-18T09:11:25.689+09:00 INFO  [req-000417] GET /api/orderbook/068270?depth=10 200 23ms client=mts-android-3.4.1
+2026-09-18T09:11:25.891+09:00 INFO  [req-000418] POST /api/orders 201 oid=240943 code=003550 side=SELL qty=100 59ms client=mts-ios-3.4.0
+2026-09-18T09:11:26.741+09:00 INFO  [req-000419] GET /api/orderbook/035420?depth=10 200 35ms client=mts-ios-3.4.1
+2026-09-18T09:11:28.678+09:00 INFO  [req-000420] GET /api/quotes/005380 200 35ms client=mts-android-3.4.1
+2026-09-18T09:11:29.360+09:00 INFO  [req-000421] GET /api/orderbook/005380?depth=10 200 39ms client=mts-android-3.4.1
+2026-09-18T09:11:31.314+09:00 INFO  [req-000422] GET /api/quotes/105560 200 17ms client=mts-ios-3.4.1
+2026-09-18T09:11:32.271+09:00 INFO  [req-000423] GET /api/candles/068270?interval=1d&count=60 200 36ms client=mts-web-2.1.0
+2026-09-18T09:11:33.992+09:00 DEBUG [req-000424] GET /api/session/heartbeat 200 4ms client=mts-ios-3.4.1
+2026-09-18T09:11:34.489+09:00 DEBUG [req-000425] WS /ws/quotes subscribe code=000660 conn=9341 client=mts-android-3.4.1
+2026-09-18T09:11:37.567+09:00 WARN  [req-000426] GET /api/quotes/068270 200 1771ms slow_response threshold=500ms client=mts-android-3.4.1
+2026-09-18T09:11:39.678+09:00 INFO  [req-000427] POST /api/orders 201 oid=240944 code=105560 side=BUY qty=1 199ms client=mts-android-3.3.9
+2026-09-18T09:11:40.392+09:00 INFO  [req-000428] GET /api/candles/005930?interval=1d&count=60 200 98ms client=mts-ios-3.4.1
+2026-09-18T09:11:42.469+09:00 INFO  [req-000429] GET /api/watchlist 200 29ms rows=7 client=mts-android-3.3.9
+2026-09-18T09:11:45.021+09:00 WARN  [req-000430] POST /api/orders 422 oid=240945 code=051910 qty=200 available=100 reason=QTY_EXCEEDS_AVAILABLE client=mts-android-3.3.9
+2026-09-18T09:11:46.289+09:00 INFO  [req-000431] GET /api/orderbook/003550?depth=10 200 77ms client=mts-ios-3.4.0
+2026-09-18T09:11:47.259+09:00 INFO  [req-000432] GET /api/quotes/055550 200 24ms client=mts-ios-3.4.0
+2026-09-18T09:11:47.916+09:00 WARN  [req-000433] GET /api/quotes/051910 200 1851ms slow_response threshold=500ms client=mts-ios-3.4.0
+2026-09-18T09:11:48.688+09:00 INFO  [req-000434] GET /api/watchlist 200 34ms rows=12 client=mts-ios-3.4.0
+2026-09-18T09:11:49.692+09:00 INFO  [req-000435] GET /api/quotes/000270 200 55ms client=mts-ios-3.4.1
+2026-09-18T09:11:52.731+09:00 INFO  [req-000436] POST /api/orders 201 oid=240946 code=051910 side=BUY qty=5 100ms client=mts-android-3.4.1
+2026-09-18T09:11:54.434+09:00 INFO  [req-000437] GET /api/orders/240946 200 22ms client=mts-ios-3.4.0
+2026-09-18T09:11:55.840+09:00 INFO  [req-000438] GET /api/quotes/005930 200 9ms client=mts-ios-3.4.0
+2026-09-18T09:11:57.663+09:00 WARN  [req-000439] GET /api/quotes/000660 200 1474ms slow_response threshold=500ms client=mts-android-3.4.1
+2026-09-18T09:12:00.318+09:00 INFO  [req-000440] POST /api/orders 201 oid=240947 code=000660 side=SELL qty=300 171ms client=mts-ios-3.4.0
+2026-09-18T09:12:02.070+09:00 INFO  [req-000441] GET /api/quotes/035420 200 12ms client=mts-web-2.1.0
+2026-09-18T09:12:04.872+09:00 DEBUG [req-000442] WS /ws/quotes subscribe code=068270 conn=3275 client=mts-ios-3.4.0
+2026-09-18T09:12:05.542+09:00 ERROR [req-000443] GET /api/candles/000660?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-ios-3.4.1
+2026-09-18T09:12:07.465+09:00 INFO  [req-000444] GET /api/quotes/000660 200 36ms client=mts-android-3.4.1
+2026-09-18T09:12:09.571+09:00 INFO  [req-000445] GET /api/orders/240947 200 27ms client=mts-web-2.1.0
+2026-09-18T09:12:12.006+09:00 ERROR [req-000446] GET /api/quotes/005380 504 upstream_timeout after=3000ms source=quote-feed client=mts-android-3.4.1
+2026-09-18T09:12:15.042+09:00 INFO  [req-000447] GET /api/quotes/000270 200 48ms client=mts-web-2.1.0
+2026-09-18T09:12:15.850+09:00 DEBUG [req-000448] WS /ws/quotes subscribe code=105560 conn=3836 client=mts-android-3.3.9
+2026-09-18T09:12:17.091+09:00 INFO  [req-000449] GET /api/watchlist 200 36ms rows=12 client=mts-web-2.1.0
+2026-09-18T09:12:17.482+09:00 DEBUG [req-000450] WS /ws/quotes subscribe code=051910 conn=2331 client=mts-android-3.3.9
+2026-09-18T09:12:18.570+09:00 INFO  [req-000451] GET /api/orders/240947 200 24ms client=mts-ios-3.4.0
+2026-09-18T09:12:19.716+09:00 INFO  [req-000452] GET /api/quotes/000270 200 56ms client=mts-web-2.1.0
+2026-09-18T09:12:20.435+09:00 INFO  [req-000453] GET /api/quotes/035420 200 59ms client=mts-android-3.4.1
+2026-09-18T09:12:22.481+09:00 WARN  [req-000454] GET /api/quotes/000270 200 1739ms slow_response threshold=500ms client=mts-ios-3.4.0
+2026-09-18T09:12:23.120+09:00 DEBUG [req-000455] GET /api/session/heartbeat 200 12ms client=mts-web-2.1.0
+2026-09-18T09:12:24.090+09:00 INFO  [req-000456] GET /api/watchlist 200 5ms rows=7 client=mts-web-2.1.0
+2026-09-18T09:12:25.449+09:00 INFO  [req-000457] GET /api/orderbook/000660?depth=10 200 29ms client=mts-ios-3.4.1
+2026-09-18T09:12:26.212+09:00 WARN  [req-000458] GET /api/quotes/000270 200 882ms slow_response threshold=500ms client=mts-web-2.1.0
+2026-09-18T09:12:28.522+09:00 WARN  [quote-feed] out_of_order code=000660 ts=1789690348112 prev_ts=1789690348522 delta=-410ms applied=true
+2026-09-18T09:12:31.309+09:00 INFO  [req-000460] GET /api/quotes/003550 200 18ms client=mts-android-3.4.1
+2026-09-18T09:12:33.754+09:00 INFO  [req-000461] GET /api/orders/240947 200 6ms client=mts-ios-3.4.0
+2026-09-18T09:12:36.815+09:00 INFO  [req-000462] GET /api/quotes/003550 200 58ms client=mts-android-3.3.9
+2026-09-18T09:12:38.608+09:00 INFO  [req-000463] GET /api/account/balance 200 14ms client=mts-ios-3.4.1
+2026-09-18T09:12:38.793+09:00 INFO  [req-000464] GET /api/orderbook/000270?depth=10 200 79ms client=mts-web-2.1.0
+2026-09-18T09:12:39.031+09:00 INFO  [req-000465] GET /api/quotes/055550 200 28ms client=mts-ios-3.4.1
+2026-09-18T09:12:39.892+09:00 DEBUG [req-000466] WS /ws/quotes subscribe code=005930 conn=3097 client=mts-android-3.3.9
+2026-09-18T09:12:42.140+09:00 INFO  [req-000467] GET /api/quotes/105560 200 34ms client=mts-ios-3.4.0
+2026-09-18T09:12:44.895+09:00 INFO  [req-000468] GET /api/quotes/068270 200 24ms client=mts-ios-3.4.1
+2026-09-18T09:12:46.944+09:00 INFO  [req-000469] GET /api/quotes/105560 200 6ms client=mts-ios-3.4.1
+2026-09-18T09:12:48.538+09:00 INFO  [req-000470] GET /api/candles/051910?interval=1d&count=60 200 86ms client=mts-web-2.1.0
+2026-09-18T09:12:49.142+09:00 INFO  [req-000471] GET /api/quotes/035420 200 38ms client=mts-android-3.4.1
+2026-09-18T09:12:50.128+09:00 INFO  [req-000472] GET /api/quotes/003550 200 18ms client=mts-android-3.4.1
+2026-09-18T09:12:51.818+09:00 INFO  [req-000473] GET /api/orderbook/035420?depth=10 200 76ms client=mts-android-3.4.1
+2026-09-18T09:12:52.201+09:00 INFO  [req-000474] POST /api/orders 201 oid=240948 code=105560 side=SELL qty=5 55ms client=mts-web-2.1.0
+2026-09-18T09:12:52.935+09:00 INFO  [req-000475] GET /api/account/balance 200 16ms client=mts-ios-3.4.0
+2026-09-18T09:12:54.588+09:00 INFO  [req-000476] GET /api/orders/240948 200 20ms client=mts-android-3.4.1
+2026-09-18T09:12:55.988+09:00 INFO  [req-000477] GET /api/quotes/000270 200 29ms client=mts-web-2.1.0
+2026-09-18T09:12:57.608+09:00 INFO  [req-000478] GET /api/orders/240948 200 16ms client=mts-ios-3.4.0
+2026-09-18T09:12:58.168+09:00 INFO  [req-000479] GET /api/quotes/005380 200 33ms client=mts-ios-3.4.0
+2026-09-18T09:13:00.649+09:00 INFO  [req-000480] GET /api/orders/240948 200 25ms client=mts-web-2.1.0
+2026-09-18T09:13:01.770+09:00 INFO  [req-000481] GET /api/watchlist 200 21ms rows=6 client=mts-android-3.4.1
+2026-09-18T09:13:02.991+09:00 DEBUG [req-000482] GET /api/session/heartbeat 200 3ms client=mts-ios-3.4.0
+2026-09-18T09:13:05.621+09:00 INFO  [req-000483] GET /api/account/balance 200 30ms client=mts-android-3.4.1
+2026-09-18T09:13:06.485+09:00 INFO  [req-000484] GET /api/quotes/068270 200 46ms client=mts-android-3.4.1
+2026-09-18T09:13:08.631+09:00 INFO  [req-000485] GET /api/quotes/068270 200 24ms client=mts-android-3.3.9
+2026-09-18T09:13:10.846+09:00 INFO  [req-000486] GET /api/candles/055550?interval=1d&count=60 200 103ms client=mts-android-3.4.1
+2026-09-18T09:13:11.065+09:00 INFO  [req-000487] GET /api/candles/051910?interval=1d&count=60 200 58ms client=mts-android-3.4.1
+2026-09-18T09:13:13.863+09:00 INFO  [req-000488] GET /api/orderbook/105560?depth=10 200 71ms client=mts-android-3.4.1
+2026-09-18T09:13:16.707+09:00 INFO  [req-000489] GET /api/quotes/105560 200 56ms client=mts-ios-3.4.1
+2026-09-18T09:13:18.679+09:00 INFO  [req-000490] GET /api/candles/000660?interval=1d&count=60 200 42ms client=mts-web-2.1.0
+2026-09-18T09:13:18.900+09:00 INFO  [req-000491] GET /api/quotes/000660 200 22ms client=mts-ios-3.4.1
+2026-09-18T09:13:19.463+09:00 INFO  [req-000492] GET /api/orderbook/000660?depth=10 200 24ms client=mts-android-3.4.1
+2026-09-18T09:13:22.307+09:00 INFO  [req-000493] GET /api/orderbook/005380?depth=10 200 6ms client=mts-android-3.3.9
+2026-09-18T09:13:23.578+09:00 INFO  [req-000494] GET /api/account/balance 200 13ms client=mts-ios-3.4.0
+2026-09-18T09:13:25.682+09:00 INFO  [req-000495] POST /api/orders 201 oid=240949 code=005380 side=BUY qty=300 178ms client=mts-android-3.3.9
+2026-09-18T09:13:25.891+09:00 INFO  [req-000496] GET /api/quotes/035420 200 31ms client=mts-web-2.1.0
+2026-09-18T09:13:28.661+09:00 INFO  [req-000497] GET /api/candles/003550?interval=1d&count=60 200 112ms client=mts-android-3.3.9
+2026-09-18T09:13:30.193+09:00 INFO  [req-000498] GET /api/quotes/005930 200 50ms client=mts-ios-3.4.0
+2026-09-18T09:13:31.837+09:00 INFO  [req-000499] GET /api/quotes/000270 200 45ms client=mts-ios-3.4.1
+2026-09-18T09:13:33.282+09:00 INFO  [req-000500] GET /api/quotes/003550 200 21ms client=mts-web-2.1.0
+2026-09-18T09:13:35.414+09:00 DEBUG [req-000501] WS /ws/quotes subscribe code=005930 conn=8871 client=mts-ios-3.4.1
+2026-09-18T09:13:37.271+09:00 DEBUG [req-000502] GET /api/session/heartbeat 200 6ms client=mts-android-3.4.1
+2026-09-18T09:13:38.753+09:00 INFO  [req-000503] GET /api/quotes/105560 200 16ms client=mts-android-3.4.1
+2026-09-18T09:13:39.324+09:00 INFO  [req-000504] GET /api/quotes/003550 200 54ms client=mts-ios-3.4.0
+2026-09-18T09:13:41.329+09:00 INFO  [req-000505] GET /api/quotes/051910 200 51ms client=mts-ios-3.4.1
+2026-09-18T09:13:42.267+09:00 INFO  [req-000506] GET /api/quotes/051910 200 15ms client=mts-android-3.4.1
+2026-09-18T09:13:43.330+09:00 INFO  [req-000507] GET /api/quotes/005380 200 15ms client=mts-web-2.1.0
+2026-09-18T09:13:44.293+09:00 INFO  [req-000508] GET /api/watchlist 200 43ms rows=5 client=mts-ios-3.4.1
+2026-09-18T09:13:45.903+09:00 INFO  [req-000509] GET /api/quotes/055550 200 26ms client=mts-android-3.4.1
+2026-09-18T09:13:47.742+09:00 INFO  [req-000510] GET /api/quotes/068270 200 51ms client=mts-android-3.3.9
+2026-09-18T09:13:48.293+09:00 INFO  [req-000511] GET /api/orderbook/005930?depth=10 200 61ms client=mts-ios-3.4.1
+2026-09-18T09:13:50.276+09:00 ERROR [req-000512] GET /api/candles/068270?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-ios-3.4.0
+2026-09-18T09:13:51.363+09:00 ERROR [req-000513] POST /api/orders 422 oid=240950 code=068270 qty=100 available=100 reason=QTY_EXCEEDS_AVAILABLE (boundary: qty == available, expected accept) client=mts-ios-3.4.0
+2026-09-18T09:13:53.833+09:00 INFO  [req-000514] GET /api/candles/005380?interval=1d&count=60 200 71ms client=mts-android-3.4.1
+2026-09-18T09:13:55.091+09:00 DEBUG [req-000515] WS /ws/quotes subscribe code=068270 conn=6634 client=mts-ios-3.4.0
+2026-09-18T09:13:57.551+09:00 INFO  [req-000516] GET /api/quotes/055550 200 56ms client=mts-ios-3.4.1
+2026-09-18T09:13:58.113+09:00 DEBUG [req-000517] WS /ws/quotes subscribe code=051910 conn=3646 client=mts-android-3.4.1
+2026-09-18T09:13:58.508+09:00 INFO  [req-000518] GET /api/candles/000270?interval=1d&count=60 200 61ms client=mts-ios-3.4.1
+2026-09-18T09:13:59.719+09:00 INFO  [req-000519] GET /api/watchlist 200 44ms rows=6 client=mts-web-2.1.0
+2026-09-18T09:14:02.346+09:00 INFO  [req-000520] GET /api/orderbook/105560?depth=10 200 41ms client=mts-android-3.4.1
+2026-09-18T09:14:02.952+09:00 INFO  [req-000521] GET /api/candles/005930?interval=1d&count=60 200 108ms client=mts-android-3.4.1
+2026-09-18T09:14:05.432+09:00 INFO  [req-000522] GET /api/quotes/068270 200 41ms client=mts-android-3.3.9
+2026-09-18T09:14:07.559+09:00 INFO  [req-000523] GET /api/quotes/055550 200 28ms client=mts-android-3.3.9
+2026-09-18T09:14:10.065+09:00 INFO  [req-000524] GET /api/orderbook/000660?depth=10 200 29ms client=mts-android-3.4.1
+2026-09-18T09:14:11.469+09:00 INFO  [req-000525] GET /api/quotes/005380 200 14ms client=mts-android-3.3.9
+2026-09-18T09:14:12.979+09:00 INFO  [req-000526] GET /api/quotes/055550 200 48ms client=mts-android-3.4.1
+2026-09-18T09:14:14.100+09:00 INFO  [req-000527] GET /api/candles/105560?interval=1d&count=60 200 88ms client=mts-android-3.3.9
+2026-09-18T09:14:17.298+09:00 INFO  [req-000528] POST /api/orders 201 oid=240951 code=055550 side=SELL qty=100 48ms client=mts-web-2.1.0
+2026-09-18T09:14:20.132+09:00 INFO  [req-000529] GET /api/quotes/051910 200 16ms client=mts-ios-3.4.1
+2026-09-18T09:14:20.924+09:00 INFO  [req-000530] GET /api/watchlist 200 25ms rows=6 client=mts-web-2.1.0
+2026-09-18T09:14:21.601+09:00 INFO  [req-000531] GET /api/candles/105560?interval=1d&count=60 200 93ms client=mts-ios-3.4.1
+2026-09-18T09:14:23.224+09:00 INFO  [req-000532] GET /api/candles/000270?interval=1d&count=60 200 97ms client=mts-android-3.4.1
+2026-09-18T09:14:26.415+09:00 INFO  [req-000533] GET /api/watchlist 200 38ms rows=7 client=mts-ios-3.4.1
+2026-09-18T09:14:27.092+09:00 INFO  [req-000534] GET /api/quotes/055550 200 50ms client=mts-ios-3.4.1
+2026-09-18T09:14:27.583+09:00 WARN  [req-000535] GET /api/quotes/055550 200 1403ms slow_response threshold=500ms client=mts-android-3.3.9
+2026-09-18T09:14:28.529+09:00 ERROR [req-000536] GET /api/candles/003550?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-ios-3.4.0
+2026-09-18T09:14:29.840+09:00 INFO  [req-000537] GET /api/quotes/005380 200 54ms client=mts-ios-3.4.0
+2026-09-18T09:14:30.432+09:00 INFO  [req-000538] GET /api/quotes/068270 200 40ms client=mts-ios-3.4.0
+2026-09-18T09:14:31.224+09:00 ERROR [req-000539] GET /api/quotes/105560 504 upstream_timeout after=3000ms source=quote-feed client=mts-ios-3.4.1
+2026-09-18T09:14:32.059+09:00 INFO  [req-000540] GET /api/quotes/000660 200 12ms client=mts-android-3.3.9
+2026-09-18T09:14:33.914+09:00 INFO  [req-000541] GET /api/quotes/035420 200 5ms client=mts-web-2.1.0
+2026-09-18T09:14:36.343+09:00 INFO  [req-000542] GET /api/account/balance 200 63ms client=mts-ios-3.4.1
+2026-09-18T09:14:38.275+09:00 INFO  [req-000543] GET /api/orderbook/003550?depth=10 200 43ms client=mts-web-2.1.0
+2026-09-18T09:14:38.479+09:00 INFO  [req-000544] GET /api/orders/240951 200 9ms client=mts-android-3.3.9
+2026-09-18T09:14:41.106+09:00 DEBUG [req-000545] WS /ws/quotes subscribe code=055550 conn=2545 client=mts-android-3.4.1
+2026-09-18T09:14:43.768+09:00 INFO  [req-000546] GET /api/quotes/055550 200 58ms client=mts-android-3.4.1
+2026-09-18T09:14:46.431+09:00 INFO  [req-000547] GET /api/account/balance 200 41ms client=mts-ios-3.4.0
+2026-09-18T09:14:49.130+09:00 ERROR [req-000548] GET /api/quotes/005930 504 upstream_timeout after=3000ms source=quote-feed client=mts-android-3.4.1
+2026-09-18T09:14:49.367+09:00 INFO  [req-000549] GET /api/quotes/105560 200 55ms client=mts-ios-3.4.0
+2026-09-18T09:14:49.706+09:00 INFO  [req-000550] GET /api/candles/035420?interval=1d&count=60 200 107ms client=mts-ios-3.4.0
+2026-09-18T09:14:52.109+09:00 INFO  [req-000551] GET /api/quotes/105560 200 45ms client=mts-ios-3.4.0
+2026-09-18T09:14:53.122+09:00 INFO  [req-000552] GET /api/orderbook/068270?depth=10 200 33ms client=mts-web-2.1.0
+2026-09-18T09:14:53.839+09:00 INFO  [req-000553] GET /api/orderbook/055550?depth=10 200 41ms client=mts-web-2.1.0
+2026-09-18T09:14:56.769+09:00 INFO  [req-000554] POST /api/orders 201 oid=240952 code=005930 side=SELL qty=20 86ms client=mts-ios-3.4.1
+2026-09-18T09:14:57.969+09:00 INFO  [req-000555] POST /api/orders 201 oid=240953 code=000660 side=SELL qty=200 111ms client=mts-ios-3.4.1
+2026-09-18T09:15:00.355+09:00 INFO  [req-000556] POST /api/orders 201 oid=240954 code=003550 side=BUY qty=5 125ms client=mts-web-2.1.0
+2026-09-18T09:15:02.927+09:00 INFO  [req-000557] GET /api/watchlist 200 10ms rows=12 client=mts-ios-3.4.0
+2026-09-18T09:15:04.528+09:00 INFO  [req-000558] GET /api/candles/005930?interval=1d&count=60 200 41ms client=mts-web-2.1.0
+2026-09-18T09:15:06.992+09:00 INFO  [req-000559] GET /api/candles/003550?interval=1d&count=60 200 73ms client=mts-ios-3.4.1
+2026-09-18T09:15:09.449+09:00 INFO  [req-000560] GET /api/quotes/003550 200 54ms client=mts-ios-3.4.0
+2026-09-18T09:15:12.150+09:00 INFO  [req-000561] GET /api/orderbook/005380?depth=10 200 42ms client=mts-web-2.1.0
+2026-09-18T09:15:14.753+09:00 INFO  [req-000562] GET /api/account/balance 200 24ms client=mts-ios-3.4.0
+2026-09-18T09:15:15.682+09:00 INFO  [req-000563] GET /api/quotes/005930 200 52ms client=mts-android-3.4.1
+2026-09-18T09:15:16.846+09:00 INFO  [req-000564] GET /api/orders/240954 200 22ms client=mts-android-3.3.9
+2026-09-18T09:15:18.097+09:00 INFO  [req-000565] GET /api/orderbook/051910?depth=10 200 66ms client=mts-android-3.4.1
+2026-09-18T09:15:20.591+09:00 INFO  [req-000566] GET /api/quotes/000270 200 5ms client=mts-ios-3.4.1
+2026-09-18T09:15:23.556+09:00 WARN  [quote-feed] out_of_order code=105560 ts=1789690523044 prev_ts=1789690523556 delta=-512ms applied=true
+2026-09-18T09:15:24.923+09:00 INFO  [req-000568] GET /api/quotes/051910 200 20ms client=mts-ios-3.4.0
+2026-09-18T09:15:27.332+09:00 INFO  [req-000569] GET /api/candles/000270?interval=1d&count=60 200 111ms client=mts-ios-3.4.1
+2026-09-18T09:15:28.136+09:00 INFO  [req-000570] GET /api/quotes/055550 200 40ms client=mts-web-2.1.0
+2026-09-18T09:15:28.324+09:00 DEBUG [req-000571] WS /ws/quotes subscribe code=003550 conn=3605 client=mts-web-2.1.0
+2026-09-18T09:15:30.620+09:00 ERROR [req-000572] GET /api/quotes/105560 504 upstream_timeout after=3000ms source=quote-feed client=mts-web-2.1.0
+2026-09-18T09:15:33.722+09:00 WARN  [quote-feed] out_of_order code=051910 ts=1789690533540 prev_ts=1789690533722 delta=-182ms applied=true
+2026-09-18T09:15:36.287+09:00 INFO  [req-000574] GET /api/orders/240954 200 16ms client=mts-ios-3.4.1
+2026-09-18T09:15:39.373+09:00 DEBUG [req-000575] WS /ws/quotes subscribe code=105560 conn=3911 client=mts-ios-3.4.1
+2026-09-18T09:15:40.869+09:00 INFO  [req-000576] GET /api/orderbook/000660?depth=10 200 60ms client=mts-web-2.1.0
+2026-09-18T09:15:41.663+09:00 INFO  [req-000577] GET /api/candles/035420?interval=1d&count=60 200 37ms client=mts-android-3.3.9
+2026-09-18T09:15:44.370+09:00 INFO  [req-000578] GET /api/quotes/003550 200 43ms client=mts-ios-3.4.1
+2026-09-18T09:15:46.089+09:00 WARN  [quote-feed] out_of_order code=005380 ts=1789690545563 prev_ts=1789690546089 delta=-526ms applied=true
+2026-09-18T09:15:49.036+09:00 INFO  [req-000580] GET /api/account/balance 200 18ms client=mts-web-2.1.0
+2026-09-18T09:15:51.057+09:00 INFO  [req-000581] GET /api/orders/240954 200 26ms client=mts-ios-3.4.0
+2026-09-18T09:15:52.345+09:00 INFO  [req-000582] GET /api/candles/068270?interval=1d&count=60 200 55ms client=mts-android-3.4.1
+2026-09-18T09:15:55.126+09:00 INFO  [req-000583] GET /api/watchlist 200 24ms rows=5 client=mts-web-2.1.0
+2026-09-18T09:15:56.572+09:00 INFO  [req-000584] GET /api/watchlist 200 40ms rows=9 client=mts-android-3.4.1
+2026-09-18T09:15:58.275+09:00 WARN  [req-000585] GET /api/quotes/051910 200 1509ms slow_response threshold=500ms client=mts-android-3.4.1
+2026-09-18T09:15:58.754+09:00 INFO  [req-000586] GET /api/quotes/055550 200 39ms client=mts-ios-3.4.0
+2026-09-18T09:15:59.108+09:00 DEBUG [req-000587] WS /ws/quotes subscribe code=003550 conn=9207 client=mts-android-3.3.9
+2026-09-18T09:16:01.207+09:00 INFO  [req-000588] GET /api/watchlist 200 6ms rows=8 client=mts-ios-3.4.1
+2026-09-18T09:16:03.203+09:00 INFO  [req-000589] POST /api/orders 201 oid=240955 code=051910 side=SELL qty=5 94ms client=mts-android-3.3.9
+2026-09-18T09:16:06.305+09:00 INFO  [req-000590] GET /api/orderbook/005930?depth=10 200 65ms client=mts-web-2.1.0
+2026-09-18T09:16:08.308+09:00 ERROR [ws] disconnect conn=6596 code=1006 reason=abnormal_closure client=mts-android-3.3.9
+2026-09-18T09:16:11.317+09:00 ERROR [req-000592] GET /api/candles/035420?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-web-2.1.0
+2026-09-18T09:16:12.260+09:00 INFO  [req-000593] GET /api/watchlist 200 12ms rows=7 client=mts-ios-3.4.0
+2026-09-18T09:16:12.896+09:00 INFO  [req-000594] GET /api/orders/240955 200 18ms client=mts-android-3.4.1
+2026-09-18T09:16:15.304+09:00 WARN  [quote-feed] out_of_order code=005380 ts=1789690574594 prev_ts=1789690575304 delta=-710ms applied=true
+2026-09-18T09:16:16.154+09:00 WARN  [quote-feed] out_of_order code=000660 ts=1789690576029 prev_ts=1789690576154 delta=-125ms applied=true
+2026-09-18T09:16:16.401+09:00 INFO  [req-000597] GET /api/orderbook/005380?depth=10 200 75ms client=mts-android-3.3.9
+2026-09-18T09:16:17.054+09:00 WARN  [req-000598] GET /api/quotes/035420 200 1698ms slow_response threshold=500ms client=mts-android-3.3.9
+2026-09-18T09:16:17.828+09:00 INFO  [req-000599] GET /api/orders/240955 200 9ms client=mts-web-2.1.0
+2026-09-18T09:16:18.056+09:00 DEBUG [req-000600] GET /api/session/heartbeat 200 2ms client=mts-ios-3.4.1
+2026-09-18T09:16:18.870+09:00 INFO  [req-000601] GET /api/candles/035420?interval=1d&count=60 200 84ms client=mts-ios-3.4.1
+2026-09-18T09:16:19.614+09:00 INFO  [req-000602] GET /api/quotes/055550 200 25ms client=mts-ios-3.4.0
+2026-09-18T09:16:22.043+09:00 INFO  [req-000603] GET /api/orderbook/003550?depth=10 200 73ms client=mts-web-2.1.0
+2026-09-18T09:16:24.070+09:00 INFO  [req-000604] GET /api/watchlist 200 5ms rows=8 client=mts-ios-3.4.1
+2026-09-18T09:16:25.819+09:00 INFO  [req-000605] GET /api/quotes/003550 200 54ms client=mts-ios-3.4.1
+2026-09-18T09:16:26.218+09:00 ERROR [req-000606] GET /api/candles/105560?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-android-3.4.1
+2026-09-18T09:16:27.003+09:00 INFO  [req-000607] GET /api/candles/035420?interval=1d&count=60 200 131ms client=mts-ios-3.4.0
+2026-09-18T09:16:28.671+09:00 INFO  [req-000608] GET /api/candles/068270?interval=1d&count=60 200 121ms client=mts-android-3.3.9
+2026-09-18T09:16:30.580+09:00 INFO  [req-000609] GET /api/orderbook/000270?depth=10 200 57ms client=mts-ios-3.4.0
+2026-09-18T09:16:30.834+09:00 INFO  [req-000610] GET /api/quotes/000660 200 19ms client=mts-android-3.4.1
+2026-09-18T09:16:33.969+09:00 INFO  [req-000611] GET /api/watchlist 200 21ms rows=12 client=mts-ios-3.4.1
+2026-09-18T09:16:34.878+09:00 DEBUG [req-000612] WS /ws/quotes subscribe code=000270 conn=5200 client=mts-ios-3.4.1
+2026-09-18T09:16:37.876+09:00 INFO  [req-000613] GET /api/orderbook/000270?depth=10 200 64ms client=mts-web-2.1.0
+2026-09-18T09:16:38.435+09:00 INFO  [req-000614] GET /api/watchlist 200 11ms rows=12 client=mts-android-3.3.9
+2026-09-18T09:16:40.607+09:00 ERROR [req-000615] GET /api/quotes/005930 504 upstream_timeout after=3000ms source=quote-feed client=mts-ios-3.4.1
+2026-09-18T09:16:43.155+09:00 INFO  [req-000616] GET /api/quotes/005380 200 15ms client=mts-android-3.3.9
+2026-09-18T09:16:43.376+09:00 INFO  [req-000617] GET /api/quotes/003550 200 20ms client=mts-ios-3.4.0
+2026-09-18T09:16:45.882+09:00 INFO  [req-000618] GET /api/orders/240955 200 13ms client=mts-ios-3.4.0
+2026-09-18T09:16:49.056+09:00 INFO  [req-000619] POST /api/orders 201 oid=240956 code=003550 side=SELL qty=20 65ms client=mts-android-3.3.9
+2026-09-18T09:16:49.545+09:00 INFO  [req-000620] GET /api/orderbook/051910?depth=10 200 69ms client=mts-ios-3.4.0
+2026-09-18T09:16:51.656+09:00 DEBUG [req-000621] WS /ws/quotes subscribe code=055550 conn=7168 client=mts-ios-3.4.1
+2026-09-18T09:16:51.958+09:00 INFO  [req-000622] GET /api/candles/055550?interval=1d&count=60 200 136ms client=mts-ios-3.4.1
+2026-09-18T09:16:53.873+09:00 INFO  [req-000623] GET /api/quotes/000660 200 6ms client=mts-web-2.1.0
+2026-09-18T09:16:55.118+09:00 INFO  [req-000624] POST /api/orders 201 oid=240957 code=055550 side=SELL qty=1 119ms client=mts-android-3.4.1
+2026-09-18T09:16:58.292+09:00 INFO  [req-000625] GET /api/watchlist 200 42ms rows=6 client=mts-android-3.3.9
+2026-09-18T09:17:00.170+09:00 INFO  [req-000626] GET /api/quotes/105560 200 19ms client=mts-ios-3.4.1
+2026-09-18T09:17:01.257+09:00 INFO  [req-000627] GET /api/candles/105560?interval=1d&count=60 200 79ms client=mts-web-2.1.0
+2026-09-18T09:17:03.859+09:00 INFO  [req-000628] GET /api/orderbook/055550?depth=10 200 73ms client=mts-android-3.3.9
+2026-09-18T09:17:04.560+09:00 WARN  [req-000629] GET /api/quotes/105560 200 2420ms slow_response threshold=500ms client=mts-ios-3.4.0
+2026-09-18T09:17:07.550+09:00 INFO  [req-000630] GET /api/quotes/003550 200 30ms client=mts-ios-3.4.1
+2026-09-18T09:17:10.487+09:00 INFO  [req-000631] POST /api/orders 201 oid=240958 code=000270 side=SELL qty=20 87ms client=mts-ios-3.4.1
+2026-09-18T09:17:11.296+09:00 INFO  [req-000632] GET /api/watchlist 200 11ms rows=9 client=mts-ios-3.4.0
+2026-09-18T09:17:12.089+09:00 DEBUG [req-000633] WS /ws/quotes subscribe code=005380 conn=4619 client=mts-ios-3.4.0
+2026-09-18T09:17:15.084+09:00 INFO  [req-000634] GET /api/quotes/051910 200 13ms client=mts-android-3.3.9
+2026-09-18T09:17:16.621+09:00 INFO  [req-000635] GET /api/orderbook/005380?depth=10 200 78ms client=mts-android-3.4.1
+2026-09-18T09:17:17.530+09:00 INFO  [req-000636] GET /api/quotes/000660 200 26ms client=mts-ios-3.4.1
+2026-09-18T09:17:19.365+09:00 INFO  [req-000637] GET /api/orderbook/005380?depth=10 200 76ms client=mts-android-3.4.1
+2026-09-18T09:17:20.094+09:00 WARN  [quote-feed] out_of_order code=105560 ts=1789690639953 prev_ts=1789690640094 delta=-141ms applied=true
+2026-09-18T09:17:21.790+09:00 INFO  [req-000639] GET /api/orders/240958 200 26ms client=mts-ios-3.4.0
+2026-09-18T09:17:24.544+09:00 INFO  [req-000640] GET /api/quotes/003550 200 43ms client=mts-ios-3.4.1
+2026-09-18T09:17:25.720+09:00 INFO  [req-000641] GET /api/quotes/105560 200 23ms client=mts-android-3.3.9
+2026-09-18T09:17:25.938+09:00 DEBUG [req-000642] WS /ws/quotes subscribe code=055550 conn=7713 client=mts-ios-3.4.0
+2026-09-18T09:17:27.386+09:00 INFO  [req-000643] GET /api/watchlist 200 17ms rows=8 client=mts-android-3.3.9
+2026-09-18T09:17:30.057+09:00 WARN  [quote-feed] out_of_order code=105560 ts=1789690649664 prev_ts=1789690650057 delta=-393ms applied=true
+2026-09-18T09:17:32.985+09:00 INFO  [req-000645] GET /api/account/balance 200 28ms client=mts-web-2.1.0
+2026-09-18T09:17:34.421+09:00 WARN  [req-000646] GET /api/quotes/051910 200 1348ms slow_response threshold=500ms client=mts-ios-3.4.1
+2026-09-18T09:17:37.170+09:00 INFO  [req-000647] GET /api/quotes/003550 200 31ms client=mts-android-3.3.9
+2026-09-18T09:17:38.964+09:00 INFO  [req-000648] GET /api/account/balance 200 49ms client=mts-android-3.3.9
+2026-09-18T09:17:41.542+09:00 INFO  [req-000649] POST /api/orders 201 oid=240959 code=005380 side=BUY qty=100 90ms client=mts-web-2.1.0
+2026-09-18T09:17:44.710+09:00 INFO  [req-000650] GET /api/watchlist 200 8ms rows=6 client=mts-android-3.3.9
+2026-09-18T09:17:47.236+09:00 INFO  [req-000651] GET /api/orderbook/035420?depth=10 200 46ms client=mts-ios-3.4.0
+2026-09-18T09:17:48.551+09:00 WARN  [quote-feed] out_of_order code=003550 ts=1789690668022 prev_ts=1789690668551 delta=-529ms applied=true
+2026-09-18T09:17:49.955+09:00 INFO  [req-000653] GET /api/quotes/051910 200 24ms client=mts-web-2.1.0
+2026-09-18T09:17:52.033+09:00 WARN  [req-000654] GET /api/quotes/105560 200 1911ms slow_response threshold=500ms client=mts-ios-3.4.0
+2026-09-18T09:17:53.001+09:00 INFO  [req-000655] GET /api/watchlist 200 18ms rows=5 client=mts-web-2.1.0
+2026-09-18T09:17:54.258+09:00 INFO  [req-000656] GET /api/candles/035420?interval=1d&count=60 200 40ms client=mts-android-3.3.9
+2026-09-18T09:17:55.086+09:00 DEBUG [req-000657] GET /api/session/heartbeat 200 10ms client=mts-android-3.4.1
+2026-09-18T09:17:55.709+09:00 INFO  [req-000658] GET /api/orderbook/051910?depth=10 200 8ms client=mts-android-3.4.1
+2026-09-18T09:17:56.804+09:00 INFO  [req-000659] GET /api/orderbook/000660?depth=10 200 11ms client=mts-ios-3.4.0
+2026-09-18T09:17:58.689+09:00 INFO  [req-000660] GET /api/quotes/000270 200 45ms client=mts-ios-3.4.0
+2026-09-18T09:17:58.895+09:00 INFO  [req-000661] GET /api/candles/051910?interval=1d&count=60 200 126ms client=mts-android-3.3.9
+2026-09-18T09:18:01.182+09:00 INFO  [req-000662] POST /api/orders 201 oid=240960 code=005380 side=BUY qty=100 190ms client=mts-ios-3.4.0
+2026-09-18T09:18:03.973+09:00 INFO  [req-000663] POST /api/orders 201 oid=240961 code=051910 side=BUY qty=5 86ms client=mts-ios-3.4.0
+2026-09-18T09:18:06.731+09:00 INFO  [req-000664] GET /api/watchlist 200 42ms rows=12 client=mts-android-3.3.9
+2026-09-18T09:18:08.421+09:00 DEBUG [req-000665] WS /ws/quotes subscribe code=005380 conn=7378 client=mts-android-3.3.9
+2026-09-18T09:18:10.301+09:00 INFO  [req-000666] GET /api/quotes/051910 200 17ms client=mts-ios-3.4.0
+2026-09-18T09:18:10.709+09:00 INFO  [req-000667] GET /api/quotes/000270 200 37ms client=mts-android-3.3.9
+2026-09-18T09:18:12.221+09:00 INFO  [req-000668] POST /api/orders 201 oid=240962 code=005380 side=BUY qty=100 92ms client=mts-android-3.3.9
+2026-09-18T09:18:13.850+09:00 INFO  [req-000669] GET /api/quotes/000660 200 57ms client=mts-ios-3.4.1
+2026-09-18T09:18:16.155+09:00 INFO  [req-000670] GET /api/orders/240962 200 4ms client=mts-android-3.4.1
+2026-09-18T09:18:19.139+09:00 INFO  [req-000671] GET /api/quotes/005930 200 41ms client=mts-android-3.3.9
+2026-09-18T09:18:19.562+09:00 INFO  [req-000672] GET /api/quotes/005930 200 47ms client=mts-android-3.4.1
+2026-09-18T09:18:19.797+09:00 INFO  [req-000673] GET /api/candles/005380?interval=1d&count=60 200 69ms client=mts-ios-3.4.1
+2026-09-18T09:18:20.495+09:00 INFO  [req-000674] GET /api/quotes/000270 200 50ms client=mts-android-3.4.1
+2026-09-18T09:18:21.823+09:00 INFO  [req-000675] GET /api/orders/240962 200 6ms client=mts-ios-3.4.1
+2026-09-18T09:18:23.320+09:00 ERROR [req-000676] GET /api/candles/035420?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-android-3.4.1
+2026-09-18T09:18:24.639+09:00 INFO  [req-000677] GET /api/quotes/005380 200 37ms client=mts-android-3.3.9
+2026-09-18T09:18:27.753+09:00 INFO  [req-000678] GET /api/orders/240962 200 18ms client=mts-android-3.3.9
+2026-09-18T09:18:30.483+09:00 INFO  [req-000679] GET /api/orderbook/035420?depth=10 200 18ms client=mts-android-3.4.1
+2026-09-18T09:18:30.728+09:00 INFO  [req-000680] POST /api/orders 201 oid=240963 code=068270 side=SELL qty=10 34ms client=mts-android-3.3.9
+2026-09-18T09:18:31.372+09:00 INFO  [req-000681] GET /api/quotes/005930 200 29ms client=mts-ios-3.4.1
+2026-09-18T09:18:33.753+09:00 INFO  [req-000682] GET /api/quotes/105560 200 41ms client=mts-android-3.4.1
+2026-09-18T09:18:33.953+09:00 INFO  [req-000683] GET /api/quotes/055550 200 47ms client=mts-android-3.4.1
+2026-09-18T09:18:35.033+09:00 INFO  [req-000684] GET /api/quotes/105560 200 34ms client=mts-web-2.1.0
+2026-09-18T09:18:35.875+09:00 ERROR [req-000685] GET /api/candles/055550?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-ios-3.4.1
+2026-09-18T09:18:36.062+09:00 INFO  [req-000686] GET /api/orderbook/055550?depth=10 200 56ms client=mts-android-3.4.1
+2026-09-18T09:18:36.769+09:00 WARN  [quote-feed] out_of_order code=035420 ts=1789690715975 prev_ts=1789690716769 delta=-794ms applied=true
+2026-09-18T09:18:39.379+09:00 ERROR [ws] disconnect conn=5371 code=1006 reason=abnormal_closure client=mts-web-2.1.0
+2026-09-18T09:18:39.974+09:00 DEBUG [req-000689] WS /ws/quotes subscribe code=003550 conn=6508 client=mts-android-3.4.1
+2026-09-18T09:18:41.195+09:00 INFO  [req-000690] POST /api/orders 201 oid=240964 code=035420 side=SELL qty=5 119ms client=mts-android-3.3.9
+2026-09-18T09:18:43.087+09:00 INFO  [req-000691] GET /api/watchlist 200 34ms rows=6 client=mts-android-3.3.9
+2026-09-18T09:18:45.870+09:00 INFO  [req-000692] GET /api/quotes/000270 200 6ms client=mts-android-3.4.1
+2026-09-18T09:18:48.961+09:00 INFO  [req-000693] GET /api/candles/005930?interval=1d&count=60 200 46ms client=mts-web-2.1.0
+2026-09-18T09:18:50.911+09:00 INFO  [req-000694] GET /api/quotes/000270 200 40ms client=mts-ios-3.4.0
+2026-09-18T09:18:51.906+09:00 INFO  [req-000695] GET /api/quotes/105560 200 41ms client=mts-ios-3.4.1
+2026-09-18T09:18:54.697+09:00 INFO  [req-000696] GET /api/quotes/068270 200 24ms client=mts-android-3.3.9
+2026-09-18T09:18:57.251+09:00 INFO  [req-000697] POST /api/orders 201 oid=240965 code=000270 side=BUY qty=100 144ms client=mts-ios-3.4.1
+2026-09-18T09:18:58.560+09:00 ERROR [req-000698] GET /api/candles/105560?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-android-3.3.9
+2026-09-18T09:18:59.877+09:00 INFO  [req-000699] GET /api/candles/005380?interval=1d&count=60 200 21ms client=mts-android-3.4.1
+2026-09-18T09:19:00.238+09:00 INFO  [req-000700] GET /api/quotes/055550 200 58ms client=mts-ios-3.4.1
+2026-09-18T09:19:02.847+09:00 INFO  [req-000701] POST /api/orders 201 oid=240966 code=068270 side=SELL qty=10 133ms client=mts-android-3.3.9
+2026-09-18T09:19:05.546+09:00 INFO  [req-000702] GET /api/quotes/005930 200 7ms client=mts-ios-3.4.0
+2026-09-18T09:19:07.018+09:00 INFO  [req-000703] GET /api/quotes/068270 200 42ms client=mts-android-3.4.1
+2026-09-18T09:19:08.941+09:00 INFO  [req-000704] GET /api/orderbook/051910?depth=10 200 12ms client=mts-android-3.4.1
+2026-09-18T09:19:11.055+09:00 INFO  [req-000705] GET /api/quotes/068270 200 51ms client=mts-android-3.3.9
+2026-09-18T09:19:12.405+09:00 INFO  [req-000706] GET /api/orderbook/003550?depth=10 200 45ms client=mts-web-2.1.0
+2026-09-18T09:19:15.297+09:00 INFO  [req-000707] GET /api/orderbook/005930?depth=10 200 48ms client=mts-ios-3.4.0
+2026-09-18T09:19:17.111+09:00 INFO  [req-000708] GET /api/orderbook/005380?depth=10 200 28ms client=mts-ios-3.4.0
+2026-09-18T09:19:18.872+09:00 INFO  [req-000709] GET /api/account/balance 200 62ms client=mts-android-3.4.1
+2026-09-18T09:19:20.108+09:00 INFO  [req-000710] GET /api/quotes/105560 200 30ms client=mts-android-3.4.1
+2026-09-18T09:19:21.892+09:00 INFO  [req-000711] GET /api/watchlist 200 30ms rows=7 client=mts-web-2.1.0
+2026-09-18T09:19:22.965+09:00 WARN  [req-000712] GET /api/quotes/068270 200 984ms slow_response threshold=500ms client=mts-ios-3.4.1
+2026-09-18T09:19:26.068+09:00 INFO  [req-000713] GET /api/quotes/035420 200 43ms client=mts-ios-3.4.1
+2026-09-18T09:19:26.240+09:00 INFO  [req-000714] POST /api/orders 201 oid=240967 code=035420 side=BUY qty=10 59ms client=mts-android-3.4.1
+2026-09-18T09:19:29.366+09:00 INFO  [req-000715] GET /api/watchlist 200 11ms rows=5 client=mts-android-3.4.1
+2026-09-18T09:19:29.951+09:00 INFO  [req-000716] GET /api/candles/005380?interval=1d&count=60 200 35ms client=mts-ios-3.4.0
+2026-09-18T09:19:32.286+09:00 INFO  [req-000717] GET /api/watchlist 200 44ms rows=9 client=mts-ios-3.4.0
+2026-09-18T09:19:33.402+09:00 WARN  [quote-feed] out_of_order code=055550 ts=1789690772663 prev_ts=1789690773402 delta=-739ms applied=true
+2026-09-18T09:19:34.593+09:00 INFO  [req-000719] GET /api/quotes/055550 200 12ms client=mts-android-3.3.9
+2026-09-18T09:19:36.074+09:00 INFO  [req-000720] GET /api/quotes/055550 200 12ms client=mts-ios-3.4.0
+2026-09-18T09:19:36.703+09:00 INFO  [req-000721] POST /api/orders 201 oid=240968 code=000660 side=SELL qty=100 147ms client=mts-web-2.1.0
+2026-09-18T09:19:38.508+09:00 INFO  [req-000722] GET /api/quotes/000660 200 15ms client=mts-android-3.3.9
+2026-09-18T09:19:40.137+09:00 INFO  [req-000723] GET /api/orderbook/000270?depth=10 200 31ms client=mts-web-2.1.0
+2026-09-18T09:19:41.585+09:00 INFO  [req-000724] GET /api/account/balance 200 52ms client=mts-web-2.1.0
+2026-09-18T09:19:42.962+09:00 INFO  [req-000725] GET /api/candles/000660?interval=1d&count=60 200 54ms client=mts-web-2.1.0
+2026-09-18T09:19:43.977+09:00 INFO  [req-000726] GET /api/quotes/105560 200 18ms client=mts-android-3.3.9
+2026-09-18T09:19:46.599+09:00 INFO  [req-000727] GET /api/quotes/068270 200 53ms client=mts-ios-3.4.0
+2026-09-18T09:19:47.486+09:00 INFO  [req-000728] GET /api/candles/055550?interval=1d&count=60 200 84ms client=mts-ios-3.4.0
+2026-09-18T09:19:49.073+09:00 INFO  [req-000729] POST /api/orders 201 oid=240969 code=105560 side=BUY qty=100 78ms client=mts-android-3.3.9
+2026-09-18T09:19:49.236+09:00 INFO  [req-000730] GET /api/quotes/003550 200 60ms client=mts-android-3.4.1
+2026-09-18T09:19:49.942+09:00 INFO  [req-000731] GET /api/quotes/068270 200 9ms client=mts-ios-3.4.0
+2026-09-18T09:19:51.046+09:00 DEBUG [req-000732] GET /api/session/heartbeat 200 7ms client=mts-android-3.3.9
+2026-09-18T09:19:53.072+09:00 DEBUG [req-000733] GET /api/session/heartbeat 200 12ms client=mts-android-3.4.1
+2026-09-18T09:19:54.920+09:00 INFO  [req-000734] GET /api/quotes/000270 200 11ms client=mts-ios-3.4.1
+2026-09-18T09:19:55.402+09:00 INFO  [req-000735] GET /api/orderbook/000660?depth=10 200 45ms client=mts-android-3.3.9
+2026-09-18T09:19:57.578+09:00 INFO  [req-000736] GET /api/candles/051910?interval=1d&count=60 200 88ms client=mts-ios-3.4.1
+2026-09-18T09:20:00.445+09:00 INFO  [req-000737] GET /api/orderbook/005380?depth=10 200 72ms client=mts-ios-3.4.0
+2026-09-18T09:20:03.378+09:00 INFO  [req-000738] GET /api/quotes/005380 200 36ms client=mts-android-3.4.1
+2026-09-18T09:20:05.519+09:00 INFO  [req-000739] GET /api/quotes/105560 200 18ms client=mts-android-3.4.1
+2026-09-18T09:20:06.000+09:00 INFO  [req-000740] GET /api/orderbook/003550?depth=10 200 59ms client=mts-ios-3.4.1
+2026-09-18T09:20:08.847+09:00 INFO  [req-000741] GET /api/watchlist 200 12ms rows=6 client=mts-web-2.1.0
+2026-09-18T09:20:10.267+09:00 INFO  [req-000742] GET /api/orderbook/051910?depth=10 200 51ms client=mts-android-3.4.1
+2026-09-18T09:20:11.823+09:00 INFO  [req-000743] GET /api/quotes/000270 200 24ms client=mts-ios-3.4.1
+2026-09-18T09:20:13.294+09:00 INFO  [req-000744] POST /api/orders 201 oid=240970 code=068270 side=BUY qty=20 175ms client=mts-web-2.1.0
+2026-09-18T09:20:14.194+09:00 INFO  [req-000745] GET /api/quotes/000270 200 35ms client=mts-web-2.1.0
+2026-09-18T09:20:17.361+09:00 INFO  [req-000746] GET /api/orderbook/000660?depth=10 200 8ms client=mts-ios-3.4.0
+2026-09-18T09:20:18.554+09:00 DEBUG [req-000747] GET /api/session/heartbeat 200 5ms client=mts-android-3.3.9
+2026-09-18T09:20:21.753+09:00 INFO  [req-000748] GET /api/quotes/055550 200 43ms client=mts-android-3.4.1
+2026-09-18T09:20:23.672+09:00 INFO  [req-000749] GET /api/orders/240970 200 17ms client=mts-ios-3.4.1
+2026-09-18T09:20:24.700+09:00 INFO  [req-000750] GET /api/quotes/003550 200 39ms client=mts-ios-3.4.0
+2026-09-18T09:20:25.502+09:00 INFO  [req-000751] GET /api/watchlist 200 34ms rows=8 client=mts-ios-3.4.0
+2026-09-18T09:20:26.255+09:00 INFO  [req-000752] GET /api/account/balance 200 31ms client=mts-android-3.3.9
+2026-09-18T09:20:26.765+09:00 INFO  [req-000753] GET /api/orderbook/051910?depth=10 200 12ms client=mts-android-3.4.1
+2026-09-18T09:20:29.557+09:00 INFO  [req-000754] GET /api/candles/000270?interval=1d&count=60 200 89ms client=mts-ios-3.4.1
+2026-09-18T09:20:31.866+09:00 INFO  [req-000755] GET /api/quotes/005930 200 17ms client=mts-web-2.1.0
+2026-09-18T09:20:33.476+09:00 INFO  [req-000756] GET /api/quotes/068270 200 6ms client=mts-ios-3.4.0
+2026-09-18T09:20:36.314+09:00 INFO  [req-000757] GET /api/orders/240970 200 26ms client=mts-android-3.4.1
+2026-09-18T09:20:38.278+09:00 DEBUG [req-000758] WS /ws/quotes subscribe code=068270 conn=7412 client=mts-android-3.4.1
+2026-09-18T09:20:39.600+09:00 INFO  [req-000759] GET /api/orderbook/051910?depth=10 200 27ms client=mts-android-3.3.9
+2026-09-18T09:20:39.967+09:00 INFO  [req-000760] GET /api/account/balance 200 26ms client=mts-ios-3.4.0
+2026-09-18T09:20:42.902+09:00 INFO  [req-000761] GET /api/quotes/005380 200 50ms client=mts-android-3.4.1
+2026-09-18T09:20:45.261+09:00 INFO  [req-000762] POST /api/orders 201 oid=240971 code=000660 side=BUY qty=10 65ms client=mts-ios-3.4.0
+2026-09-18T09:20:47.879+09:00 DEBUG [req-000763] GET /api/session/heartbeat 200 6ms client=mts-web-2.1.0
+2026-09-18T09:20:48.660+09:00 INFO  [req-000764] GET /api/quotes/055550 200 56ms client=mts-ios-3.4.0
+2026-09-18T09:20:49.607+09:00 DEBUG [req-000765] WS /ws/quotes subscribe code=035420 conn=8793 client=mts-ios-3.4.0
+2026-09-18T09:20:52.442+09:00 INFO  [req-000766] GET /api/quotes/105560 200 20ms client=mts-ios-3.4.0
+2026-09-18T09:20:54.881+09:00 INFO  [req-000767] GET /api/orderbook/105560?depth=10 200 50ms client=mts-web-2.1.0
+2026-09-18T09:20:57.790+09:00 DEBUG [req-000768] WS /ws/quotes subscribe code=005380 conn=3427 client=mts-web-2.1.0
+2026-09-18T09:21:00.875+09:00 ERROR [req-000769] GET /api/quotes/000660 504 upstream_timeout after=3000ms source=quote-feed client=mts-web-2.1.0
+2026-09-18T09:21:03.281+09:00 INFO  [req-000770] GET /api/orders/240971 200 12ms client=mts-web-2.1.0
+2026-09-18T09:21:06.101+09:00 ERROR [req-000771] GET /api/quotes/000660 504 upstream_timeout after=3000ms source=quote-feed client=mts-android-3.4.1
+2026-09-18T09:21:07.092+09:00 WARN  [req-000772] GET /api/quotes/035420 200 1443ms slow_response threshold=500ms client=mts-android-3.4.1
+2026-09-18T09:21:08.393+09:00 DEBUG [req-000773] GET /api/session/heartbeat 200 5ms client=mts-android-3.3.9
+2026-09-18T09:21:09.293+09:00 INFO  [req-000774] GET /api/quotes/105560 200 5ms client=mts-android-3.3.9
+2026-09-18T09:21:09.499+09:00 INFO  [req-000775] GET /api/quotes/005380 200 33ms client=mts-android-3.4.1
+2026-09-18T09:21:11.650+09:00 DEBUG [req-000776] GET /api/session/heartbeat 200 6ms client=mts-ios-3.4.0
+2026-09-18T09:21:13.813+09:00 INFO  [req-000777] GET /api/quotes/003550 200 47ms client=mts-ios-3.4.1
+2026-09-18T09:21:14.439+09:00 INFO  [req-000778] GET /api/quotes/003550 200 21ms client=mts-android-3.4.1
+2026-09-18T09:21:15.980+09:00 INFO  [req-000779] GET /api/watchlist 200 41ms rows=6 client=mts-web-2.1.0
+2026-09-18T09:21:18.773+09:00 INFO  [req-000780] GET /api/quotes/051910 200 51ms client=mts-android-3.3.9
+2026-09-18T09:21:20.017+09:00 DEBUG [req-000781] WS /ws/quotes subscribe code=000660 conn=8046 client=mts-android-3.3.9
+2026-09-18T09:21:20.839+09:00 INFO  [req-000782] GET /api/quotes/005930 200 5ms client=mts-ios-3.4.1
+2026-09-18T09:21:21.627+09:00 INFO  [req-000783] GET /api/candles/000660?interval=1d&count=60 200 111ms client=mts-ios-3.4.0
+2026-09-18T09:21:22.121+09:00 INFO  [req-000784] GET /api/quotes/035420 200 17ms client=mts-android-3.3.9
+2026-09-18T09:21:24.019+09:00 INFO  [req-000785] GET /api/quotes/000270 200 14ms client=mts-ios-3.4.0
+2026-09-18T09:21:24.777+09:00 INFO  [req-000786] GET /api/orders/240971 200 21ms client=mts-ios-3.4.1
+2026-09-18T09:21:25.780+09:00 INFO  [req-000787] GET /api/quotes/105560 200 18ms client=mts-ios-3.4.1
+2026-09-18T09:21:27.089+09:00 INFO  [req-000788] GET /api/quotes/035420 200 25ms client=mts-web-2.1.0
+2026-09-18T09:21:29.176+09:00 INFO  [req-000789] GET /api/quotes/068270 200 21ms client=mts-ios-3.4.0
+2026-09-18T09:21:30.764+09:00 ERROR [req-000790] GET /api/candles/055550?interval=1d&count=60 500 CandleMapper: cannot read open of undefined at index=59 client=mts-android-3.3.9
+2026-09-18T09:21:30.969+09:00 INFO  [req-000791] GET /api/quotes/005930 200 11ms client=mts-ios-3.4.1
+2026-09-18T09:21:32.437+09:00 INFO  [req-000792] GET /api/orders/240971 200 12ms client=mts-android-3.3.9
+2026-09-18T09:21:35.367+09:00 INFO  [req-000793] GET /api/quotes/000270 200 54ms client=mts-web-2.1.0
+2026-09-18T09:21:36.679+09:00 INFO  [req-000794] POST /api/orders 201 oid=240972 code=005930 side=BUY qty=100 158ms client=mts-android-3.3.9
+2026-09-18T09:21:37.314+09:00 INFO  [req-000795] GET /api/quotes/000660 200 39ms client=mts-android-3.4.1
+2026-09-18T09:21:37.704+09:00 INFO  [req-000796] GET /api/watchlist 200 15ms rows=9 client=mts-android-3.4.1
+2026-09-18T09:21:40.493+09:00 DEBUG [req-000797] GET /api/session/heartbeat 200 9ms client=mts-ios-3.4.0
+2026-09-18T09:21:42.526+09:00 INFO  [req-000798] GET /api/quotes/005930 200 35ms client=mts-android-3.3.9
+2026-09-18T09:21:42.802+09:00 INFO  [req-000799] GET /api/orders/240972 200 26ms client=mts-ios-3.4.1
+2026-09-18T09:21:44.766+09:00 INFO  [req-000800] GET /api/orders/240972 200 15ms client=mts-android-3.4.1
+2026-09-18T09:21:46.666+09:00 DEBUG [req-000801] WS /ws/quotes subscribe code=005380 conn=1829 client=mts-android-3.3.9
+2026-09-18T09:21:46.974+09:00 WARN  [req-000802] POST /api/orders 422 oid=240973 code=000660 qty=200 available=100 reason=QTY_EXCEEDS_AVAILABLE client=mts-web-2.1.0
+2026-09-18T09:21:48.070+09:00 INFO  [req-000803] GET /api/quotes/000660 200 34ms client=mts-android-3.4.1
+2026-09-18T09:21:49.066+09:00 WARN  [req-000804] GET /api/quotes/051910 200 1607ms slow_response threshold=500ms client=mts-android-3.3.9
+2026-09-18T09:21:51.425+09:00 INFO  [req-000805] GET /api/orderbook/000660?depth=10 200 68ms client=mts-ios-3.4.0
+2026-09-18T09:21:52.915+09:00 INFO  [req-000806] GET /api/quotes/105560 200 43ms client=mts-android-3.4.1
+2026-09-18T09:21:53.881+09:00 INFO  [req-000807] GET /api/quotes/055550 200 48ms client=mts-android-3.4.1
+2026-09-18T09:21:56.507+09:00 WARN  [req-000808] GET /api/quotes/000660 200 1493ms slow_response threshold=500ms client=mts-web-2.1.0
+2026-09-18T09:21:59.512+09:00 INFO  [req-000809] GET /api/orderbook/035420?depth=10 200 43ms client=mts-ios-3.4.1
+2026-09-18T09:21:59.666+09:00 INFO  [req-000810] POST /api/orders 201 oid=240974 code=000270 side=SELL qty=20 186ms client=mts-android-3.3.9
+2026-09-18T09:22:01.372+09:00 INFO  [req-000811] POST /api/orders 201 oid=240975 code=051910 side=SELL qty=5 64ms client=mts-android-3.4.1
+2026-09-18T09:22:02.539+09:00 INFO  [req-000812] GET /api/orderbook/000270?depth=10 200 70ms client=mts-ios-3.4.1
+2026-09-18T09:22:05.692+09:00 INFO  [req-000813] GET /api/quotes/003550 200 48ms client=mts-android-3.3.9
+2026-09-18T09:22:08.639+09:00 INFO  [req-000814] GET /api/account/balance 200 27ms client=mts-android-3.4.1
+2026-09-18T09:22:09.970+09:00 INFO  [req-000815] GET /api/candles/068270?interval=1d&count=60 200 80ms client=mts-android-3.4.1
+2026-09-18T09:22:12.766+09:00 DEBUG [req-000816] WS /ws/quotes subscribe code=105560 conn=6915 client=mts-ios-3.4.1
+2026-09-18T09:22:15.918+09:00 INFO  [req-000817] GET /api/quotes/055550 200 15ms client=mts-web-2.1.0
+2026-09-18T09:22:16.088+09:00 INFO  [req-000818] GET /api/orderbook/035420?depth=10 200 72ms client=mts-ios-3.4.0
+2026-09-18T09:22:18.033+09:00 DEBUG [req-000819] GET /api/session/heartbeat 200 7ms client=mts-ios-3.4.1
+2026-09-18T09:22:20.076+09:00 INFO  [req-000820] GET /api/quotes/051910 200 36ms client=mts-web-2.1.0
+2026-09-18T09:22:21.450+09:00 INFO  [req-000821] GET /api/quotes/005380 200 38ms client=mts-android-3.4.1
+2026-09-18T09:22:22.201+09:00 ERROR [ws] disconnect conn=2425 code=1006 reason=abnormal_closure client=mts-android-3.4.1
+2026-09-18T09:22:22.723+09:00 INFO  [req-000823] GET /api/quotes/035420 200 34ms client=mts-android-3.3.9
+2026-09-18T09:22:25.255+09:00 INFO  [req-000824] GET /api/orders/240975 200 16ms client=mts-web-2.1.0
+2026-09-18T09:22:28.147+09:00 DEBUG [req-000825] WS /ws/quotes subscribe code=051910 conn=9835 client=mts-android-3.4.1
+2026-09-18T09:22:30.668+09:00 INFO  [req-000826] GET /api/quotes/000270 200 51ms client=mts-android-3.3.9
+2026-09-18T09:22:33.756+09:00 INFO  [req-000827] GET /api/watchlist 200 27ms rows=8 client=mts-android-3.4.1
+2026-09-18T09:22:35.061+09:00 INFO  [req-000828] GET /api/orderbook/005380?depth=10 200 79ms client=mts-ios-3.4.1
+2026-09-18T09:22:37.857+09:00 DEBUG [req-000829] GET /api/session/heartbeat 200 5ms client=mts-android-3.4.1
+2026-09-18T09:22:40.764+09:00 INFO  [req-000830] GET /api/quotes/068270 200 26ms client=mts-android-3.3.9
+2026-09-18T09:22:43.229+09:00 WARN  [quote-feed] out_of_order code=005930 ts=1789690963168 prev_ts=1789690963229 delta=-61ms applied=true
+2026-09-18T09:22:43.764+09:00 INFO  [req-000832] GET /api/orders/240975 200 12ms client=mts-ios-3.4.0
+2026-09-18T09:22:46.224+09:00 DEBUG [req-000833] WS /ws/quotes subscribe code=005380 conn=5174 client=mts-ios-3.4.0
+2026-09-18T09:22:48.102+09:00 INFO  [req-000834] GET /api/quotes/051910 200 32ms client=mts-android-3.4.1
+2026-09-18T09:22:50.698+09:00 INFO  [req-000835] GET /api/quotes/003550 200 56ms client=mts-android-3.3.9
+2026-09-18T09:22:53.549+09:00 INFO  [req-000836] GET /api/quotes/055550 200 6ms client=mts-web-2.1.0
+2026-09-18T09:22:55.225+09:00 INFO  [req-000837] GET /api/account/balance 200 22ms client=mts-android-3.4.1
+2026-09-18T09:22:56.499+09:00 INFO  [req-000838] GET /api/orderbook/105560?depth=10 200 31ms client=mts-web-2.1.0
+2026-09-18T09:22:59.072+09:00 INFO  [req-000839] GET /api/orderbook/051910?depth=10 200 20ms client=mts-android-3.3.9
+2026-09-18T09:23:01.186+09:00 DEBUG [req-000840] GET /api/session/heartbeat 200 4ms client=mts-ios-3.4.1
+2026-09-18T09:23:03.103+09:00 INFO  [req-000841] GET /api/orders/240975 200 17ms client=mts-android-3.3.9
+2026-09-18T09:23:03.585+09:00 INFO  [req-000842] GET /api/watchlist 200 36ms rows=8 client=mts-android-3.4.1
+2026-09-18T09:23:06.570+09:00 INFO  [req-000843] GET /api/quotes/000660 200 35ms client=mts-android-3.3.9
+2026-09-18T09:23:08.348+09:00 INFO  [req-000844] POST /api/orders 201 oid=240976 code=005930 side=SELL qty=10 52ms client=mts-ios-3.4.1
+2026-09-18T09:23:09.278+09:00 ERROR [ws] disconnect conn=6277 code=1006 reason=abnormal_closure client=mts-android-3.4.1
+2026-09-18T09:23:11.249+09:00 INFO  [req-000846] GET /api/orderbook/000270?depth=10 200 23ms client=mts-ios-3.4.0
+2026-09-18T09:23:13.275+09:00 INFO  [req-000847] POST /api/orders 201 oid=240977 code=068270 side=SELL qty=10 116ms client=mts-android-3.4.1
+2026-09-18T09:23:16.046+09:00 INFO  [req-000848] GET /api/account/balance 200 47ms client=mts-ios-3.4.1
+2026-09-18T09:23:17.578+09:00 INFO  [req-000849] GET /api/quotes/051910 200 28ms client=mts-android-3.3.9
+2026-09-18T09:23:17.864+09:00 ERROR [ws] disconnect conn=2329 code=1006 reason=abnormal_closure client=mts-android-3.3.9
+2026-09-18T09:23:18.198+09:00 INFO  [req-000851] GET /api/quotes/055550 200 54ms client=mts-web-2.1.0
+2026-09-18T09:23:19.290+09:00 WARN  [req-000852] GET /api/quotes/005380 200 1651ms slow_response threshold=500ms client=mts-android-3.3.9
+2026-09-18T09:23:19.823+09:00 INFO  [req-000853] GET /api/orders/240977 200 8ms client=mts-android-3.3.9
+2026-09-18T09:23:20.759+09:00 INFO  [req-000854] GET /api/quotes/105560 200 9ms client=mts-android-3.3.9
+2026-09-18T09:23:23.685+09:00 INFO  [req-000855] GET /api/quotes/005380 200 60ms client=mts-android-3.4.1
+2026-09-18T09:23:24.414+09:00 INFO  [req-000856] POST /api/orders 201 oid=240978 code=003550 side=BUY qty=5 189ms client=mts-ios-3.4.1
+2026-09-18T09:23:25.954+09:00 INFO  [req-000857] GET /api/quotes/000660 200 12ms client=mts-web-2.1.0
+2026-09-18T09:23:28.447+09:00 INFO  [req-000858] GET /api/orderbook/105560?depth=10 200 77ms client=mts-android-3.4.1
+2026-09-18T09:23:30.329+09:00 INFO  [req-000859] GET /api/quotes/003550 200 53ms client=mts-android-3.3.9
+2026-09-18T09:23:32.345+09:00 INFO  [req-000860] GET /api/quotes/105560 200 13ms client=mts-android-3.3.9
+2026-09-18T09:23:34.491+09:00 INFO  [req-000861] GET /api/account/balance 200 16ms client=mts-ios-3.4.1
+2026-09-18T09:23:34.777+09:00 INFO  [req-000862] GET /api/quotes/005930 200 45ms client=mts-ios-3.4.1
+2026-09-18T09:23:37.882+09:00 WARN  [req-000863] GET /api/quotes/000270 200 2498ms slow_response threshold=500ms client=mts-ios-3.4.1
+2026-09-18T09:23:39.084+09:00 INFO  [req-000864] GET /api/quotes/035420 200 33ms client=mts-ios-3.4.0
+2026-09-18T09:23:42.051+09:00 INFO  [req-000865] GET /api/candles/105560?interval=1d&count=60 200 48ms client=mts-android-3.3.9
+2026-09-18T09:23:44.389+09:00 INFO  [req-000866] GET /api/quotes/105560 200 38ms client=mts-web-2.1.0
+2026-09-18T09:23:46.451+09:00 DEBUG [req-000867] WS /ws/quotes subscribe code=005930 conn=3260 client=mts-ios-3.4.1
+2026-09-18T09:23:47.012+09:00 INFO  [req-000868] POST /api/orders 201 oid=240979 code=035420 side=BUY qty=100 140ms client=mts-ios-3.4.1
+2026-09-18T09:23:48.252+09:00 INFO  [req-000869] GET /api/candles/035420?interval=1d&count=60 200 131ms client=mts-web-2.1.0
+2026-09-18T09:23:48.935+09:00 DEBUG [req-000870] GET /api/session/heartbeat 200 10ms client=mts-android-3.3.9
+2026-09-18T09:23:50.140+09:00 INFO  [req-000871] GET /api/orderbook/005930?depth=10 200 12ms client=mts-android-3.3.9
+2026-09-18T09:23:50.753+09:00 INFO  [req-000872] GET /api/orders/240979 200 24ms client=mts-ios-3.4.1
+2026-09-18T09:23:52.590+09:00 INFO  [req-000873] GET /api/account/balance 200 62ms client=mts-android-3.3.9
+2026-09-18T09:23:55.130+09:00 WARN  [req-000874] POST /api/orders 422 oid=240980 code=055550 qty=200 available=100 reason=QTY_EXCEEDS_AVAILABLE client=mts-android-3.3.9
+2026-09-18T09:23:58.197+09:00 INFO  [req-000875] POST /api/orders 201 oid=240981 code=000270 side=BUY qty=20 170ms client=mts-ios-3.4.1
+2026-09-18T09:23:58.484+09:00 INFO  [req-000876] GET /api/orderbook/000660?depth=10 200 14ms client=mts-android-3.4.1
+2026-09-18T09:24:01.666+09:00 INFO  [req-000877] GET /api/candles/035420?interval=1d&count=60 200 91ms client=mts-android-3.3.9
+2026-09-18T09:24:02.436+09:00 INFO  [req-000878] GET /api/orderbook/105560?depth=10 200 76ms client=mts-ios-3.4.1
+2026-09-18T09:24:03.354+09:00 INFO  [req-000879] GET /api/quotes/035420 200 41ms client=mts-ios-3.4.1
+2026-09-18T09:24:04.102+09:00 INFO  [req-000880] GET /api/watchlist 200 21ms rows=7 client=mts-ios-3.4.1
+2026-09-18T09:24:07.055+09:00 INFO  [req-000881] POST /api/orders 201 oid=240982 code=055550 side=BUY qty=10 178ms client=mts-ios-3.4.0
+2026-09-18T09:24:08.785+09:00 INFO  [req-000882] GET /api/orderbook/035420?depth=10 200 43ms client=mts-ios-3.4.1
+2026-09-18T09:24:11.761+09:00 INFO  [req-000883] POST /api/orders 201 oid=240983 code=000660 side=SELL qty=200 133ms client=mts-android-3.3.9
+2026-09-18T09:24:12.193+09:00 INFO  [req-000884] GET /api/quotes/055550 200 23ms client=mts-ios-3.4.1
+2026-09-18T09:24:14.455+09:00 INFO  [req-000885] GET /api/orderbook/051910?depth=10 200 32ms client=mts-ios-3.4.0
+2026-09-18T09:24:15.161+09:00 INFO  [req-000886] GET /api/orderbook/003550?depth=10 200 35ms client=mts-android-3.3.9
+2026-09-18T09:24:18.288+09:00 INFO  [req-000887] GET /api/candles/035420?interval=1d&count=60 200 28ms client=mts-ios-3.4.1
+2026-09-18T09:24:18.757+09:00 INFO  [req-000888] GET /api/candles/051910?interval=1d&count=60 200 52ms client=mts-android-3.4.1
+2026-09-18T09:24:20.923+09:00 INFO  [req-000889] GET /api/quotes/105560 200 44ms client=mts-android-3.3.9
+2026-09-18T09:24:22.877+09:00 INFO  [req-000890] POST /api/orders 201 oid=240984 code=105560 side=SELL qty=20 171ms client=mts-android-3.4.1
+2026-09-18T09:24:25.749+09:00 INFO  [req-000891] GET /api/candles/055550?interval=1d&count=60 200 22ms client=mts-web-2.1.0
+2026-09-18T09:24:27.685+09:00 INFO  [req-000892] GET /api/account/balance 200 18ms client=mts-ios-3.4.0
+2026-09-18T09:24:29.390+09:00 DEBUG [req-000893] WS /ws/quotes subscribe code=003550 conn=7117 client=mts-android-3.3.9
+2026-09-18T09:24:31.903+09:00 INFO  [req-000894] GET /api/orderbook/003550?depth=10 200 40ms client=mts-ios-3.4.0
+2026-09-18T09:24:32.101+09:00 INFO  [req-000895] GET /api/account/balance 200 19ms client=mts-android-3.3.9

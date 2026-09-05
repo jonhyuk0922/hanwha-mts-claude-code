@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="swiss-grid">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Module 05 · 코드 리뷰와 자동 반영 · 한화투자증권 MTS Front End 개발자 교육</title>
+<style>
+/* ============================================================
+   lecture-slide-writer :: theme.css
+   강의 HTML 모듈 단일 진실원천 스타일시트 (범용 — 회사명 비종속)
+   - 삼성 임원 AX 템플릿(Swiss-grid B&W)의 인라인 CSS를 통합
+   - 한국어는 시스템 고딕(Apple SD Gothic Neo · Malgun Gothic) — Pretendard 쓰지 않음
+   - 모듈은 self-contained 스크롤 페이지로 렌더(1920x1080 deck 런타임 아님)
+   사용: 각 모듈 HTML의 <head> 안에 이 파일 내용을 <style>로 인라인.
+   ============================================================ */
+
+/* ---------- WEBFONTS ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ============================================================
+   DESIGN TOKENS — 삼성 swiss-grid 테마 값 보존(B&W + 강조 1색)
+   ============================================================ */
+:root{
+  /* surfaces */
+  --bg:#ffffff;
+  --bg-soft:#f4f4f4;
+  --surface:#ffffff;
+  --surface-2:#f4f4f4;
+  /* borders */
+  --border:#111111;
+  --border-soft:rgba(0,0,0,.10);
+  --border-strong:#111111;
+  /* text */
+  --text-1:#111111;
+  --text-2:#444444;
+  --text-3:#888888;
+  /* accents (삼성은 거의 흑백 강제; 강조는 한 색) */
+  --accent:#111111;
+  --accent-2:#444444;
+  --accent-3:#888888;
+  --good:#0f8a2f;
+  --warn:#d38a00;
+  --bad:#d6001c;
+  /* annotation red — 클릭박스/캡처 표시 전용(흑백 본문과 대비) */
+  --annot-red:#e8482b;
+  /* radii (swiss-grid는 직각 기조; 신규 컴포넌트만 약간 둥글게) */
+  --radius:0;
+  --radius-sm:6px;
+  --radius-lg:0;
+  /* shadow */
+  --shadow:none;
+  --shadow-soft:0 2px 8px rgba(0,0,0,.06);
+  /* fonts — Inter + 시스템 고딕 (TYPOGRAPHY.md §1) */
+  --font-sans:'Inter','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-display:var(--font-sans);
+  --font-mono:'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace;
+  --letter-tight:-.03em;
+  --letter-normal:-.01em;
+  --ease:cubic-bezier(.4,0,.2,1);
+  /* page rhythm */
+  --page-max:1720px;
+  --page-pad:64px}
+
+/* dark mode token override (보존 — 필요 시 <html data-theme="dark">) */
+[data-theme="dark"]{
+  --bg:#0d0f14;--bg-soft:#161a22;--surface:#161a22;--surface-2:#1f2430;
+  --border:#e6e6e6;--border-soft:rgba(255,255,255,.12);--border-strong:#ffffff;
+  --text-1:#f2f4f8;--text-2:#aab1c2;--text-3:#6e7686;
+  --accent:#ffffff;--accent-2:#cfd4de;--accent-3:#8a90a0}
+
+/* ============================================================
+   RESET + BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text-1);
+  font-family:var(--font-sans);font-weight:400;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  letter-spacing:var(--letter-normal);word-break:keep-all}
+img,svg,video{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,kbd,pre,samp{font-family:var(--font-mono)}
+
+/* page shell — 모듈 본문 컨테이너 */
+.module{max-width:var(--page-max);margin:0 auto;padding:120px var(--page-pad) 160px}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.eyebrow{font-size:15px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3)}
+.kicker{font-size:18px;font-weight:600;color:var(--text-2);letter-spacing:.1em;text-transform:uppercase;margin:0 0 8px}
+h1.h1,.h1{font-family:var(--font-display);font-size:76px;line-height:1.05;font-weight:800;letter-spacing:var(--letter-tight);margin:0 0 18px;color:var(--text-1)}
+h2.h2,.h2{font-family:var(--font-display);font-size:56px;line-height:1.12;font-weight:700;letter-spacing:var(--letter-tight);margin:0 0 16px}
+h3,.h3{font-size:38px;line-height:1.25;font-weight:600;letter-spacing:var(--letter-normal);margin:0 0 10px}
+h4,.h4{font-size:28px;line-height:1.3;font-weight:600;margin:0 0 8px}
+.lede{font-size:22px;line-height:1.5;color:var(--text-2);font-weight:400;max-width:62ch;margin:0}
+.dim{color:var(--text-2)}
+.dim2{color:var(--text-3)}
+.mono{font-family:var(--font-mono)}
+.seg{display:inline-block;width:48px;height:4px;background:var(--accent);margin-bottom:18px}
+.divider{height:1px;background:var(--border-soft);width:100%;margin:40px 0}
+
+/* ============================================================
+   LAYOUT PRIMITIVES
+   ============================================================ */
+.stack>*+*{margin-top:14px}
+.row{display:flex;gap:24px;align-items:center}
+.row.wrap{flex-wrap:wrap}
+.grid{display:grid;gap:24px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.center{display:flex;align-items:center;justify-content:center;text-align:center}
+.fill{flex:1}
+.mt-s{margin-top:8px}.mt-m{margin-top:18px}.mt-l{margin-top:32px}
+.mb-s{margin-bottom:8px}.mb-m{margin-bottom:18px}.mb-l{margin-bottom:32px}
+
+/* slide — 모듈 내 한 섹션(스크롤 페이지의 한 블록) */
+/* 스크롤 안내 — 슬라이드 내용이 화면보다 길 때 JS가 제목 아래에 자동 삽입 */
+.scroll-hint{display:flex;align-items:center;gap:8px;margin:2px 0 20px;font-size:14px;font-weight:500;color:var(--text-3);letter-spacing:.01em}
+.scroll-hint .sh-ico{display:inline-flex;font-size:15px;color:var(--accent);animation:shBob 1.6s ease-in-out infinite}
+@keyframes shBob{0%,100%{transform:translateY(-1px)}50%{transform:translateY(2px)}}
+.slide{padding:48px 0;border-bottom:1px solid var(--border-soft);position:relative}
+.slide:last-of-type{border-bottom:none}
+.slide-number{font-size:13px;color:var(--text-3);letter-spacing:.12em;font-weight:600}
+.slide-number::before{content:counter(slidecount,decimal-leading-zero)}
+
+/* ============================================================
+   DECK HEADER (모듈 히어로)
+   ============================================================ */
+.deck-header{margin-bottom:40px}
+.deck-header .meta-row{display:flex;align-items:center;justify-content:space-between;
+  font-size:13px;color:var(--text-3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px}
+.deck-header .eyebrow{display:block;font-size:15px}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.card{background:var(--surface);border:none;border-top:1.5px solid var(--border);
+  padding:26px 28px;box-shadow:var(--shadow);position:relative}
+.card-soft{background:var(--surface-2);border-top:1.5px solid var(--border)}
+.card-bullets{list-style:none;padding:0;margin:6px 0 0}
+.card-bullets li{font-size:30px;line-height:1.6;color:var(--text-2);margin-bottom:8px;padding-left:18px;position:relative}
+.card-bullets li::before{content:"";position:absolute;left:0;top:.65em;width:8px;height:2px;background:var(--accent)}
+
+/* numbered card (card-num) */
+.card-num{background:var(--surface);border-top:1.5px solid var(--border);
+  padding:28px 26px;position:relative}
+.card-num .num{font-size:48px;font-weight:300;color:var(--text-3);line-height:1;margin:0 0 14px;
+  font-family:var(--font-display);letter-spacing:-.04em}
+.card-num h3{font-size:24px;margin:2px 0 8px}
+.card-num p{font-size:30px;line-height:1.6;color:var(--text-2);margin:0}
+
+/* ============================================================
+   PILL / BADGE / DURATION
+   ============================================================ */
+.pill{display:inline-block;padding:6px 16px;border-radius:999px;font-size:20px;font-weight:500;letter-spacing:.04em;
+  background:var(--surface-2);color:var(--text-2);border:1px solid var(--border-soft)}
+.pill-accent{background:var(--accent);color:#fff;border-color:var(--accent)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:var(--radius-sm);font-size:19px;font-weight:600;letter-spacing:.04em;background:var(--surface-2);color:var(--text-2);border:1px solid var(--border-soft)}
+/* 시간 표시는 학습자 덱에 넣지 않는다 (구 .duration-badge 제거) */
+
+/* ============================================================
+   NOTE-BAR CALLOUTS — 콜아웃 3종(확인 / 검증포인트 / 팁)
+   삼성 .note-bar 구조 보존 + 3변형 추가
+   ============================================================ */
+.note-bar{margin-top:20px;padding:18px 24px;border-left:5px solid var(--accent);background:var(--bg-soft);font-size:29px;line-height:1.45;color:var(--text-1)}
+.note-bar strong{font-weight:700;color:var(--text-1)}
+.note-bar code{background:var(--accent);color:#fff;padding:2px 8px;border-radius:3px;font-size:.9em;font-family:var(--font-mono);letter-spacing:0}
+.note-bar .note-ico{font-style:normal;margin-right:8px}
+.note-bar--check{border-left-color:var(--warn);background:#fff8ec}
+.note-bar--verify{border-left-color:var(--bad);background:#fdeef0}
+.note-bar--tip{border-left-color:var(--good);background:#eefaf1}
+.note-bar--note{border-left-color:var(--accent);background:var(--surface-2)}
+.note-bar--ref{border-left-color:var(--text-3);background:var(--bg-soft)}
+
+/* ============================================================
+   CODE BLOCK (+copy) / FOLDER TREE
+   ============================================================ */
+.code-wrap{margin-top:18px;position:relative}
+.code-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.code-label{font-size:12px;letter-spacing:.16em;font-weight:600;color:var(--text-3);text-transform:uppercase}
+.code-block{background:#111;color:#e8eaef;padding:18px 22px;font-family:var(--font-mono);font-size:23px;line-height:1.5;border-radius:var(--radius-sm);margin:0;overflow:auto;white-space:pre-wrap;word-break:keep-all}
+.copy-btn{font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:.04em;
+  border:1px solid var(--border-soft);background:var(--surface);color:var(--text-2);
+  padding:5px 12px;border-radius:var(--radius-sm);cursor:pointer;transition:all .15s var(--ease)}
+.copy-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.copy-btn.is-copied{background:var(--good);color:#fff;border-color:var(--good)}
+/* folder tree — 검정 코드블록 변형, 모노폰트 ASCII 트리 */
+.tree{background:#111;color:#e8eaef;padding:22px 26px;font-family:var(--font-mono);font-size:23px;line-height:1.6;border-radius:var(--radius-sm);white-space:pre;overflow:auto}
+.tree .t-dir{color:#7fd6ff}
+.tree .t-cmt{color:#888}
+
+/* ============================================================
+   STEP-BY-STEP — "Step N. 동작 (M분)" + 하위 + 핵심
+   ============================================================ */
+.step-list{list-style:none;padding:0;margin:24px 0 0}
+.step-list>li{display:grid;grid-template-columns:56px 1fr;gap:20px;margin-bottom:30px;align-items:start;padding-top:4px}
+.step-list>li:last-child{margin-bottom:0}
+.step-num{font-size:40px;font-weight:300;color:var(--text-3);font-family:var(--font-display);letter-spacing:-.04em;line-height:1}
+.step-body{font-size:30px;color:var(--text-1);line-height:1.55}
+.step-body strong{font-weight:700;display:block;margin-bottom:6px;font-size:31px}
+.step-sub{display:block;color:var(--text-2);font-size:25px;line-height:1.55;margin-top:2px}
+.step-substep{display:block;color:var(--text-2);font-size:24px;line-height:1.55;margin-top:6px;padding-left:2px}
+.step-ref{display:inline-block;background:var(--accent);color:#fff;padding:1px 8px;border-radius:3px;
+  font-family:var(--font-mono);font-size:13px;letter-spacing:0;margin-left:2px;vertical-align:1px}
+.step-body code{background:var(--accent);color:#fff;padding:1px 7px;border-radius:3px;font-size:.85em;font-family:var(--font-mono)}
+/* Step 끝 핵심 인사이트 라인 */
+.step-key{margin-top:10px;padding:10px 16px;border-left:3px solid var(--accent);background:var(--bg-soft);
+  font-size:17px;line-height:1.5;color:var(--text-1)}
+.step-key::before{content:"핵심 ";font-weight:700}
+
+/* ============================================================
+   COMPARE TABLE / VS GRID + 결론 라인
+   ============================================================ */
+.cmp-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:24px}
+.cmp-table th,.cmp-table td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--border-soft);line-height:1.5;vertical-align:top}
+.cmp-table thead th{border-bottom:2px solid var(--border);font-weight:700;color:var(--text-1);font-size:20px;letter-spacing:.04em}
+.cmp-table tbody th{font-weight:600;color:var(--text-2);width:22%}
+.table-conclusion{margin-top:14px;font-size:26px;font-weight:600;color:var(--text-1)}
+.table-conclusion::before{content:"→ ";color:var(--text-3)}
+/* vs side-by-side */
+.vs{display:grid;grid-template-columns:1fr 72px 1fr;gap:28px;align-items:stretch;margin-top:28px}
+.vs .side{padding:30px 32px}
+.vs .mid{font-size:48px;font-weight:300;color:var(--text-3);display:flex;align-items:center;justify-content:center}
+.vs .bad-side{border-top:2px solid var(--text-3);background:var(--bg-soft)}
+.vs .good-side{border-top:4px solid var(--text-1);background:#fff}
+.vs .label{font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:12px}
+.vs ul{padding-left:22px;font-size:29px;line-height:1.65;color:var(--text-2);margin:14px 0 0}
+.vs li{margin-bottom:8px}
+
+/* ============================================================
+   KBD / KEY-ROW / CYCLE STRIP
+   ============================================================ */
+.key-row{display:flex;align-items:center;gap:16px;margin:32px 0 24px}
+.kbd{display:inline-flex;align-items:center;justify-content:center;min-width:110px;padding:16px 26px;
+  border:2.5px solid var(--accent);background:#fff;font-family:var(--font-mono);font-size:22px;font-weight:600;
+  box-shadow:4px 4px 0 var(--accent);letter-spacing:0;border-radius:6px}
+.kbd-plus{font-size:28px;font-weight:300;color:var(--text-3)}
+.cycle{display:grid;grid-template-columns:1fr 52px 1fr 52px 1fr;gap:16px;align-items:center;margin-top:28px}
+.cycle-step{background:var(--bg-soft);border-top:2px solid var(--accent);padding:22px 20px}
+.cycle-step .label{font-size:12px;letter-spacing:.16em;color:var(--text-3);font-weight:600;text-transform:uppercase;margin-bottom:8px}
+.cycle-step h4{font-size:20px;font-weight:700;margin:0 0 6px}
+.cycle-step p{font-size:14px;color:var(--text-2);margin:0;line-height:1.5}
+.cycle-arrow{font-size:30px;color:var(--accent);text-align:center;font-weight:300}
+
+/* ============================================================
+   SHOT (screenshot) + CLICK-BOX (red bounding box) + IMG-PH
+   삼성에 없던 신규 3종 — 테마 토큰에 맞춰 정의
+   ============================================================ */
+.shot{position:relative;display:inline-block;max-width:100%;margin-top:8px}
+.shot img{display:block;max-width:100%;border-radius:8px;border:1px solid var(--border-soft)}
+.shot .shot-cap{display:block;margin-top:8px;font-size:14px;color:var(--text-3)}
+
+/* red click-box overlay — % 좌표를 CSS 변수로 */
+.click-box{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);
+  border:3px solid var(--annot-red,#e8482b);border-radius:6px;
+  box-shadow:0 0 0 2px rgba(232,72,43,.25),0 0 16px rgba(232,72,43,.45);
+  pointer-events:none;z-index:3}
+.click-box[data-label]::after{content:attr(data-label);position:absolute;left:0;top:-26px;
+  background:var(--annot-red,#e8482b);color:#fff;font-family:var(--font-sans);
+  font-size:12px;font-weight:700;letter-spacing:.02em;padding:3px 9px;border-radius:5px;white-space:nowrap}
+@keyframes kf-clickpulse{0%,100%{box-shadow:0 0 0 2px rgba(232,72,43,.25),0 0 12px rgba(232,72,43,.35)}
+  50%{box-shadow:0 0 0 4px rgba(232,72,43,.35),0 0 26px rgba(232,72,43,.7)}}
+.click-box--pulse{animation:kf-clickpulse 1.4s ease-in-out infinite}
+
+/* image placeholder — 캡처 예정 자리(비어있음을 분명히) */
+.img-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  min-height:168px;width:100%;margin-top:12px;padding:24px 32px;text-align:center;
+  background:var(--surface-2);border:2px dashed var(--border-strong);border-radius:8px;color:var(--text-3)}
+.img-ph::before{content:"이미지 캡처 예정";font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--text-2)}
+.img-ph .ph-file{font-family:var(--font-mono);font-size:13px;color:var(--text-3);
+  background:var(--bg);padding:4px 10px;border-radius:4px;border:1px solid var(--border-soft)}
+.img-ph .ph-desc{font-size:14px;color:var(--text-3);max-width:46ch;line-height:1.5}
+
+/* ============================================================
+   PREVIEW CARD (pcard) — 결과/산출물 미리보기 카드
+   ============================================================ */
+.pcard{background:var(--surface);border:1px solid var(--border-soft);border-top:3px solid var(--accent);
+  padding:22px 24px;border-radius:var(--radius-sm)}
+.pcard-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.pcard-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.pcard-title{font-size:16px;font-weight:700;color:var(--text-1)}
+.pcard-meta{font-size:13px;color:var(--text-3);margin-left:auto}
+.pcard-body{font-size:16px;line-height:1.6;color:var(--text-2)}
+
+/* ============================================================
+   FINISH KEY-BOX — ①②③ 마무리 핵심
+   ============================================================ */
+
+/* ============================================================
+   PREV / NEXT NAV
+   ============================================================ */
+.module-nav{display:flex;align-items:stretch;justify-content:space-between;gap:16px;margin-top:64px;
+  border-top:1px solid var(--border-soft);padding-top:28px}
+.module-nav a{flex:1;display:flex;flex-direction:column;gap:4px;padding:18px 22px;
+  border:1px solid var(--border-soft);border-radius:var(--radius-sm);color:var(--text-1);transition:all .15s var(--ease)}
+.module-nav a:hover{border-color:var(--accent);text-decoration:none;background:var(--bg-soft)}
+.module-nav .nav-dir{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);font-weight:600}
+.module-nav .nav-title{font-size:18px;font-weight:600}
+.module-nav .nav-next{text-align:right;align-items:flex-end}
+.module-nav a[aria-disabled="true"]{opacity:.35;pointer-events:none}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.module-footer{display:flex;align-items:center;justify-content:space-between;
+  margin-top:48px;font-size:13px;color:var(--text-3);letter-spacing:.06em}
+
+/* ============================================================
+   OBJECTIVES — 모듈 도입 "이 모듈에서 배울 것"
+   ============================================================ */
+.objectives{margin:8px 0 12px;border-top:3px solid var(--accent);padding-top:24px}
+.objectives h3{font-size:30px;margin:0 0 14px}
+.objectives ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.objectives li{font-size:29px;line-height:1.45;color:var(--text-1);padding-left:28px;position:relative}
+.objectives li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700}
+
+/* ============================================================
+   WHY BOX — "왜 이걸 하나" (4원칙: 왜 명시)
+   ============================================================ */
+.why{margin:28px 0;padding:20px 26px;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent)}
+.why .why-label{display:block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.why p{margin:0;font-size:19px;line-height:1.55;color:var(--text-1)}
+
+/* ============================================================
+   QUOTE — 인용 / 권위자 anchor (임원 brief 신뢰 자본)
+   ============================================================ */
+.quote{margin:32px 0;padding:6px 0 6px 28px;border-left:4px solid var(--accent)}
+.quote p{font-family:var(--font-display);font-size:25px;line-height:1.4;font-weight:600;color:var(--text-1);margin:0 0 12px;letter-spacing:-.01em}
+.quote cite{font-size:15px;color:var(--text-3);font-style:normal}
+.quote cite::before{content:"— "}
+
+/* ============================================================
+   DEFLIST — 용어 정의(라벨(영문 원어) — 설명)
+   ============================================================ */
+.deflist{margin-top:22px;border-top:1px solid var(--border)}
+.deflist>div{display:grid;grid-template-columns:minmax(130px,26%) 1fr;gap:24px;padding:14px 2px;border-bottom:1px solid var(--border-soft)}
+.deflist dt{font-weight:700;color:var(--text-1);font-size:18px;margin:0}
+.deflist dt .en{font-weight:400;color:var(--text-3);font-size:14px;margin-left:6px}
+.deflist dd{margin:0;font-size:17px;line-height:1.55;color:var(--text-2)}
+
+/* ============================================================
+   CHECKLIST — 실습 완료 체크(네이티브 체크박스)
+   ============================================================ */
+.checklist{list-style:none;padding:0;margin:24px 0 0}
+.checklist li{display:flex;align-items:flex-start;gap:12px;font-size:28px;line-height:1.45;color:var(--text-1);margin-bottom:12px}
+.checklist input[type=checkbox]{margin-top:3px;width:18px;height:18px;accent-color:var(--accent);flex-shrink:0;cursor:pointer}
+.checklist label{cursor:pointer}
+.checklist input:checked+label{color:var(--text-3);text-decoration:line-through}
+
+/* index 모듈 카드 링크 (pcard를 <a>로) */
+a.pcard{color:inherit;display:block;transition:all .15s var(--ease)}
+a.pcard:hover{border-top-color:var(--accent);background:var(--bg-soft);text-decoration:none}
+
+/* ============================================================
+   DECK MODE — 좌우 방향키 슬라이드 네비 (삼성식 덱)
+   body.deck-mode 일 때 각 .slide 가 전체 화면 1장, ←/→ 로 이동.
+   ============================================================ */
+body.deck-mode{overflow:hidden;height:100vh}
+.deck{position:fixed;inset:0;overflow:hidden;background:var(--bg)}
+.deck .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:safe center;
+  padding:60px 80px 88px;overflow-y:auto;border-bottom:none;
+  opacity:0;visibility:hidden;transform:translateX(48px);
+  transition:opacity .38s var(--ease),transform .38s var(--ease)}
+.deck .slide.is-active{opacity:1;visibility:visible;transform:none;z-index:2}
+.deck .slide.is-past{transform:translateX(-48px)}
+.deck .slide-inner{max-width:var(--page-max);width:100%;margin:0 auto}
+.deck .slide.cover{justify-content:center}
+.deck-progress{position:fixed;top:0;left:0;right:0;height:4px;background:var(--border-soft);z-index:60}
+.deck-progress>span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s var(--ease)}
+.deck-hud{position:fixed;left:0;right:0;bottom:16px;z-index:60;display:flex;align-items:center;justify-content:center;gap:20px;
+  font-family:var(--font-mono);font-size:12px;color:var(--text-3);pointer-events:none}
+.deck-hud .deck-counter{font-weight:700;color:var(--text-1)}
+.deck-hud .nav-hint{letter-spacing:.06em}
+.deck-edge{position:fixed;top:0;bottom:0;width:48px;max-width:48px;z-index:55;cursor:pointer}
+.deck-edge.left{left:0}.deck-edge.right{right:0}
+@media (max-width:920px){.deck .slide{padding:76px 22px 84px}}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print{
+  .deck-hud,.deck-edge,.deck-progress,.scroll-hint{display:none!important}
+  .module{padding:40px}
+  .slide{page-break-inside:avoid}
+  .click-box--pulse{animation:none}
+  body.deck-mode{overflow:visible;height:auto}
+  .deck{position:static;inset:auto;overflow:visible}
+  .deck .slide{position:relative;inset:auto;opacity:1!important;visibility:visible!important;
+    transform:none!important;page-break-after:always;min-height:100vh}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:920px){
+  :root{--page-pad:28px}
+  .module{padding:96px 28px 120px}
+  .h1{font-size:44px}.h2{font-size:34px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .vs{grid-template-columns:1fr}
+  .vs .mid{transform:rotate(90deg)}
+  .cycle{grid-template-columns:1fr}
+  .cycle-arrow{transform:rotate(90deg)}
+}
+
+
+/* === 줄바꿈 — 문장이 몇 글자만 남고 끊기지 않게 === */
+.lede,.step-body,.step-sub,.step-substep,.step-key,.note-bar,.why,
+.card-num p,.card-soft p,.dim,.objectives li,.checklist li,
+.table-conclusion,.cmp-table td,.vs li,.deflist dd,.ph-desc,p{
+  text-wrap:pretty;word-break:keep-all;overflow-wrap:break-word}
+h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
+  text-wrap:balance;word-break:keep-all}
+
+/* === 목업·스크린샷 높이 상한 (1920x992 실측으로 확정) ===
+   이미지 한 장이 슬라이드를 잡아먹어 스크롤이 생기는 사고가 잦다.
+   38vh 이면 kicker+h2+lede+note-bar 와 함께 한 화면에 들어간다. */
+.img-ph{padding:14px 16px}
+.img-ph svg{max-height:38vh;width:auto;max-width:100%;display:block;margin:0 auto}
+.shot img{max-height:44vh;width:auto;max-width:100%;display:block;margin:0 auto}
+.img-ph .ph-desc{margin-top:6px}
+
+/* === 05 모듈 보정 — 보조 타이포 상향(투사 기준) · 복사 버튼 · 표 안 코드 === */
+.cycle-step h4{font-size:24px}
+.cycle-step p{font-size:19px}
+.cycle-step .label{font-size:13px}
+.code-head{position:relative;z-index:60}
+.copy-btn{font-size:14px;padding:6px 14px}
+.copy-btn.is-failed{background:var(--bad);color:#fff;border-color:var(--bad)}
+.code-label{font-size:13px}
+.pcard-body .hl{background:#fff3b0;padding:0 4px}
+.pcard-body .hl--strong{background:#111;color:#fff;padding:2px 8px;border-radius:3px}
+.cmp-table th code,.cmp-table td code{background:var(--accent);color:#fff;padding:1px 7px;border-radius:3px;font-size:.85em;font-family:var(--font-mono)}
+.card-num p code{background:var(--accent);color:#fff;padding:1px 7px;border-radius:3px;font-size:.8em;font-family:var(--font-mono)}
+.checklist label{font-size:26px}
+.objectives li code,.vs li code,.checklist label code,.dim code{background:var(--accent);color:#fff;padding:1px 7px;border-radius:3px;font-size:.8em;font-family:var(--font-mono)}
+.vs h3{font-size:30px}
+.quote p{font-size:23px}
+</style>
+</head>
+<body class="deck-mode">
+<div class="deck-progress"><span id="deckFill"></span></div>
+<div class="deck">
+<div class="deck-edge left"></div><div class="deck-edge right"></div>
+<section class="slide cover is-active"><div class="slide-inner">
+<header class="deck-header">
+<div class="meta-row"><span class="eyebrow">한화투자증권 MTS Front End 개발자 교육</span><span class="eyebrow">Module 05</span></div>
+<p class="kicker">Module 05</p>
+<span class="seg"></span>
+<h1 class="h1">코드 리뷰와 자동 반영</h1>
+<p class="lede">Code Review and Comment Resolution</p>
+<div class="row wrap mt-l"><span class="pill">리뷰 3층 비교</span><span class="pill">Writer/Reviewer 2세션</span><span class="pill">REVIEW.md</span><span class="pill">fork → PR → 자동 코멘트</span><span class="pill">코멘트 자동 반영</span></div>
+</header></div></section>
+
+<!-- 2 · objectives -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">이 모듈에서</p>
+<h2 class="h2">리뷰는 세션을 갈라서, 반영은 손을 떼고</h2>
+<p class="lede">이 모듈에서는 리뷰 세션을 분리하고 PR에 자동 리뷰를 붙여 코멘트까지 반영시킵니다.</p>
+<div class="objectives">
+  <h3>이 모듈에서 배울 것</h3>
+  <ul>
+    <li>구현 세션과 리뷰 세션을 갈라, 신선한 컨텍스트가 diff만 읽고 결함을 다시 찾게 합니다.</li>
+    <li>로컬 명령·오픈소스 Actions·관리형 앱을 플랜과 비용으로 가르고, 되는 두 층을 PR에 붙입니다.</li>
+    <li>REVIEW.md로 Important와 Nit을 가르고, 브랜치를 손대지 않은 채 코멘트를 반영해 체크를 통과시킵니다.</li>
+  </ul>
+</div>
+<div class="why">
+  <span class="why-label">왜 이걸 하나</span>
+  <p>같은 세션은 방금 쓴 코드의 결정을 의심하지 않고, 기준이 사람마다 다르면 코멘트도 갈립니다.</p>
+</div>
+</div></section>
+
+<!-- 3 · 왜 — 자기 편향 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">왜 이걸 하나</p>
+<h2 class="h2">방금 쓴 코드는 쓴 세션이 못 본다</h2>
+<p class="lede">구현 이력이 남은 세션은 자기 결정을 의심하지 않습니다.</p>
+<div class="grid g3 mt-m">
+  <div class="card-num"><div class="num">01</div><h3>편향</h3><p>자기가 고른 방식이 옳다는 전제로 diff를 읽습니다.</p></div>
+  <div class="card-num"><div class="num">02</div><h3>이력이 가린다</h3><p>대화가 길수록 변경 자체보다 그때의 사정이 먼저 보입니다.</p></div>
+  <div class="card-num"><div class="num">03</div><h3>기준이 사람마다</h3><p>Important의 정의가 없으면 코멘트가 사람마다 갈립니다.</p></div>
+</div>
+<blockquote class="quote">
+  <p>신선한 컨텍스트는 코드 리뷰를 개선한다. Claude가 방금 자기가 쓴 코드에 편향되지 않기 때문이다.</p>
+  <cite>Anthropic · Claude Code Best Practices (code.claude.com/docs/en/best-practices)</cite>
+</blockquote>
+</div></section>
+
+<!-- 4 · 리뷰 3층 비교표 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">리뷰 3층</p>
+<h2 class="h2">플랜과 비용으로 세 층을 가른다</h2>
+<p class="lede">개인 Pro/Max로 붙일 수 있는 층은 앞의 둘입니다.</p>
+<table class="cmp-table">
+  <thead><tr><th>기준</th><th>로컬 <code>/code-review</code></th><th>오픈소스 Actions</th><th>관리형 Code Review</th></tr></thead>
+  <tbody>
+    <tr><th>가용 플랜</th><td>전 플랜 · 내 세션 안</td><td>전 플랜 · 본인 토큰</td><td>Team/Enterprise 전용</td></tr>
+    <tr><th>트리거</th><td>명령을 직접 친다</td><td><code>pull_request</code> opened 자동</td><td>PR 오픈 시 자동</td></tr>
+    <tr><th>리뷰당 비용</th><td>세션 사용률 %p</td><td>본인 구독 한도 차감</td><td>평균 $15~25</td></tr>
+    <tr><th>못 잡는 것</th><td>돌리지 않은 변경</td><td>띄워야 보이는 화면 결함</td><td>GitHub 밖 레포</td></tr>
+  </tbody>
+</table>
+<p class="table-conclusion">이 모듈은 앞의 두 층을 PR 하나에 붙입니다.</p>
+</div></section>
+
+<!-- 5 · 경계 문장 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">경계 문장</p>
+<h2 class="h2">Nit은 로컬에서 끝내고, Important만 올린다</h2>
+<p class="lede">비교표가 정책이 되려면 어느 층이 무엇을 맡는지 한 줄로 고정해야 합니다.</p>
+<div class="vs">
+  <div class="card bad-side side">
+    <div class="label">로컬 층 · 푸시 전</div>
+    <h3>Nit은 여기서 끝낸다</h3>
+    <ul><li>이름·주석·서식은 리뷰 세션에서 정리하고 푸시합니다.</li><li>토큰은 내 세션에서만 씁니다.</li></ul>
+  </div>
+  <div class="mid">→</div>
+  <div class="card good-side side">
+    <div class="label">Actions 층 · PR</div>
+    <h3>Important 후보만 올린다</h3>
+    <ul><li>정확성·요구사항에 걸리는 것만 코멘트로 남깁니다.</li><li>코멘트는 팀 기록이 되어 지표의 분모가 됩니다.</li></ul>
+  </div>
+</div>
+<p class="note-bar note-bar--note"><span class="note-ico">📌</span><strong>메모</strong> — 관리형 Code Review는 Team/Enterprise 전용에 리뷰당 평균 $15~25라, 이 모듈에서는 실행하지 않고 비교로만 둡니다.</p>
+</div></section>
+
+<!-- 6 · REVIEW.md 미리보기 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">산출물 미리보기</p>
+<h2 class="h2">REVIEW.md — 경계를 파일로 고정한다</h2>
+<p class="lede">리뷰 세션과 Actions가 같은 파일을 읽으니 두 층의 기준이 어긋나지 않습니다.</p>
+<div class="pcard mt-m">
+  <div class="pcard-head">
+    <span class="pcard-dot"></span>
+    <span class="pcard-title" style="font-size:20px">REVIEW.md</span>
+    <span class="pcard-meta" style="font-size:15px">docs/templates/</span>
+  </div>
+  <div class="pcard-body" style="font-size:23px;line-height:1.65;color:var(--text-1)">
+    <span class="dim2" style="font-size:15px;letter-spacing:.12em">IMPORTANT — 머지를 막는다</span><br>
+    정확성 <span class="hl">잘못된 값 · 잘린 행 · 경합</span> / 요구사항 <span class="hl">SPEC.md 항목 누락 · 범위 밖 변경</span><br>
+    <span class="dim2" style="font-size:15px;letter-spacing:.12em">NIT — 머지를 막지 않는다</span><br>
+    이름 · 주석 · 서식. 로컬 층에서 끝낸다<br>
+    <span class="dim2" style="font-size:15px;letter-spacing:.12em">완료 정의</span><br>
+    <span class="hl--strong">Important 0건 · 체크 green · Nit은 반영하거나 이유를 적는다</span>
+  </div>
+</div>
+</div></section>
+
+<!-- 7 · 강사 화면 ① Writer / Reviewer -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">강사 화면 ①</p>
+<h2 class="h2">두 세션이 같은 diff를 다르게 본다</h2>
+<p class="lede">왼쪽은 구현 브랜치를 가진 세션, 오른쪽은 새 터미널에서 새로 연 리뷰 세션입니다.</p>
+<div class="img-ph" data-capture="05-07-writer-reviewer.png">
+<svg style="max-height:33vh" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="왼쪽 구현 세션의 요약과 오른쪽 리뷰 세션의 Important 1건·Nit 2건이 나란히 보이는 두 터미널">
+  <rect width="590" height="420" rx="10" fill="#14161a"/>
+  <rect width="590" height="34" rx="10" fill="#22252b"/>
+  <circle cx="20" cy="17" r="6" fill="#ff5f57"/><circle cx="40" cy="17" r="6" fill="#febc2e"/><circle cx="60" cy="17" r="6" fill="#28c840"/>
+  <text x="295" y="22" font-family="Menlo,monospace" font-size="14" fill="#9aa3ad" text-anchor="middle">Writer — 구현 브랜치 세션</text>
+  <g font-family="Menlo,monospace" font-size="15">
+    <text x="24" y="64" fill="#e8eaef">&gt; git diff main..HEAD 를 읽고 세 줄로 요약해라. …</text>
+    <text x="24" y="92" fill="#7ec8a0">●</text><text x="44" y="92" fill="#c9cfd6">Bash(git diff main..HEAD)</text>
+    <text x="24" y="126" fill="#e8eaef" font-weight="700">요약</text>
+    <text x="24" y="152" fill="#c9cfd6">1. Watchlist 에 정렬 헤더 행을 추가</text>
+    <text x="24" y="178" fill="#c9cfd6">2. sortByChange 로 등락률 정렬</text>
+    <text x="24" y="204" fill="#c9cfd6">3. 정렬 상태를 localStorage 에 보관</text>
+    <text x="24" y="238" fill="#e8eaef" font-weight="700">리뷰어가 먼저 볼 곳</text>
+    <text x="24" y="264" fill="#c9cfd6">src/screens/Watchlist.tsx:48 — 헤더 행 추가</text>
+    <text x="24" y="290" fill="#c9cfd6">src/lib/sortByChange.ts:12 — 비교 함수</text>
+    <text x="24" y="316" fill="#c9cfd6">src/lib/sortState.ts:5 — 저장 키</text>
+  </g>
+  <rect x="0" y="388" width="590" height="32" fill="#0f1114"/>
+  <text x="24" y="409" font-family="Menlo,monospace" font-size="13" fill="#9aa3ad">파일 생성 없음 · 코드 변경 없음</text>
+
+  <rect x="610" width="590" height="420" rx="10" fill="#14161a"/>
+  <rect x="610" width="590" height="34" rx="10" fill="#22252b"/>
+  <circle cx="630" cy="17" r="6" fill="#ff5f57"/><circle cx="650" cy="17" r="6" fill="#febc2e"/><circle cx="670" cy="17" r="6" fill="#28c840"/>
+  <text x="905" y="22" font-family="Menlo,monospace" font-size="14" fill="#9aa3ad" text-anchor="middle">Reviewer — 새 터미널 · 상위 모델</text>
+  <rect x="1144" y="8" width="46" height="18" rx="4" fill="#8a949f"/>
+  <text x="1167" y="21" font-family="Menlo,monospace" font-size="11" fill="#fff" text-anchor="middle">목업</text>
+  <g font-family="Menlo,monospace" font-size="15">
+    <text x="634" y="64" fill="#e8eaef">&gt; git diff main..HEAD 와 docs/templates/REVIEW.md 만 읽어라. …</text>
+    <text x="634" y="92" fill="#7ec8a0">●</text><text x="654" y="92" fill="#c9cfd6">Bash(git diff main..HEAD)</text>
+    <text x="634" y="116" fill="#7ec8a0">●</text><text x="654" y="116" fill="#c9cfd6">Read(docs/templates/REVIEW.md)</text>
+  </g>
+  <rect x="628" y="132" width="556" height="240" rx="6" fill="#1d2026" stroke="#3a3f47"/>
+  <g font-family="Menlo,monospace" font-size="15">
+    <text x="644" y="160" fill="#f2c14e" font-weight="700">Important (1)</text>
+    <text x="644" y="186" fill="#e8eaef">Watchlist.tsx:48 — 헤더 행을 추가했지만 목록 컨테이너</text>
+    <text x="644" y="210" fill="#e8eaef">높이가 그대로라 마지막 행이 스크롤로도 닿지 않는다</text>
+    <text x="644" y="246" fill="#9aa3ad" font-weight="700">Nit (2)</text>
+    <text x="644" y="272" fill="#c9cfd6">sortByChange.ts:12 — 함수 이름이 정렬 방향을 안 드러낸다</text>
+    <text x="644" y="298" fill="#c9cfd6">Watchlist.tsx:31 — 주석 오타 "등락율" → "등락률"</text>
+    <text x="644" y="340" fill="#7ec8a0">코드 변경 없음 · 각 항목에 파일:줄 + 근거 한 줄</text>
+  </g>
+  <rect x="610" y="388" width="590" height="32" fill="#0f1114"/>
+  <text x="634" y="409" font-family="Menlo,monospace" font-size="13" fill="#9aa3ad">이전 대화 없음 · 읽은 파일 2개</text>
+</svg>
+<span class="ph-file">assets/images/05-07-writer-reviewer.png</span>
+<span class="ph-desc">두 터미널을 나란히 — 왼쪽 구현 세션의 프롬프트 A 응답, 오른쪽 새 리뷰 세션의 프롬프트 B 응답</span>
+</div>
+<p class="note-bar note-bar--check"><span class="note-ico">⚠️</span><strong>확인</strong> — 오른쪽 첫 응답에 Important와 Nit이 나뉘어 있으면 REVIEW.md가 읽힌 것입니다.</p>
+</div></section>
+
+<!-- 8 · 강사 화면 ② PR 자동 코멘트 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">강사 화면 ②</p>
+<h2 class="h2">PR을 열면 코멘트가 먼저 와 있다</h2>
+<p class="lede">pull_request opened로 Actions가 돌고, 코멘트 하나에 Important와 Nit이 담겨 옵니다.</p>
+<div class="img-ph" data-capture="05-08-pr-auto-comment.png">
+<svg style="max-height:33vh" viewBox="0 0 1200 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PR Conversation 탭에 claude 봇이 남긴 Important 1건·Nit 2건 코멘트">
+  <rect width="1200" height="440" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <rect width="1200" height="44" rx="10" fill="#24292f"/>
+  <rect y="30" width="1200" height="14" fill="#24292f"/>
+  <text x="28" y="28" font-family="Inter,Helvetica,sans-serif" font-size="15" fill="#ffffff" font-weight="600">you / hanwha-mts-claude-code</text>
+  <rect x="1144" y="12" width="46" height="18" rx="4" fill="#8a949f"/>
+  <text x="1167" y="25" font-family="Menlo,monospace" font-size="11" fill="#fff" text-anchor="middle">목업</text>
+  <text x="40" y="86" font-family="Inter,Helvetica,sans-serif" font-size="22" fill="#1f2328" font-weight="600">feat: 관심종목 정렬 헤더 추가</text>
+  <text x="392" y="86" font-family="Inter,Helvetica,sans-serif" font-size="22" fill="#656d76">#1</text>
+  <rect x="40" y="100" width="58" height="24" rx="12" fill="#1f883d"/>
+  <text x="69" y="117" font-family="Inter,Helvetica,sans-serif" font-size="13" fill="#fff" text-anchor="middle" font-weight="600">Open</text>
+  <text x="110" y="117" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#656d76">you wants to merge 2 commits into you:main from you:feat/watchlist-sort</text>
+  <g font-family="Inter,Helvetica,sans-serif" font-size="14">
+    <text x="40" y="154" fill="#1f2328" font-weight="600">Conversation</text>
+    <text x="160" y="154" fill="#656d76">Commits 2</text>
+    <text x="260" y="154" fill="#656d76">Checks 1</text>
+    <text x="350" y="154" fill="#656d76">Files changed 3</text>
+  </g>
+  <rect x="40" y="162" width="106" height="2" fill="#fd8c73"/>
+  <rect x="40" y="178" width="1120" height="214" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <rect x="40" y="178" width="1120" height="36" rx="6" fill="#f6f8fa"/>
+  <rect x="40" y="208" width="1120" height="6" fill="#f6f8fa"/>
+  <circle cx="64" cy="196" r="10" fill="#8250df"/>
+  <text x="84" y="201" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328" font-weight="600">claude</text>
+  <rect x="132" y="187" width="34" height="18" rx="9" fill="#eaeef2"/>
+  <text x="149" y="200" font-family="Inter,Helvetica,sans-serif" font-size="11" fill="#57606a" text-anchor="middle">bot</text>
+  <text x="176" y="201" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#656d76">commented</text>
+  <g font-family="Inter,Helvetica,sans-serif" font-size="15">
+    <text x="60" y="240" fill="#1f2328" font-weight="700">Claude Review — REVIEW.md 기준</text>
+    <text x="60" y="270" fill="#cf222e" font-weight="700">Important (1)</text>
+    <text x="60" y="294" fill="#1f2328">src/screens/Watchlist.tsx:48 — 정렬 헤더 행을 추가했지만 목록 컨테이너 높이가 그대로라 마지막 행이 스크롤로도 닿지 않습니다.</text>
+    <text x="60" y="326" fill="#57606a" font-weight="700">Nit (2)</text>
+    <text x="60" y="350" fill="#1f2328">src/lib/sortByChange.ts:12 — 함수 이름이 정렬 방향을 드러내지 않습니다.</text>
+    <text x="60" y="374" fill="#1f2328">src/screens/Watchlist.tsx:31 — 주석 오타 등락율 → 등락률</text>
+  </g>
+  <rect x="40" y="404" width="1120" height="28" rx="6" fill="#dafbe1" stroke="#aceebb"/>
+  <text x="56" y="423" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1a7f37" font-weight="600">✓ Claude Review — 완료 · 코멘트 1건</text>
+</svg>
+<span class="ph-file">assets/images/05-08-pr-auto-comment.png</span>
+<span class="ph-desc">fork에서 PR을 연 직후 Conversation 탭 — claude 봇의 Important 1건·Nit 2건 코멘트가 보이는 화면 전체</span>
+</div>
+<p class="note-bar note-bar--note"><span class="note-ico">📌</span><strong>메모</strong> — PR을 연 시각과 코멘트가 도착한 시각을 워크시트에 적습니다. 그 차이가 지표 ①입니다.</p>
+</div></section>
+
+<!-- 9 · 따라하기 1/4 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">즉시 따라하기 1/7</p>
+<h2 class="h2">리뷰 세션을 따로 연다</h2>
+<div class="why">
+  <span class="why-label">왜 이걸 하나</span>
+  <p>리뷰 세션에 구현 이력이 없어야 그때의 사정이 아니라 diff 자체가 읽힙니다.</p>
+</div>
+<ol class="step-list">
+  <li>
+    <div class="step-num">01</div>
+    <div class="step-body">
+      <strong>구현 브랜치를 정한다</strong>
+      <span class="step-sub">3교시 브랜치가 있으면 그대로, 없으면 <code>git checkout review-fixture</code>. 그 세션에서 다음 장의 프롬프트 A를 넣습니다.</span>
+    </div>
+  </li>
+  <li>
+    <div class="step-num">02</div>
+    <div class="step-body">
+      <strong>새 터미널에서 리뷰 세션을 연다</strong>
+      <span class="step-sub">새 탭에서 <code>claude</code>를 새로 실행하고 <code>/model</code>로 상위 모델을 고른 뒤 프롬프트 B를 넣습니다. 상위 모델은 리뷰 세션에서만 씁니다.</span>
+      <div class="step-key">프롬프트 B의 결과에 Important가 없으면 리뷰가 아니라 요약을 한 것입니다. 에러 갤러리 ②로 갑니다.</div>
+    </div>
+  </li>
+</ol>
+</div></section>
+
+<!-- 10 · 프롬프트 A -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">프롬프트 A · 구현 세션</p>
+<h2 class="h2">리뷰어가 볼 곳을 먼저 짚는다</h2>
+<p class="lede">결과는 PR 본문에 그대로 붙입니다. 파일을 만들지 않으니 diff가 늘지 않습니다.</p>
+<div class="code-wrap">
+  <div class="code-head">
+    <span class="code-label">프롬프트 A · 구현 브랜치 세션에서 입력</span>
+    <button class="copy-btn" data-target="#prompt-a">복사</button>
+  </div>
+  <pre class="code-block" id="prompt-a">git diff main..HEAD 를 읽고 이 변경이 무엇을 바꿨는지 세 줄로 요약해라.
+리뷰어가 먼저 봐야 할 파일:줄을 3곳 지목하고 이유를 한 줄씩 붙여라.
+결과는 화면에만 내라. 파일을 만들거나 코드를 고치지 마라.</pre>
+</div>
+<div class="grid g3 mt-m">
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">의미</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">구현 세션의 맥락을 PR 본문 한 장으로 꺼내 리뷰어의 진입점을 만듭니다.</p>
+  </div>
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">본인 업무</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">PR을 열기 전에 설명을 쓰던 일이 이 프롬프트로 바뀝니다.</p>
+  </div>
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">바꿔 끼우는 자리</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">비교 범위. 예: main..HEAD 대신 release/1.2..HEAD, 지목 개수 3곳</p>
+  </div>
+</div>
+</div></section>
+
+<!-- 11 · 프롬프트 B -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">프롬프트 B · 리뷰 세션</p>
+<h2 class="h2">diff와 REVIEW.md만 읽게 한다</h2>
+<p class="lede">새 세션이라 이전 대화가 없고, 읽을 범위를 둘로 좁혀 편향을 막습니다.</p>
+<div class="code-wrap">
+  <div class="code-head">
+    <span class="code-label">프롬프트 B · 새 터미널의 리뷰 세션에서 입력</span>
+    <button class="copy-btn" data-target="#prompt-b">복사</button>
+  </div>
+  <pre class="code-block" id="prompt-b">git diff main..HEAD 와 docs/templates/REVIEW.md 만 읽어라. 다른 파일은 열지 마라.
+지적을 Important 와 Nit 두 묶음으로 나눠라.
+정확성이나 요구사항에 영향을 주는 것만 Important 로 올리고, 각 항목에 파일:줄과 한 줄 근거를 붙여라.
+코드는 고치지 마라.</pre>
+</div>
+<div class="grid g3 mt-m">
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">의미</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">신선한 컨텍스트에 REVIEW.md의 경계를 주고 diff만 판정하게 합니다.</p>
+  </div>
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">본인 업무</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">동료 PR을 열어 보기 전에 먼저 돌리는 1차 리뷰가 됩니다.</p>
+  </div>
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">바꿔 끼우는 자리</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">기준 파일 경로. 예: 팀 REVIEW.md, 화면 계층용 REVIEW-ui.md</p>
+  </div>
+</div>
+<p class="note-bar note-bar--tip"><span class="note-ico">💡</span><strong>팁</strong> — 같은 일을 <code>/code-review</code> 한 줄로도 돌릴 수 있습니다. 폴백 장에서 그 출력을 씁니다.</p>
+</div></section>
+
+<!-- 12 · 따라하기 2/7 fork -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">즉시 따라하기 2/7</p>
+<h2 class="h2">레포를 fork한다</h2>
+<div class="why">
+  <span class="why-label">왜 이걸 하나</span>
+  <p>Actions는 fork 안에서 돌고, 그 안의 Claude는 본인 구독으로 인증됩니다. 강사 레포에는 아무것도 올리지 않습니다.</p>
+</div>
+<ol class="step-list">
+  <li>
+    <div class="step-num">03</div>
+    <div class="step-body">
+      <strong>Fork → 본인 계정 → Create fork</strong>
+      <span class="step-sub">강사 레포 페이지 오른쪽 위의 Fork를 누릅니다. 기존 폴더에서는 <code>git remote set-url origin</code> 뒤에 fork 주소를 붙여 원격을 바꿉니다.</span>
+      <div class="step-key">fork의 Actions 탭이 비활성이면 "I understand my workflows, go ahead and enable them"을 먼저 눌러야 돕니다.</div>
+    </div>
+  </li>
+</ol>
+</div></section>
+
+<!-- 13 · 따라하기 3/7 토큰 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">즉시 따라하기 3/7</p>
+<h2 class="h2">토큰을 받는다</h2>
+<div class="why">
+  <span class="why-label">왜 이걸 하나</span>
+  <p>이 토큰이 fork 안의 Actions와 본인 구독을 잇는 유일한 연결입니다.</p>
+</div>
+<ol class="step-list">
+  <li>
+    <div class="step-num">04</div>
+    <div class="step-body">
+      <strong>claude setup-token</strong>
+      <span class="step-sub">터미널에서 <code>claude setup-token</code> → 브라우저 승인 → 터미널에 찍힌 토큰을 복사합니다. 이 값은 채팅이나 파일에 남기지 않습니다.</span>
+      <div class="step-key">토큰은 Secret 한 곳에만 들어갑니다. 터미널 창을 닫기 전에 복사합니다.</div>
+    </div>
+  </li>
+</ol>
+</div></section>
+
+<!-- 14 · 따라하기 4/7 Secret -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">즉시 따라하기 4/7</p>
+<h2 class="h2">Secret에 넣는다</h2>
+<div class="why">
+  <span class="why-label">왜 이걸 하나</span>
+  <p>Secret 이름이 워크플로 YAML의 이름과 한 글자라도 다르면 Actions가 조용히 실패합니다.</p>
+</div>
+<ol class="step-list">
+  <li>
+    <div class="step-num">05</div>
+    <div class="step-body">
+      <strong>New repository secret</strong>
+      <span class="step-sub">fork의 Settings → Secrets and variables → Actions → New repository secret. 이름은 <code>CLAUDE_CODE_OAUTH_TOKEN</code>, 값은 방금 복사한 토큰입니다.</span>
+      <div class="step-key">이름은 복사해서 붙입니다. 손으로 치면 한 글자가 어긋납니다.</div>
+    </div>
+  </li>
+</ol>
+</div></section>
+
+<!-- 15 · 화면 ① Secret 등록 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">화면 ① · Secret</p>
+<h2 class="h2">Secret 이름은 이 값 그대로</h2>
+<p class="lede">fork의 Settings 안입니다. 빨간 상자 두 곳만 채우고 Add secret을 누릅니다.</p>
+<div class="img-ph" data-capture="05-15-actions-secret.png">
+<svg style="max-height:36vh" viewBox="0 0 1200 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub fork의 Actions secrets 새 시크릿 등록 화면 — 이름 칸과 Add secret 버튼에 빨간 상자">
+  <rect width="1200" height="440" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <rect width="1200" height="44" rx="10" fill="#24292f"/>
+  <rect y="30" width="1200" height="14" fill="#24292f"/>
+  <text x="28" y="28" font-family="Inter,Helvetica,sans-serif" font-size="15" fill="#ffffff" font-weight="600">you / hanwha-mts-claude-code</text>
+  <text x="1120" y="28" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#c9d1d9" text-anchor="end">Settings</text>
+  <rect x="1144" y="12" width="46" height="18" rx="4" fill="#8a949f"/>
+  <text x="1167" y="25" font-family="Menlo,monospace" font-size="11" fill="#fff" text-anchor="middle">목업</text>
+  <rect x="0" y="44" width="260" height="396" fill="#f6f8fa"/>
+  <g font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328">
+    <text x="24" y="80">General</text>
+    <text x="24" y="112" fill="#656d76">Collaborators</text>
+    <text x="24" y="144" fill="#656d76">Branches</text>
+    <text x="24" y="176" fill="#656d76">Actions</text>
+    <text x="24" y="212" fill="#656d76">Secrets and variables</text>
+    <rect x="12" y="228" width="236" height="30" rx="6" fill="#e6ebf1"/>
+    <text x="40" y="248" font-weight="600">Actions</text>
+    <text x="40" y="282" fill="#656d76">Codespaces</text>
+    <text x="40" y="314" fill="#656d76">Dependabot</text>
+    <text x="24" y="350" fill="#656d76">Pages</text>
+  </g>
+  <text x="290" y="90" font-family="Inter,Helvetica,sans-serif" font-size="22" fill="#1f2328" font-weight="600">Actions secrets / New secret</text>
+  <text x="290" y="124" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328" font-weight="600">Name *</text>
+  <rect x="290" y="132" width="560" height="40" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="304" y="158" font-family="Menlo,monospace" font-size="16" fill="#1f2328">CLAUDE_CODE_OAUTH_TOKEN</text>
+  <rect x="284" y="126" width="572" height="52" rx="8" fill="none" stroke="#e8482b" stroke-width="3"/>
+  <rect x="868" y="141" width="150" height="22" rx="5" fill="#e8482b"/>
+  <text x="943" y="156" font-family="Inter,Helvetica,sans-serif" font-size="12" fill="#fff" font-weight="700" text-anchor="middle">이름은 이 값 그대로</text>
+  <text x="290" y="212" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328" font-weight="600">Secret *</text>
+  <rect x="290" y="222" width="860" height="120" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="304" y="252" font-family="Menlo,monospace" font-size="15" fill="#656d76">●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●</text>
+  <text x="304" y="278" font-family="Inter,Helvetica,sans-serif" font-size="13" fill="#8c959f">claude setup-token 이 터미널에 찍어 준 값을 그대로 붙여넣습니다</text>
+  <rect x="290" y="370" width="150" height="40" rx="6" fill="#1f883d"/>
+  <text x="365" y="395" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#fff" font-weight="600" text-anchor="middle">Add secret</text>
+  <rect x="284" y="364" width="162" height="52" rx="8" fill="none" stroke="#e8482b" stroke-width="3"/>
+  <rect x="460" y="379" width="46" height="22" rx="5" fill="#e8482b"/>
+  <text x="483" y="394" font-family="Inter,Helvetica,sans-serif" font-size="12" fill="#fff" font-weight="700" text-anchor="middle">저장</text>
+</svg>
+<span class="ph-file">assets/images/05-15-actions-secret.png</span>
+<span class="ph-desc">fork의 Settings → Secrets and variables → Actions → New repository secret 화면, 이름 칸에 CLAUDE_CODE_OAUTH_TOKEN을 친 상태</span>
+</div>
+</div></section>
+
+<!-- 16 · 따라하기 5/7 PR -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">즉시 따라하기 5/7</p>
+<h2 class="h2">푸시하고 PR을 연다</h2>
+<div class="why">
+  <span class="why-label">왜 이걸 하나</span>
+  <p>base가 강사 레포를 가리키면 PR이 남의 레포로 가고 Actions도 거기서 돕니다.</p>
+</div>
+<ol class="step-list">
+  <li>
+    <div class="step-num">06</div>
+    <div class="step-body">
+      <strong>푸시 → Compare &amp; pull request → Create</strong>
+      <span class="step-sub"><code>git push -u origin</code> 뒤에 브랜치 이름을 붙여 푸시합니다. GitHub의 Compare &amp; pull request → base를 본인 fork의 main으로 → 본문에 프롬프트 A의 결과 → Create pull request.</span>
+      <div class="step-key">Create를 누르는 순간 Actions가 돕니다. PR을 연 시각을 워크시트에 적습니다.</div>
+    </div>
+  </li>
+</ol>
+</div></section>
+
+<!-- 17 · 화면 ② PR 생성 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">화면 ② · PR</p>
+<h2 class="h2">base는 내 fork, compare는 내 브랜치</h2>
+<p class="lede">Compare &amp; pull request를 누른 뒤 화면입니다. base repository가 본인 계정인지 먼저 봅니다.</p>
+<div class="img-ph" data-capture="05-17-create-pr.png">
+<svg style="max-height:36vh" viewBox="0 0 1200 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub PR 생성 화면 — base repository 선택과 Create pull request 버튼에 빨간 상자">
+  <rect width="1200" height="440" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <rect width="1200" height="44" rx="10" fill="#24292f"/>
+  <rect y="30" width="1200" height="14" fill="#24292f"/>
+  <text x="28" y="28" font-family="Inter,Helvetica,sans-serif" font-size="15" fill="#ffffff" font-weight="600">you / hanwha-mts-claude-code</text>
+  <rect x="1144" y="12" width="46" height="18" rx="4" fill="#8a949f"/>
+  <text x="1167" y="25" font-family="Menlo,monospace" font-size="11" fill="#fff" text-anchor="middle">목업</text>
+  <text x="40" y="86" font-family="Inter,Helvetica,sans-serif" font-size="22" fill="#1f2328" font-weight="600">Comparing changes</text>
+  <text x="40" y="112" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#656d76">Choose two branches to see what's changed or to start a new pull request.</text>
+  <rect x="40" y="130" width="1120" height="66" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+  <rect x="60" y="146" width="340" height="36" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="74" y="169" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328"><tspan fill="#656d76">base repository:</tspan> you/hanwha-mts-claude-code ▾</text>
+  <rect x="420" y="146" width="140" height="36" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="434" y="169" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328"><tspan fill="#656d76">base:</tspan> main ▾</text>
+  <text x="588" y="171" font-family="Inter,Helvetica,sans-serif" font-size="20" fill="#656d76">←</text>
+  <rect x="620" y="146" width="340" height="36" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="634" y="169" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328"><tspan fill="#656d76">head repository:</tspan> you/hanwha-mts-claude-code ▾</text>
+  <rect x="980" y="146" width="170" height="36" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="994" y="169" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328"><tspan fill="#656d76">compare:</tspan> feat/sort ▾</text>
+  <rect x="54" y="140" width="352" height="48" rx="8" fill="none" stroke="#e8482b" stroke-width="3"/>
+  <rect x="54" y="204" width="200" height="22" rx="5" fill="#e8482b"/>
+  <text x="154" y="219" font-family="Inter,Helvetica,sans-serif" font-size="12" fill="#fff" font-weight="700" text-anchor="middle">base repository = 내 계정의 fork</text>
+  <text x="440" y="222" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1a7f37" font-weight="600">✓ Able to merge. These branches can be automatically merged.</text>
+  <rect x="40" y="244" width="1120" height="40" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="54" y="270" font-family="Inter,Helvetica,sans-serif" font-size="15" fill="#1f2328">feat: 관심종목 정렬 헤더 추가</text>
+  <rect x="40" y="294" width="1120" height="66" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="54" y="318" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#656d76">프롬프트 A 의 요약 세 줄과 리뷰어가 먼저 볼 곳 3곳을 여기에 붙입니다.</text>
+  <rect x="980" y="376" width="180" height="42" rx="6" fill="#1f883d"/>
+  <text x="1070" y="402" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#fff" font-weight="600" text-anchor="middle">Create pull request</text>
+  <rect x="974" y="370" width="192" height="54" rx="8" fill="none" stroke="#e8482b" stroke-width="3"/>
+  <rect x="820" y="386" width="140" height="22" rx="5" fill="#e8482b"/>
+  <text x="890" y="401" font-family="Inter,Helvetica,sans-serif" font-size="12" fill="#fff" font-weight="700" text-anchor="middle">누르면 Actions가 돈다</text>
+</svg>
+<span class="ph-file">assets/images/05-17-create-pr.png</span>
+<span class="ph-desc">Compare &amp; pull request 직후 화면 — base repository가 본인 fork, compare가 본인 브랜치인 상태 전체</span>
+</div>
+</div></section>
+
+<!-- 18 · 따라하기 6/7 코멘트 확인 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">즉시 따라하기 6/7</p>
+<h2 class="h2">코멘트를 확인한다</h2>
+<div class="why">
+  <span class="why-label">왜 이걸 하나</span>
+  <p>Important에 결함 ④가 잡혀 있어야 다음 단계에서 반영시킬 대상이 있습니다.</p>
+</div>
+<ol class="step-list">
+  <li>
+    <div class="step-num">07</div>
+    <div class="step-body">
+      <strong>Actions 탭 → Conversation 탭</strong>
+      <span class="step-sub">Claude Review가 끝나면 Conversation에 코멘트가 옵니다. Important에 결함 ④(정렬 헤더 뒤 마지막 행 잘림)가 있는지, 나머지가 Nit인지 봅니다.</span>
+      <div class="step-key">코멘트가 도착한 시각을 적습니다. PR을 연 시각과의 차이가 지표 ①입니다.</div>
+    </div>
+  </li>
+</ol>
+</div></section>
+
+<!-- 19 · 따라하기 7/7 멘션 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">즉시 따라하기 7/7</p>
+<h2 class="h2">반영은 맡긴다</h2>
+<div class="why">
+  <span class="why-label">왜 이걸 하나</span>
+  <p>사람이 브랜치를 건드리지 않고 해결된 코멘트가 4주 뒤 지표 ④의 분자입니다. 여기서 첫 건을 만듭니다.</p>
+</div>
+<ol class="step-list">
+  <li>
+    <div class="step-num">08</div>
+    <div class="step-body">
+      <strong>PR 코멘트 칸에 프롬프트 C</strong>
+      <span class="step-sub">다음 장의 프롬프트 C를 PR 코멘트 칸에 그대로 씁니다. 로컬 브랜치는 건드리지 않습니다. 커밋과 푸시는 Actions 안의 Claude가 합니다.</span>
+      <div class="step-key">반영 커밋의 작성자가 claude[bot]이면 통과입니다. 내 이름이면 손을 댄 것입니다.</div>
+    </div>
+  </li>
+</ol>
+</div></section>
+
+<!-- 17 · 프롬프트 C -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">프롬프트 C · PR 코멘트</p>
+<h2 class="h2">멘션 한 줄로 PR을 green으로</h2>
+<p class="lede">터미널이 아니라 PR의 코멘트 칸에 씁니다. 멘션이 Actions를 다시 깨웁니다.</p>
+<div class="code-wrap">
+  <div class="code-head">
+    <span class="code-label">프롬프트 C · PR Conversation 코멘트 칸에 입력</span>
+    <button class="copy-btn" data-target="#prompt-c">복사</button>
+  </div>
+  <pre class="code-block" id="prompt-c">@claude 코멘트 반영해 PR을 green으로</pre>
+</div>
+<div class="grid g3 mt-m">
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">의미</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">열린 코멘트를 전부 처리하고 체크가 통과할 때까지 커밋을 밀게 합니다.</p>
+  </div>
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">본인 업무</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">리뷰 코멘트를 하나씩 손으로 고치던 왕복이 멘션 한 줄로 줄어듭니다.</p>
+  </div>
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">바꿔 끼우는 자리</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">뒤에 붙이는 범위 문구. 예: "Important만 반영해" · "Nit은 이유만 남겨"</p>
+  </div>
+</div>
+<p class="note-bar note-bar--check"><span class="note-ico">⚠️</span><strong>확인</strong> — 워크플로에 <code>issue_comment</code> 트리거가 없으면 멘션이 반응하지 않습니다. 에러 갤러리 ③입니다.</p>
+</div></section>
+
+<!-- 18 · 강사 화면 ③ green -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">강사 화면 ③</p>
+<h2 class="h2">체크가 green으로 바뀐 화면</h2>
+<p class="lede">claude 봇의 커밋이 올라오고 체크가 통과로 바뀌면 이 모듈의 통과선입니다.</p>
+<div class="img-ph" data-capture="05-21-pr-green.png">
+<svg style="max-height:33vh" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="멘션 뒤 claude 봇이 반영 커밋을 푸시하고 체크가 전부 통과한 PR 화면">
+  <rect width="1200" height="420" rx="10" fill="#ffffff" stroke="#d0d7de"/>
+  <rect width="1200" height="44" rx="10" fill="#24292f"/>
+  <rect y="30" width="1200" height="14" fill="#24292f"/>
+  <text x="28" y="28" font-family="Inter,Helvetica,sans-serif" font-size="15" fill="#ffffff" font-weight="600">you / hanwha-mts-claude-code</text>
+  <rect x="1144" y="12" width="46" height="18" rx="4" fill="#8a949f"/>
+  <text x="1167" y="25" font-family="Menlo,monospace" font-size="11" fill="#fff" text-anchor="middle">목업</text>
+  <text x="40" y="82" font-family="Inter,Helvetica,sans-serif" font-size="20" fill="#1f2328" font-weight="600">feat: 관심종목 정렬 헤더 추가</text>
+  <text x="362" y="82" font-family="Inter,Helvetica,sans-serif" font-size="20" fill="#656d76">#1</text>
+  <rect x="40" y="100" width="1120" height="46" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <circle cx="64" cy="123" r="10" fill="#0969da"/>
+  <text x="84" y="128" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328"><tspan font-weight="600">you</tspan> <tspan fill="#656d76">commented</tspan>   @claude 코멘트 반영해 PR을 green으로</text>
+  <rect x="40" y="158" width="1120" height="118" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+  <rect x="40" y="158" width="1120" height="34" rx="6" fill="#f6f8fa"/>
+  <rect x="40" y="186" width="1120" height="6" fill="#f6f8fa"/>
+  <circle cx="64" cy="175" r="10" fill="#8250df"/>
+  <text x="84" y="180" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328"><tspan font-weight="600">claude</tspan> <tspan fill="#656d76">bot · commented</tspan></text>
+  <g font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#1f2328">
+    <text x="60" y="216">Important 1건 반영 — Watchlist 목록 컨테이너 높이를 행 수에 맞춰 계산하도록 수정</text>
+    <text x="60" y="240">Nit 2건 반영 — 정렬 함수 이름 변경 · 주석 오타 수정</text>
+    <text x="60" y="264" fill="#1a7f37">커밋 a1b2c3d 푸시 · npm test · npm run lint · npm run typecheck 통과</text>
+  </g>
+  <circle cx="64" cy="300" r="6" fill="#8250df"/>
+  <text x="84" y="305" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#656d76"><tspan fill="#1f2328" font-weight="600">claude[bot]</tspan> committed <tspan font-family="Menlo,monospace">a1b2c3d</tspan> — 리뷰 코멘트 반영: 컨테이너 높이 · 함수 이름 · 주석</text>
+  <rect x="40" y="326" width="1120" height="72" rx="6" fill="#dafbe1" stroke="#aceebb"/>
+  <circle cx="68" cy="362" r="12" fill="#1a7f37"/>
+  <text x="68" y="367" font-family="Inter,Helvetica,sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">✓</text>
+  <text x="92" y="356" font-family="Inter,Helvetica,sans-serif" font-size="15" fill="#1a7f37" font-weight="700">All checks have passed</text>
+  <text x="92" y="380" font-family="Inter,Helvetica,sans-serif" font-size="13" fill="#57606a">1 successful check — Claude Review</text>
+  <rect x="980" y="346" width="160" height="34" rx="6" fill="#1f883d"/>
+  <text x="1060" y="368" font-family="Inter,Helvetica,sans-serif" font-size="13" fill="#fff" font-weight="600" text-anchor="middle">Merge pull request</text>
+</svg>
+<span class="ph-file">assets/images/05-21-pr-green.png</span>
+<span class="ph-desc">프롬프트 C 코멘트 아래로 claude 봇의 응답과 반영 커밋, 하단의 All checks have passed가 보이는 Conversation 화면</span>
+</div>
+<p class="note-bar note-bar--verify"><span class="note-ico">⚠️</span><strong>검증 포인트</strong> — 반영 커밋의 작성자가 claude[bot]이고 로컬 <code>git log</code>에는 아직 없어야 합니다. <code>git pull</code>로 받아 옵니다.</p>
+</div></section>
+
+<!-- 19 · 폴백 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">폴백</p>
+<h2 class="h2">토큰이 막히면 로컬 리뷰를 코멘트로 올린다</h2>
+<p class="lede">setup-token이나 Secret에서 막힌 사람은 이 경로로 갑니다. 통과 증거로 인정합니다.</p>
+<div class="grid g3 mt-m">
+  <div class="card-num"><div class="num">01</div><h3>리뷰 출력을 복사한다</h3><p>프롬프트 B의 결과나 <code>/code-review</code> 출력에서 Important와 Nit 부분을 그대로 복사합니다.</p></div>
+  <div class="card-num"><div class="num">02</div><h3>PR 코멘트로 붙인다</h3><p>PR의 Conversation 코멘트 칸에 붙여 넣고 Comment를 누릅니다. 첫 줄에 "로컬 리뷰"라고 적습니다.</p></div>
+  <div class="card-num"><div class="num">03</div><h3>반영은 구현 세션에</h3><p>구현 세션에 "Important만 고치고 <code>npm test</code>를 통과시켜라"를 넣고 푸시합니다. 작성자가 나인 것은 폴백이라 허용합니다.</p></div>
+</div>
+</div></section>
+
+<!-- 20 · 자체 실습 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">자체 실습</p>
+<h2 class="h2">네 것으로 바꿔 한 번 더</h2>
+<p class="lede">본인 3교시 브랜치로 같은 루프를 처음부터 돌립니다.</p>
+<div class="grid g3 mt-m">
+  <div class="card-num"><div class="num">01</div><h3>리뷰 세션</h3><p><code>/clear</code> 뒤 새 터미널에서 프롬프트 B로 Important와 Nit을 가릅니다.</p></div>
+  <div class="card-num"><div class="num">02</div><h3>PR과 자동 코멘트</h3><p>푸시 → PR → 코멘트. PR을 연 시각과 도착 시각을 적습니다.</p></div>
+  <div class="card-num"><div class="num">03</div><h3>멘션으로 반영</h3><p>프롬프트 C → claude[bot] 커밋 → 체크 green. 지표 ② O·X도 적습니다.</p></div>
+</div>
+<p class="note-bar note-bar--verify"><span class="note-ico">⚠️</span><strong>도달 기준</strong> — 본인 PR에 자동 코멘트가 달리고, 결함 ④가 Important, 나머지가 Nit으로 갈린 뒤, 브랜치를 직접 편집하지 않고 체크가 통과로 바뀐 화면을 보입니다.</p>
+</div></section>
+
+<!-- 21 · 에러 갤러리 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">막히면</p>
+<h2 class="h2">여기서 자주 걸린다</h2>
+<p class="lede">셋 중 하나입니다. 메시지도 Actions 로그의 빨간 줄도 그대로 Claude에 붙여넣습니다.</p>
+<div class="grid g3 mt-m">
+  <div class="card-num"><div class="num">01</div><h3>Actions가 돌지 않는다</h3><p>fork의 Actions 탭이 꺼져 있거나 Secret 이름이 다릅니다. 탭에서 enable, 이름은 YAML과 대조합니다.</p></div>
+  <div class="card-num"><div class="num">02</div><h3>Important가 0건이다</h3><p>REVIEW.md를 못 읽은 것입니다. 레포 루트에 복사하거나 프롬프트에 경로를 적습니다.</p></div>
+  <div class="card-num"><div class="num">03</div><h3>@claude가 반응이 없다</h3><p>워크플로에 <code>issue_comment</code> 트리거가 빠진 것입니다. 배포된 YAML과 대조하고, 안 되면 폴백으로.</p></div>
+</div>
+</div></section>
+<section class="slide"><div class="slide-inner">
+<p class="kicker">다음으로</p>
+<h2 class="h2">이어지는 모듈</h2>
+<nav class="module-nav">
+<a href="04-shared-config.html" class="nav-prev"><span class="nav-dir">← 이전</span><span class="nav-title">04 · 팀 표준을 레포에</span></a>
+<a href="06-parallel-and-loop.html" class="nav-next"><span class="nav-dir">다음 →</span><span class="nav-title">06 · 병렬 작업과 팀 루프</span></a>
+</nav>
+<p class="dim2 mt-l" style="font-size:14px">← → 방향키로 슬라이드 이동 · 한화투자증권 MTS Front End 개발자 교육</p>
+</div></section>
+</div>
+<div class="deck-hud"><span class="nav-hint">← →  방향키로 이동</span><span><span class="deck-counter" id="deckCur">1</span> / <span id="deckTot">1</span></span></div>
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.deck .slide'));
+  if(!slides.length) return;
+  var i=0,fill=document.getElementById('deckFill'),cur=document.getElementById('deckCur'),tot=document.getElementById('deckTot');
+  if(tot) tot.textContent=slides.length;
+  function show(n){
+    n=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('is-active',k===n);s.classList.toggle('is-past',k<n)});
+    i=n;
+    if(fill) fill.style.width=((n+1)/slides.length*100)+'%';
+    if(cur) cur.textContent=n+1;
+    slides[n].scrollTop=0;
+  }
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();show(i+1)}
+    else if(['ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1)}
+    else if(e.key==='Home'){e.preventDefault();show(0)}
+    else if(e.key==='End'){e.preventDefault();show(slides.length-1)}
+  });
+  var le=document.querySelector('.deck-edge.left'),re=document.querySelector('.deck-edge.right');
+  if(le) le.addEventListener('click',function(){show(i-1)});
+  if(re) re.addEventListener('click',function(){show(i+1)});
+  var h=parseInt((location.hash||'').replace('#',''),10);
+  show(h>0?h-1:0);
+  var refreshScrollHints=function(){slides.forEach(function(s){var hint=s.querySelector('.scroll-hint');if(hint){hint.style.display='none'}var ovf=s.scrollHeight-s.clientHeight>8;if(hint){hint.style.display=''}if(ovf){if(!hint){hint=document.createElement('p');hint.className='scroll-hint';hint.innerHTML='<span class="sh-ico" aria-hidden="true">↕</span> 마우스 휠로 위·아래로 스크롤하며 보세요';var inr=s.querySelector('.slide-inner')||s;var t=inr.querySelector('.h1,h1,.h2,h2');if(t&&t.parentNode){t.parentNode.insertBefore(hint,t.nextSibling)}else{inr.insertBefore(hint,inr.firstChild)}}}else if(hint){hint.parentNode.removeChild(hint)}});};
+  refreshScrollHints();window.addEventListener('resize',refreshScrollHints);window.addEventListener('load',refreshScrollHints);setTimeout(refreshScrollHints,400);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){setTimeout(refreshScrollHints,50)})}
+})();
+</script>
+<script>
+(function(){
+  function doCopy(btn){
+    var sel=btn.getAttribute('data-target');
+    var wrap=btn.closest('.code-wrap');
+    var pre=(sel&&document.querySelector(sel))||(wrap&&wrap.querySelector('.code-block'));
+    if(!pre) return;
+    var txt=(pre.textContent||pre.innerText||'').replace(/\s+$/,'');
+    function done(ok){
+      btn.textContent=ok?'복사됨':'복사 실패';
+      btn.classList.add(ok?'is-copied':'is-failed');
+      setTimeout(function(){btn.textContent='복사';btn.classList.remove('is-copied');btn.classList.remove('is-failed');},1400);
+    }
+    function fallback(){
+      var ta=document.createElement('textarea');
+      ta.value=txt;ta.setAttribute('readonly','');
+      ta.style.position='fixed';ta.style.left='-9999px';ta.style.top='0';
+      document.body.appendChild(ta);
+      ta.focus();ta.select();ta.setSelectionRange(0,ta.value.length);
+      var ok=false;
+      try{ok=document.execCommand('copy')}catch(e){}
+      document.body.removeChild(ta);
+      done(ok);
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){done(true)},fallback);
+    }else{fallback()}
+  }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.copy-btn');
+    if(!b&&e.target.classList&&e.target.classList.contains('deck-edge')){
+      var bs=document.querySelectorAll('.slide.is-active .copy-btn');
+      for(var k=0;k<bs.length;k++){var r=bs[k].getBoundingClientRect();
+        if(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom){b=bs[k];e.stopPropagation();e.preventDefault();break}}
+    }
+    if(!b) return;
+    doCopy(b);
+  },true);
+})();
+</script>
+</body>
+</html>

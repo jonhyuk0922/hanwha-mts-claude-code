@@ -14,3 +14,7 @@ yarn-error.log*
 .idea/
 .vscode/
 *.swp
+
+# 에이전트 세션 상태 (교육 자료 아님)
+.omc/
+.claude/settings.local.json
