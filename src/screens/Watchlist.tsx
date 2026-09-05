@@ -11,6 +11,8 @@ import { PriceText } from '../components/PriceText';
 const COMPACT_THRESHOLD = 6;
 /** 목록 슬롯 높이(px). 보통 모드 6행(44px) = 촘촘 모드 8행(33px). 행 수가 바뀌어도 패널 높이는 이 값으로 고정된다 */
 const LIST_HEIGHT = 264;
+/** 정렬 헤더 행 높이(px). styles.css 의 .wl-head 와 같은 값. 슬롯은 이만큼 더 커져야 마지막 행이 잘리지 않는다 */
+const HEAD_HEIGHT = 28;
 /** 헤더에 표시하는 현재 정렬 방향 */
 const DIRECTION_MARK: Record<SortDirection, string> = { desc: '▼', asc: '▲' };
 
@@ -58,7 +60,7 @@ export function Watchlist({ items, quotes, selected, onSelect }: WatchlistProps)
         ) : null
       }
     >
-      <div className="watchlist-body" style={{ height: LIST_HEIGHT }}>
+      <div className="watchlist-body" style={{ height: HEAD_HEIGHT + LIST_HEIGHT }}>
         <div className="wl-head">
           <span className="wl-head-name">종목</span>
           <button
