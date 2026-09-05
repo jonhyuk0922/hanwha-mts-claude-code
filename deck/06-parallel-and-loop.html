@@ -469,6 +469,7 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
 .deck-edge{width:4%;max-width:64px}
 
 </style>
+</head>
 <body class="deck-mode">
 <div class="deck-progress"><span id="deckFill"></span></div>
 <div class="deck">
@@ -664,11 +665,14 @@ for d in ../wt-a ../wt-b ../wt-c; do (cd "$d" &amp;&amp; npm run setup); done</p
 <p class="kicker">따라하기 · 2/4</p>
 <h2 class="h2">/clear 뒤 시작값부터 적습니다</h2>
 <div class="grid g2" style="align-items:start">
+<div>
 <ol class="step-list" style="margin-top:20px">
 <li><div class="step-num">01</div><div class="step-body"><strong>시작값을 적는다</strong><span class="step-sub"><code>/clear</code>를 치고 바로 <code>/context</code>. 사용률과 지금 시각을 워크시트 "시작" 칸에 적습니다.</span></div></li>
 <li><div class="step-num">02</div><div class="step-body"><strong>한 프롬프트로 시작한다</strong><span class="step-sub">다음 장의 프롬프트를 그대로 넣고, 이후 보내는 프롬프트마다 바를 하나씩 긋습니다.</span>
 <div class="step-key">확인 한 번(y 입력)도 왕복 한 번입니다. 세지 않으면 왕복이 늘어도 모릅니다.</div></div></li>
 </ol>
+<div class="why"><span class="why-label">왜</span><p>시작값이 없으면 증가분을 계산할 수 없습니다.</p></div>
+</div>
 <div class="img-ph" data-capture="06-11-context-before-after.png" style="margin-top:20px">
 <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="/context 를 세션 시작 직후와 종료 직전에 두 번 쳐서 사용률 12%에서 50%로 오른 것을 나란히 보인 목업">
 <rect width="800" height="380" fill="#ececec"/>
@@ -727,6 +731,7 @@ for d in ../wt-a ../wt-b ../wt-c; do (cd "$d" &amp;&amp; npm run setup); done</p
 <li><div class="step-num">04</div><div class="step-body"><strong>한 줄로 기록한다</strong><span class="step-sub">아래 서식대로 워크시트 기준선 칸에 적습니다. 대괄호 안이 태스크명입니다.</span>
 <div class="step-key">이 한 줄이 지표 ③이자 4주 뒤 비교의 출발점입니다.</div></div></li>
 </ol>
+<div class="why"><span class="why-label">왜</span><p>같은 서식이어야 4주 뒤 줄끼리 비교됩니다.</p></div>
 <div class="grid g2">
 <div class="code-wrap">
 <div class="code-head"><span class="code-label">템플릿</span><button class="copy-btn" data-target="#p-fmt-t">복사</button></div>
@@ -840,6 +845,7 @@ for d in ../wt-a ../wt-b ../wt-c; do (cd "$d" &amp;&amp; npm run setup); done</p
 <li><div class="step-num">02</div><div class="step-body"><strong>지표 다섯 칸을 채운다</strong><span class="step-sub">①②③에 오늘 숫자, ④⑤에 사내 측정 원천·담당자·첫 집계일, 4주 표에 주차별 담당자를 넣습니다.</span>
 <div class="step-key">짝과 ①②③의 단위를 맞춥니다. 다르면 4주 뒤 비교가 안 됩니다.</div></div></li>
 </ol>
+<div class="why"><span class="why-label">왜</span><p>기준선은 두 줄부터 비교가 됩니다.</p></div>
 <p class="note-bar note-bar--verify"><span class="note-ico">⚠️</span>검증 포인트 — 기준선 한 줄이 대체 단위 3종으로 적혀 있고, 지표 ①②③이 오늘 숫자로 채워져 있으면 통과입니다.</p>
 </div></section>
 

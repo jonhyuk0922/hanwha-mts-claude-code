@@ -787,11 +787,14 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
 <p class="kicker">따라하기 · 3/4</p>
 <h2 class="h2">/doctor 로 코드에서 읽히는 줄까지 걷어냅니다</h2>
 <div class="grid g2" style="align-items:start">
+<div>
 <ol class="step-list" style="margin-top:20px">
 <li><div class="step-num">01</div><div class="step-body"><strong>/doctor 실행</strong><span class="step-sub">줄인 CLAUDE.md를 커밋한 뒤 <code>/doctor</code> 를 칩니다. 디렉토리 구조나 의존성 목록처럼 코드에서 도출되는 줄을 삭제 후보로 보여 줍니다.</span></div></li>
 <li><div class="step-num">02</div><div class="step-body"><strong>줄 수 확인</strong><span class="step-sub"><code>wc -l CLAUDE.md</code> 로 200줄 아래인지 보고, 정본 <code>docs/templates/CLAUDE.final.md</code> 55줄과 무엇이 다른지 봅니다.</span>
 <div class="step-key">CLAUDE.md 항목이 안 보이면 버전이 낮은 것입니다. <code>claude update</code> 뒤 다시 엽니다.</div></div></li>
 </ol>
+<div class="why"><span class="why-label">왜</span><p>코드에서 읽히는 줄은 매 세션 토큰만 먹습니다.</p></div>
+</div>
 <div class="img-ph" data-capture="04-14-doctor.png" style="margin-top:20px">
 <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="/doctor 가 CLAUDE.md에서 코드로 도출 가능한 줄을 삭제 후보로 보여 주는 목업">
 <rect width="800" height="380" fill="#ececec"/>
@@ -881,6 +884,7 @@ fi</pre>
 <li><div class="step-num">02</div><div class="step-body"><strong>세션을 새로 열어 확인</strong><span class="step-sub">훅은 시작 때 읽힙니다. <code>claude</code> 를 다시 열고 <code>/hooks</code> 에 PostToolUse 가 보이면 됩니다.</span>
 <div class="step-key">막히면 <code>git checkout after-b4</code> 로 이 상태를 그대로 받습니다.</div></div></li>
 </ol>
+<div class="why"><span class="why-label">왜</span><p>훅은 세션 시작 때만 읽힙니다.</p></div>
 </div>
 </div></section>
 
@@ -901,7 +905,7 @@ fi</pre>
 이 파일을 참조하는 곳도 맞춰라. 그 외 줄은 건드리지 마라.</pre>
 </div>
 </div>
-<p class="dim" style="font-size:18px;margin:12px 0 0">[ ] 안이 바꿔 끼우는 자리입니다. 이름만 바꾸라고 해도 저장 직후 검사가 돌아 심어 둔 두 문제가 잡힙니다.</p>
+<p class="dim" style="font-size:18px;margin:12px 0 0">[ ] 안만 바꿔 끼웁니다. 이름만 바꾸라고 해도 저장 직후 검사가 돌아 심어 둔 두 문제가 잡힙니다.</p>
 <p class="note-bar note-bar--verify"><span class="note-ico">⚠️</span>검증 포인트 — 훅 출력이 뜨고 Claude가 미사용 import와 any를 스스로 고치면 통과입니다. 아무 일도 없으면 새 세션인지, exit 2인지 봅니다.</p>
 </div></section>
 
