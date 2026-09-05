@@ -1,0 +1,39 @@
+# 오픈소스 claude-code-action 으로 PR 자동 리뷰.
+# 준비: 각자 fork 의 Settings → Secrets and variables → Actions 에
+#       `claude setup-token` 으로 얻은 토큰을 CLAUDE_CODE_OAUTH_TOKEN 이름으로 등록한다.
+name: Claude Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          use_sticky_comment: true
+          prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+
+            이 PR 의 diff 를 REVIEW.md 기준으로 리뷰하라.
+            (레포 루트에 REVIEW.md 가 없으면 docs/templates/REVIEW.md 를 기준으로 삼는다.)
+
+            - 지적은 Important 와 Nit 두 묶음으로 분리한다.
+            - 정확성이나 요구사항에 영향을 주는 것만 Important 로 올린다. 나머지는 전부 Nit.
+            - 각 항목은 파일:줄 위치와 한 줄 근거를 붙인다. 코드를 직접 고치지 않는다.
+            - 결과는 `gh pr comment` 로 PR 에 하나의 코멘트로 남긴다.
+          claude_args: |
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "ORD-20260922-0001",
+    "symbol": "005930",
+    "name": "삼성전자",
+    "side": "buy",
+    "price": 71000,
+    "qty": 30,
+    "filledQty": 30,
+    "status": "filled",
+    "placedAt": "2026-09-22T09:02:14+09:00"
+  },
+  {
+    "id": "ORD-20260922-0002",
+    "symbol": "000660",
+    "name": "SK하이닉스",
+    "side": "buy",
+    "price": 261000,
+    "qty": 5,
+    "filledQty": 5,
+    "status": "filled",
+    "placedAt": "2026-09-22T09:05:41+09:00"
+  },
+  {
+    "id": "ORD-20260922-0003",
+    "symbol": "035720",
+    "name": "카카오",
+    "side": "sell",
+    "price": 60500,
+    "qty": 40,
+    "filledQty": 0,
+    "status": "open",
+    "placedAt": "2026-09-22T09:11:03+09:00"
+  },
+  {
+    "id": "ORD-20260922-0004",
+    "symbol": "005380",
+    "name": "현대차",
+    "side": "buy",
+    "price": 243500,
+    "qty": 8,
+    "filledQty": 3,
+    "status": "open",
+    "placedAt": "2026-09-22T09:14:27+09:00"
+  },
+  {
+    "id": "ORD-20260922-0005",
+    "symbol": "003530",
+    "name": "한화투자증권",
+    "side": "buy",
+    "price": 4200,
+    "qty": 500,
+    "filledQty": 0,
+    "status": "cancelled",
+    "placedAt": "2026-09-22T09:18:55+09:00"
+  }
+]
