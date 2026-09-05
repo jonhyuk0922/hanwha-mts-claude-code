@@ -3,11 +3,13 @@ import type { Quote, QuoteTick } from '../types';
 /**
  * 시세 증분(tick)을 기존 스냅샷에 반영한 새 스냅샷을 돌려준다.
  * - 다른 종목의 tick 은 무시한다.
+ * - 타임스탬프가 현재 스냅샷보다 이른 tick 은 무시한다 (네트워크에서 순서가 뒤집혀 늦게 도착한 옛 데이터).
  * - 호가(asks/bids)가 없는 tick 은 가격만 갱신하고 호가는 유지한다.
  * - 입력 객체는 변경하지 않는다.
  */
 export function applyQuote(prev: Quote, incoming: QuoteTick): Quote {
   if (incoming.symbol !== prev.symbol) return prev;
+  if (incoming.ts < prev.ts) return prev;
 
   const change = incoming.price - prev.prevClose;
   const changeRate = prev.prevClose === 0 ? 0 : round2((change / prev.prevClose) * 100);
