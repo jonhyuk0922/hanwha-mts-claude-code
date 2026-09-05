@@ -6,9 +6,9 @@
 
 - `npm run setup` — 의존성 설치. 끝나면 `READY: hanwha-mts-claude-code`를 출력한다. `npm install`을 직접 쓰지 않는다.
 - `npm test -- tests/<파일>` — 테스트 하나만 실행.
-- `npm run lint -- --quiet` — 경고 없이 에러만.
+- `npm run lint -- --max-warnings 0` — 경고도 실패로 본다.
 - `npm run typecheck` — `tsc --noEmit`.
-- 수정이 끝나면 `npm test && npm run lint -- --quiet && npm run typecheck`를 직접 실행하고 출력을 보고한다. 사람의 확인을 기다리지 않는다.
+- 수정이 끝나면 `npm test && npm run lint -- --max-warnings 0 && npm run typecheck`를 직접 실행하고 출력을 보고한다. 사람의 확인을 기다리지 않는다.
 
 ## 구조 규칙
 

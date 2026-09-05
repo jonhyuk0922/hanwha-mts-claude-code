@@ -33,7 +33,7 @@
 구현이 끝났을 때 새 세션이 스스로 실행할 명령과 기대 출력을 순서대로 적는다. 사람이 확인해 줄 단계를 남기지 않는다.
 
 1. `npm test` — 전부 통과
-2. `npm run lint -- --quiet && npm run typecheck` — 출력 없음
+2. `npm run lint -- --max-warnings 0 && npm run typecheck` — 경고 0, 출력 없음
 3. `npm run dev` 로 띄운 뒤 <화면> 에서 <동작> → <기대 결과>
 4. 
 

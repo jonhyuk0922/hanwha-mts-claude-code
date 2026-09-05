@@ -50,13 +50,13 @@ git worktree list
 npm run setup        # 의존성 설치 → 마지막 줄 READY: hanwha-mts-claude-code
 npm run dev          # 로컬 실행
 npm test             # 테스트 전체. 하나만: npm test -- tests/validateQty.test.ts
-npm run lint         # 린트. 에러만: npm run lint -- --quiet
+npm run lint         # 린트. 경고도 실패로: npm run lint -- --max-warnings 0
 npm run typecheck    # tsc --noEmit
 ```
 
 ## 첫 프롬프트 끝에 붙이는 한 줄
 
-`npm test && npm run lint -- --quiet && npm run typecheck 를 직접 실행하고 출력을 보고하라.`
+`npm test && npm run lint -- --max-warnings 0 && npm run typecheck 를 직접 실행하고 출력을 보고하라.`
 
 ## 체크포인트 브랜치
 

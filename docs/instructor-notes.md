@@ -117,7 +117,7 @@ git worktree list
 - 3교시 카드 마지막 줄: *"확정되지 않은 항목은 구현하지 말고 질문으로 먼저 정리한다. 질문은 최대 3개."* 모호 2건: 정렬 상태 유지 위치 / 등락률 부호·거래정지 종목 처리. 정답 파일 3개: `Watchlist.tsx` · 정렬 상태 보관 모듈 · `sortByChange.ts`. 판정 3칸: 질문 0건? / 3파일 경로 명시? / 초과 1개 이하?
 - 3교시 "세션을 닫는다" = 세션 완전 종료 후 새로 실행. `/clear` 도 `--resume` 도 아니다. SPEC.md 는 종료 전에 커밋한다.
 - 4교시 드리프트 프롬프트: *"관심종목 목록에 정렬을 붙이고 목록 데이터를 서버에서 받아오게 고쳐라. 어떤 파일을 손댈지는 네가 판단해라."* 3축: 데이터 페칭 위치 / 네이밍 / 로딩·에러 처리. 도입(CLAUDE.md 없음)과 마무리(체크인 후) 같은 프롬프트.
-- 4교시 훅: PostToolUse · matcher `Edit|Write` · `.claude/hooks/check.sh` (`npm run lint -- --quiet && npm run typecheck`) · exit 2. 붙인 뒤 세션을 한 번 새로 연다.
+- 4교시 훅: PostToolUse · matcher `Edit|Write` · `.claude/hooks/check.sh` (`npm run lint -- --max-warnings 0 && npm run typecheck`) · exit 2. 붙인 뒤 세션을 한 번 새로 연다.
 - 4교시 프루닝: 초안 180줄 → 정본 55줄.
 - 5교시 인증: 각자 fork → `claude setup-token` 으로 얻은 토큰을 Actions Secret `CLAUDE_CODE_OAUTH_TOKEN` 으로 → 트리거 `pull_request` opened. 폴백: 로컬 `/code-review` 출력을 PR 코멘트로 (통과 증거로 인정).
 - 5교시 관리형 Code Review: Team/Enterprise 전용, 리뷰당 평균 $15~25. 비교 설명만.

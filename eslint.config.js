@@ -17,8 +17,8 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs['recommended-latest'].rules,
       // 팀 표준: 미사용 변수·any 는 에러. 훅(check.sh)이 --quiet 로 에러만 보므로 error 여야 잡힌다.
-      '@typescript-eslint/no-unused-vars': 'error',
-      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
 );
