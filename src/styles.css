@@ -144,10 +144,16 @@ input {
 }
 
 /* ── 관심종목 ───────────────────────────────────── */
+/* 목록 슬롯: 높이는 Watchlist.tsx 의 LIST_HEIGHT 가 정한다. 슬롯 밖은 잘라 패널 높이를 고정한다 */
+.watchlist-body {
+  overflow: hidden;
+}
 .watchlist {
   margin: 0;
   padding: 0;
   list-style: none;
+  height: 100%;
+  overflow-y: auto;
 }
 .watchlist-row {
   display: flex;
@@ -197,12 +203,16 @@ input {
 
 /* 7행 이상: 촘촘 모드 — 행을 낮추고 현재가를 이름 옆 한 줄로 */
 .watchlist--compact .watchlist-row {
-  height: 30px;
+  height: 33px;
   font-size: 12px;
 }
+/* 종목명 칸 폭을 고정하고 넘치는 글자는 말줄임으로 자른다. 등락률 칸(64px)을 침범하지 않는다 */
 .watchlist--compact .wl-name {
-  flex: 0 0 120px;
-  overflow: visible;
+  flex: 0 0 136px;
+  overflow: hidden;
+}
+.watchlist--compact .wl-code {
+  display: none;
 }
 .watchlist--compact .wl-sub {
   display: inline;
