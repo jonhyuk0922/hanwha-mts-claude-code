@@ -155,6 +155,35 @@ input {
   height: 100%;
   overflow-y: auto;
 }
+/* 정렬 헤더 행: "등락률" 칸을 누르면 정렬 방향이 바뀐다 */
+.wl-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 28px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--hover);
+  color: var(--muted);
+  font-size: 12px;
+}
+.wl-head-name {
+  flex: 1 1 auto;
+}
+.wl-head-sort {
+  flex: 0 0 64px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: right;
+  cursor: pointer;
+}
+.wl-head-sort:hover,
+.wl-head-sort.is-on {
+  color: var(--text);
+  font-weight: 600;
+}
 .watchlist-row {
   display: flex;
   align-items: center;

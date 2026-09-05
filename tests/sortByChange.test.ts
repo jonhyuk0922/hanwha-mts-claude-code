@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { compareByChange, sortByChange } from '../src/lib/sortByChange';
+import { compareByChange, isSortDirection, sortByChange, toggleDirection } from '../src/lib/sortByChange';
 
 const items = [
   { symbol: 'A', changeRate: 0.5 },
@@ -45,5 +45,31 @@ describe('sortByChange', () => {
       { id: 3, changeRate: 2 },
     ];
     expect(sortByChange(ties).map((t) => t.id)).toEqual([3, 1, 2]);
+  });
+});
+
+describe('toggleDirection', () => {
+  it('정렬 전(null)에서 첫 클릭은 내림차순이다', () => {
+    expect(toggleDirection(null)).toBe('desc');
+  });
+
+  it('내림차순 ↔ 오름차순을 오간다', () => {
+    expect(toggleDirection('desc')).toBe('asc');
+    expect(toggleDirection('asc')).toBe('desc');
+  });
+});
+
+describe('isSortDirection', () => {
+  it("'asc' 와 'desc' 만 정렬 방향이다", () => {
+    expect(isSortDirection('asc')).toBe(true);
+    expect(isSortDirection('desc')).toBe(true);
+  });
+
+  it('그 밖의 값은 정렬 방향이 아니다', () => {
+    expect(isSortDirection(null)).toBe(false);
+    expect(isSortDirection(undefined)).toBe(false);
+    expect(isSortDirection('')).toBe(false);
+    expect(isSortDirection('DESC')).toBe(false);
+    expect(isSortDirection(1)).toBe(false);
   });
 });

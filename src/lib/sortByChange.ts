@@ -19,3 +19,13 @@ export function compareByChange<T extends HasChangeRate>(a: T, b: T, direction: 
 export function sortByChange<T extends HasChangeRate>(items: readonly T[], direction: SortDirection = 'desc'): T[] {
   return [...items].sort((a, b) => compareByChange(a, b, direction));
 }
+
+/** 헤더를 눌렀을 때의 다음 방향. 첫 클릭은 내림차순(상승률 큰 순), 그다음부터는 반대 방향으로 오간다. */
+export function toggleDirection(current: SortDirection | null): SortDirection {
+  return current === 'desc' ? 'asc' : 'desc';
+}
+
+/** 저장소에서 읽은 값처럼 출처를 믿을 수 없는 값이 정렬 방향인지 판별한다. */
+export function isSortDirection(value: unknown): value is SortDirection {
+  return value === 'asc' || value === 'desc';
+}
