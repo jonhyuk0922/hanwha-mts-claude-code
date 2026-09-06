@@ -632,7 +632,8 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
 <section class="slide"><div class="slide-inner">
 <p class="kicker">명령 대본 · 나중에 직접 해볼 때</p>
 <h2 class="h2">워크트리 넉 줄로 시작합니다</h2>
-<p class="lede">브랜치 하나에 폴더 하나를 붙이고, 폴더마다 세션을 따로 엽니다.</p>
+<p class="lede">브랜치마다 폴더 하나를 붙이고 세션을 따로 엽니다.</p>
+<p class="note-bar note-bar--tip"><span class="note-ico">💡</span>팁 — 따라와야 할 로컬 파일은 <code>.worktreeinclude</code> 에 적어 두면 새 폴더로 복사됩니다.</p>
 <div class="code-wrap">
 <div class="code-head"><span class="code-label">레포 루트에서 · 강사 화면과 같은 구성</span><button class="copy-btn" data-target="#p-wt">복사</button></div>
 <pre class="code-block" id="p-wt">git worktree add ../wt-a -b demo/findings main
@@ -641,9 +642,9 @@ git worktree add ../wt-c -b demo/skeleton main
 for d in ../wt-a ../wt-b ../wt-c; do (cd "$d" &amp;&amp; npm run setup); done</pre>
 </div>
 <div class="grid g3 mt-m">
-<div class="card-soft" style="padding:18px 20px"><div class="eyebrow" style="margin-bottom:8px">의미</div><p class="dim" style="margin:0;font-size:16px;line-height:1.55">폴더 셋이 같은 레포의 다른 브랜치를 가리킵니다. 의존성은 폴더마다 따로 깔아야 <code>npm test</code>가 돕니다.</p></div>
-<div class="card-soft" style="padding:18px 20px"><div class="eyebrow" style="margin-bottom:8px">본인 업무</div><p class="dim" style="margin:0;font-size:16px;line-height:1.55">서로 다른 파일을 고치는 작업 둘을 동시에 돌릴 때 이 넉 줄로 시작합니다.</p></div>
-<div class="card-soft" style="padding:18px 20px"><div class="eyebrow" style="margin-bottom:8px">바꿔 끼우는 자리</div><p class="dim" style="margin:0;font-size:16px;line-height:1.55">폴더 이름 wt-a·b·c와 브랜치 이름 demo/*. 끝나면 <code>git worktree remove</code>로 지웁니다.</p></div>
+<div class="card-soft" style="padding:18px 20px"><div class="eyebrow" style="margin-bottom:8px">의미</div><p class="dim" style="margin:0;font-size:16px;line-height:1.55">폴더 셋이 다른 브랜치를 가리킵니다. 새 체크아웃이라 <code>.env</code> 같은 파일은 따라오지 않습니다.</p></div>
+<div class="card-soft" style="padding:18px 20px"><div class="eyebrow" style="margin-bottom:8px">본인 업무</div><p class="dim" style="margin:0;font-size:16px;line-height:1.55">다른 파일을 고치는 작업 둘을 동시에 돌릴 때 씁니다.</p></div>
+<div class="card-soft" style="padding:18px 20px"><div class="eyebrow" style="margin-bottom:8px">바꿔 끼우는 자리</div><p class="dim" style="margin:0;font-size:16px;line-height:1.55">폴더 이름과 브랜치 이름. 끝나면 <code>git worktree remove</code>.</p></div>
 </div>
 </div></section>
 
@@ -831,6 +832,7 @@ for d in ../wt-a ../wt-b ../wt-c; do (cd "$d" &amp;&amp; npm run setup); done</p
 <tr><th>2주</th><td>REVIEW.md와 자동 리뷰를 실제 레포 1곳에</td><td>PR 1건에 자동 코멘트</td></tr>
 <tr><th>3주</th><td>지표 ①②③ 주간 수집 시작</td><td>세 칸에 주간 숫자</td></tr>
 <tr><th>4주</th><td>④⑤ 원천 연결과 첫 회고</td><td>담당자가 첫 집계일에 숫자 하나</td></tr>
+<tr><th>이후</th><td>관리자와 정할 것 — 데이터 보관 정책 · 감사 로그 · CI 인증 방식</td><td>담당 임원·보안팀과 첫 미팅</td></tr>
 </tbody>
 </table>
 <p class="table-conclusion">팀 전체가 아니라 레포 한 곳에서 4주를 채우는 것이 정착의 최소 단위입니다.</p>
