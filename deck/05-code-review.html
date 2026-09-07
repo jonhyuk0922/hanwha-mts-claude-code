@@ -664,95 +664,6 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
 <!-- 9 · 따라하기 1/4 -->
 <section class="slide"><div class="slide-inner">
 <p class="kicker">즉시 따라하기 1/7</p>
-<h2 class="h2">리뷰 세션을 따로 연다</h2>
-<div class="why">
-  <span class="why-label">왜 이걸 하나</span>
-  <p>리뷰 세션에 구현 이력이 없어야 그때의 사정이 아니라 diff 자체가 읽힙니다.</p>
-</div>
-<ol class="step-list">
-  <li>
-    <div class="step-num">01</div>
-    <div class="step-body">
-      <strong>구현 브랜치를 정한다</strong>
-      <span class="step-sub">3교시 브랜치가 있으면 그대로, 없으면 <code>git checkout review-fixture</code>. 그 세션에서 다음 장의 프롬프트 A를 넣습니다.</span>
-    </div>
-  </li>
-  <li>
-    <div class="step-num">02</div>
-    <div class="step-body">
-      <strong>새 터미널에서 리뷰 세션을 연다</strong>
-      <span class="step-sub">새 탭에서 <code>claude</code>를 새로 실행하고 <code>/model</code>로 상위 모델을 고른 뒤 프롬프트 B를 넣습니다. 상위 모델은 리뷰 세션에서만 씁니다.</span>
-      <div class="step-key">프롬프트 B의 결과에 Important가 없으면 리뷰가 아니라 요약을 한 것입니다. 에러 갤러리 ②로 갑니다.</div>
-    </div>
-  </li>
-</ol>
-</div></section>
-
-<!-- 10 · 프롬프트 A -->
-<section class="slide"><div class="slide-inner">
-<p class="kicker">프롬프트 A · 구현 세션</p>
-<h2 class="h2">리뷰어가 볼 곳을 먼저 짚는다</h2>
-<p class="lede">결과는 PR 본문에 그대로 붙입니다. 파일을 만들지 않으니 diff가 늘지 않습니다.</p>
-<div class="code-wrap">
-  <div class="code-head">
-    <span class="code-label">프롬프트 A · 구현 브랜치 세션에서 입력</span>
-    <button class="copy-btn" data-target="#prompt-a">복사</button>
-  </div>
-  <pre class="code-block" id="prompt-a">git diff main..HEAD 를 읽고 이 변경이 무엇을 바꿨는지 세 줄로 요약해라.
-리뷰어가 먼저 봐야 할 파일:줄을 3곳 지목하고 이유를 한 줄씩 붙여라.
-결과는 화면에만 내라. 파일을 만들거나 코드를 고치지 마라.</pre>
-</div>
-<div class="grid g3 mt-m">
-  <div class="card-soft" style="padding:18px 20px">
-    <div class="eyebrow" style="margin-bottom:8px">의미</div>
-    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">구현 세션의 맥락을 PR 본문 한 장으로 꺼내 리뷰어의 진입점을 만듭니다.</p>
-  </div>
-  <div class="card-soft" style="padding:18px 20px">
-    <div class="eyebrow" style="margin-bottom:8px">본인 업무</div>
-    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">PR을 열기 전에 설명을 쓰던 일이 이 프롬프트로 바뀝니다.</p>
-  </div>
-  <div class="card-soft" style="padding:18px 20px">
-    <div class="eyebrow" style="margin-bottom:8px">바꿔 끼우는 자리</div>
-    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">비교 범위. 예: main..HEAD 대신 release/1.2..HEAD, 지목 개수 3곳</p>
-  </div>
-</div>
-</div></section>
-
-<!-- 11 · 프롬프트 B -->
-<section class="slide"><div class="slide-inner">
-<p class="kicker">프롬프트 B · 리뷰 세션</p>
-<h2 class="h2">diff와 REVIEW.md만 읽게 한다</h2>
-<p class="lede">새 세션이라 이전 대화가 없고, 읽을 범위를 둘로 좁혀 편향을 막습니다.</p>
-<div class="code-wrap">
-  <div class="code-head">
-    <span class="code-label">프롬프트 B · 새 터미널의 리뷰 세션에서 입력</span>
-    <button class="copy-btn" data-target="#prompt-b">복사</button>
-  </div>
-  <pre class="code-block" id="prompt-b">git diff main..HEAD 와 docs/templates/REVIEW.md 만 읽어라. 다른 파일은 열지 마라.
-지적을 Important 와 Nit 두 묶음으로 나눠라.
-정확성이나 요구사항에 영향을 주는 것만 Important 로 올리고, 각 항목에 파일:줄과 한 줄 근거를 붙여라.
-코드는 고치지 마라.</pre>
-</div>
-<div class="grid g3 mt-m">
-  <div class="card-soft" style="padding:18px 20px">
-    <div class="eyebrow" style="margin-bottom:8px">의미</div>
-    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">신선한 컨텍스트에 REVIEW.md의 경계를 주고 diff만 판정하게 합니다.</p>
-  </div>
-  <div class="card-soft" style="padding:18px 20px">
-    <div class="eyebrow" style="margin-bottom:8px">본인 업무</div>
-    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">동료 PR을 열어 보기 전에 먼저 돌리는 1차 리뷰가 됩니다.</p>
-  </div>
-  <div class="card-soft" style="padding:18px 20px">
-    <div class="eyebrow" style="margin-bottom:8px">바꿔 끼우는 자리</div>
-    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">기준 파일 경로. 예: 팀 REVIEW.md, 화면 계층용 REVIEW-ui.md</p>
-  </div>
-</div>
-<p class="note-bar note-bar--tip"><span class="note-ico">💡</span><strong>팁</strong> — <code>/code-review</code> 한 줄로도 리뷰가 돌지만 그 명령은 REVIEW.md 를 읽지 않습니다. 폴백 장에서 그 차이를 씁니다.</p>
-</div></section>
-
-<!-- 12 · 따라하기 2/7 fork -->
-<section class="slide"><div class="slide-inner">
-<p class="kicker">즉시 따라하기 2/7</p>
 <h2 class="h2">레포를 fork한다</h2>
 <div class="why">
   <span class="why-label">왜 이걸 하나</span>
@@ -769,10 +680,8 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
   </li>
 </ol>
 </div></section>
-
-<!-- 13 · 따라하기 3/7 토큰 -->
 <section class="slide"><div class="slide-inner">
-<p class="kicker">즉시 따라하기 3/7</p>
+<p class="kicker">즉시 따라하기 2/7</p>
 <h2 class="h2">토큰을 받는다</h2>
 <div class="why">
   <span class="why-label">왜 이걸 하나</span>
@@ -789,10 +698,8 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
   </li>
 </ol>
 </div></section>
-
-<!-- 14 · 따라하기 4/7 Secret -->
 <section class="slide"><div class="slide-inner">
-<p class="kicker">즉시 따라하기 4/7</p>
+<p class="kicker">즉시 따라하기 3/7</p>
 <h2 class="h2">Secret에 넣는다</h2>
 <div class="why">
   <span class="why-label">왜 이걸 하나</span>
@@ -809,8 +716,6 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
   </li>
 </ol>
 </div></section>
-
-<!-- 15 · 화면 ① Secret 등록 -->
 <section class="slide"><div class="slide-inner">
 <p class="kicker">화면 ① · Secret</p>
 <h2 class="h2">Secret 이름은 이 값 그대로</h2>
@@ -858,10 +763,8 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
 <span class="ph-desc">fork의 Settings → Secrets and variables → Actions → New repository secret 화면, 이름 칸에 CLAUDE_CODE_OAUTH_TOKEN을 친 상태</span>
 </div>
 </div></section>
-
-<!-- 16 · 따라하기 5/7 PR -->
 <section class="slide"><div class="slide-inner">
-<p class="kicker">즉시 따라하기 5/7</p>
+<p class="kicker">즉시 따라하기 4/7</p>
 <h2 class="h2">푸시하고 PR을 연다</h2>
 <div class="why">
   <span class="why-label">왜 이걸 하나</span>
@@ -878,8 +781,6 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
   </li>
 </ol>
 </div></section>
-
-<!-- 17 · 화면 ② PR 생성 -->
 <section class="slide"><div class="slide-inner">
 <p class="kicker">화면 ② · PR</p>
 <h2 class="h2">base는 내 fork, compare는 내 브랜치</h2>
@@ -922,8 +823,89 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
 <span class="ph-desc">Compare &amp; pull request 직후 화면 — base repository가 본인 fork, compare가 본인 브랜치인 상태 전체</span>
 </div>
 </div></section>
-
-<!-- 18 · 따라하기 6/7 코멘트 확인 -->
+<section class="slide"><div class="slide-inner">
+<p class="kicker">즉시 따라하기 5/7</p>
+<h2 class="h2">PR이 도는 동안 리뷰 세션을 엽니다</h2>
+<div class="why">
+  <span class="why-label">왜 이걸 하나</span>
+  <p>리뷰 세션에 구현 이력이 없어야 그때의 사정이 아니라 diff 자체가 읽힙니다.</p>
+</div>
+<ol class="step-list">
+  <li>
+    <div class="step-num">01</div>
+    <div class="step-body">
+      <strong>구현 브랜치를 정한다</strong>
+      <span class="step-sub">3교시 브랜치가 있으면 그대로, 없으면 <code>git checkout review-fixture</code>. 그 세션에서 다음 장의 프롬프트 A를 넣습니다.</span>
+    </div>
+  </li>
+  <li>
+    <div class="step-num">02</div>
+    <div class="step-body">
+      <strong>새 터미널에서 리뷰 세션을 연다</strong>
+      <span class="step-sub">새 탭에서 <code>claude</code>를 새로 실행하고 <code>/model</code>로 상위 모델을 고른 뒤 프롬프트 B를 넣습니다. 상위 모델은 리뷰 세션에서만 씁니다.</span>
+      <div class="step-key">프롬프트 B의 결과에 Important가 없으면 리뷰가 아니라 요약을 한 것입니다. 에러 갤러리 ②로 갑니다.</div>
+    </div>
+  </li>
+</ol>
+</div></section>
+<section class="slide"><div class="slide-inner">
+<p class="kicker">프롬프트 A · 구현 세션</p>
+<h2 class="h2">리뷰어가 볼 곳을 먼저 짚는다</h2>
+<p class="lede">결과는 PR 본문에 그대로 붙입니다. 파일을 만들지 않으니 diff가 늘지 않습니다.</p>
+<div class="code-wrap">
+  <div class="code-head">
+    <span class="code-label">프롬프트 A · 구현 브랜치 세션에서 입력</span>
+    <button class="copy-btn" data-target="#prompt-a">복사</button>
+  </div>
+  <pre class="code-block" id="prompt-a">git diff main..HEAD 를 읽고 이 변경이 무엇을 바꿨는지 세 줄로 요약해라.
+리뷰어가 먼저 봐야 할 파일:줄을 3곳 지목하고 이유를 한 줄씩 붙여라.
+결과는 화면에만 내라. 파일을 만들거나 코드를 고치지 마라.</pre>
+</div>
+<div class="grid g3 mt-m">
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">의미</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">구현 세션의 맥락을 PR 본문 한 장으로 꺼내 리뷰어의 진입점을 만듭니다.</p>
+  </div>
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">본인 업무</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">PR을 열기 전에 설명을 쓰던 일이 이 프롬프트로 바뀝니다.</p>
+  </div>
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">바꿔 끼우는 자리</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">비교 범위. 예: main..HEAD 대신 release/1.2..HEAD, 지목 개수 3곳</p>
+  </div>
+</div>
+</div></section>
+<section class="slide"><div class="slide-inner">
+<p class="kicker">프롬프트 B · 리뷰 세션</p>
+<h2 class="h2">diff와 REVIEW.md만 읽게 한다</h2>
+<p class="lede">새 세션이라 이전 대화가 없고, 읽을 범위를 둘로 좁혀 편향을 막습니다.</p>
+<div class="code-wrap">
+  <div class="code-head">
+    <span class="code-label">프롬프트 B · 새 터미널의 리뷰 세션에서 입력</span>
+    <button class="copy-btn" data-target="#prompt-b">복사</button>
+  </div>
+  <pre class="code-block" id="prompt-b">git diff main..HEAD 와 docs/templates/REVIEW.md 만 읽어라. 다른 파일은 열지 마라.
+지적을 Important 와 Nit 두 묶음으로 나눠라.
+정확성이나 요구사항에 영향을 주는 것만 Important 로 올리고, 각 항목에 파일:줄과 한 줄 근거를 붙여라.
+코드는 고치지 마라.</pre>
+</div>
+<div class="grid g3 mt-m">
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">의미</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">신선한 컨텍스트에 REVIEW.md의 경계를 주고 diff만 판정하게 합니다.</p>
+  </div>
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">본인 업무</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">동료 PR을 열어 보기 전에 먼저 돌리는 1차 리뷰가 됩니다.</p>
+  </div>
+  <div class="card-soft" style="padding:18px 20px">
+    <div class="eyebrow" style="margin-bottom:8px">바꿔 끼우는 자리</div>
+    <p class="dim" style="margin:0;font-size:16px;line-height:1.55">기준 파일 경로. 예: 팀 REVIEW.md, 화면 계층용 REVIEW-ui.md</p>
+  </div>
+</div>
+<p class="note-bar note-bar--tip"><span class="note-ico">💡</span><strong>팁</strong> — <code>/code-review</code> 한 줄로도 리뷰가 돌지만 그 명령은 REVIEW.md 를 읽지 않습니다. 폴백 장에서 그 차이를 씁니다.</p>
+</div></section>
 <section class="slide"><div class="slide-inner">
 <p class="kicker">즉시 따라하기 6/7</p>
 <h2 class="h2">코멘트를 확인한다</h2>
@@ -942,8 +924,6 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
   </li>
 </ol>
 </div></section>
-
-<!-- 19 · 따라하기 7/7 멘션 -->
 <section class="slide"><div class="slide-inner">
 <p class="kicker">즉시 따라하기 7/7</p>
 <h2 class="h2">반영은 맡긴다</h2>
@@ -962,8 +942,6 @@ h1.h1,.h1,h2.h2,.h2,h3,.h3,h4,.h4,.card-num h3,.objectives h3{
   </li>
 </ol>
 </div></section>
-
-<!-- 17 · 프롬프트 C -->
 <section class="slide"><div class="slide-inner">
 <p class="kicker">프롬프트 C · PR 코멘트</p>
 <h2 class="h2">멘션 한 줄로 PR을 green으로</h2>
