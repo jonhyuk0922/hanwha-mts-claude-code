@@ -457,7 +457,7 @@ h2.h2,.h2{font-size:60px;line-height:1.1}
 <span class="seg"></span>
 <h1 class="h1">토큰 경제와 세션 운영</h1>
 <p class="lede">Token Economy and Session Control</p>
-<div class="row wrap mt-l"><span class="pill pill-accent">Practice</span><span class="pill">/context → /clear · /compact · /btw → rg · ast-grep · 서브에이전트 → /usage 기준선</span></div>
+<div class="row wrap mt-l"><span class="pill pill-accent">Practice</span><span class="pill">/context → /clear · /compact · /btw → 검색 · 서브에이전트 → /usage 기준선</span></div>
 </header></div></section>
 <!-- 2 / OBJECTIVES -->
 <section class="slide"><div class="slide-inner">
@@ -469,7 +469,7 @@ h2.h2,.h2{font-size:60px;line-height:1.1}
 <ul>
 <li><code>/context</code>로 세션이 무엇으로 차 있는지 층별로 읽고, 먼저 줄일 층을 고릅니다.</li>
 <li>무관한 작업은 <code>/clear</code>, 이어지는 작업은 범위를 지정한 <code>/compact</code>, 곁가지 질문은 <code>/btw</code>로 가릅니다.</li>
-<li>조사는 <code>rg</code>·<code>ast-grep</code>·서브에이전트에 맡기고, <code>/usage</code>로 오늘의 기준선을 숫자로 적습니다.</li>
+<li>조사는 검색과 서브에이전트에 맡기고, <code>/usage</code>로 오늘의 기준선을 숫자로 적습니다.</li>
 </ul>
 </div>
 </div></section>
@@ -581,7 +581,7 @@ h2.h2,.h2{font-size:60px;line-height:1.1}
 
 <!-- 7 / FOLLOW 1 — 잡탕 만들고 /btw -->
 <section class="slide"><div class="slide-inner">
-<p class="kicker">즉시 따라하기 (1/5)</p>
+<p class="kicker">즉시 따라하기 (1/4)</p>
 <h2 class="h2">곁가지 질문을 /btw로 뺀다</h2>
 <p class="lede">①~⑤를 따라 친 뒤 <code>/context</code>를 찍고, 아래 한 줄을 그대로 입력합니다.</p>
 <div class="why">
@@ -601,7 +601,7 @@ h2.h2,.h2{font-size:60px;line-height:1.1}
 
 <!-- 8 / FOLLOW 2 — 범위 지정 /compact -->
 <section class="slide"><div class="slide-inner">
-<p class="kicker">즉시 따라하기 (2/5)</p>
+<p class="kicker">즉시 따라하기 (2/4)</p>
 <h2 class="h2">범위를 적어서 /compact 한다</h2>
 <p class="lede">남길 것을 문장으로 적고, 끝나면 <code>/context</code>를 다시 찍어 막대를 비교합니다.</p>
 <div class="why">
@@ -621,8 +621,8 @@ h2.h2,.h2{font-size:60px;line-height:1.1}
 
 <!-- 9 / FOLLOW 3 — rg -->
 <section class="slide"><div class="slide-inner">
-<p class="kicker">즉시 따라하기 (3/5)</p>
-<h2 class="h2">읽지 말고 찾게 한다 — rg</h2>
+<p class="kicker">즉시 따라하기 (3/4)</p>
+<h2 class="h2">읽지 말고 찾게 합니다</h2>
 <p class="lede">폴더를 통째로 읽히는 대신 후보 파일과 줄 번호만 받습니다. 파일 본문이 세션에 안 들어옵니다.</p>
 <div class="why">
 <span class="why-label">왜 이걸 하나</span>
@@ -631,41 +631,20 @@ h2.h2,.h2{font-size:60px;line-height:1.1}
 <div class="grid g2 mt-m">
 <div class="code-wrap" style="margin-top:0">
 <div class="code-head"><span class="code-label">템플릿</span><button class="copy-btn" data-target="#code-rg-t">복사</button></div>
-<pre class="code-block" id="code-rg-t">파일을 열어 읽지 말고 rg로 [키워드]가 나오는 파일과 줄 번호만 목록으로 내라. 후보는 [N]개 이하로 좁혀라.</pre>
+<pre class="code-block" id="code-rg-t">파일을 열어 읽지 말고 검색으로 [키워드]가 나오는 파일과 줄 번호만 목록으로 내라. 후보는 [N]개 이하로 좁혀라.</pre>
 </div>
 <div class="code-wrap" style="margin-top:0">
 <div class="code-head"><span class="code-label">예시 프롬프트</span><button class="copy-btn" data-target="#code-rg-e">복사</button></div>
-<pre class="code-block" id="code-rg-e">파일을 열어 읽지 말고 rg로 applyQuote가 나오는 파일과 줄 번호만 목록으로 내라. 후보는 5개 이하로 좁혀라.</pre>
+<pre class="code-block" id="code-rg-e">파일을 열어 읽지 말고 검색으로 applyQuote가 나오는 파일과 줄 번호만 목록으로 내라. 후보는 5개 이하로 좁혀라.</pre>
 </div>
 </div>
 <p class="dim mt-m" style="font-size:19px">[키워드]에는 함수명이나 화면 이름을, [N]에는 다음 단계에서 열어 볼 수 있는 파일 수를 넣습니다.</p>
 </div></section>
 
-<!-- 10 / FOLLOW 4 — ast-grep -->
-<section class="slide"><div class="slide-inner">
-<p class="kicker">즉시 따라하기 (4/5)</p>
-<h2 class="h2">함수 단위로 뽑게 한다 — ast-grep</h2>
-<p class="lede">rg가 좁힌 후보 안에서 호출 패턴을 구문 트리로 찾아 파일:함수 목록만 받습니다.</p>
-<div class="why">
-<span class="why-label">왜 이걸 하나</span>
-<p>문자열 검색은 주석과 변수명까지 잡습니다. 구문 단위로 찾으면 결과가 짧아지고, 그 짧은 결과가 그대로 답의 형식이 됩니다.</p>
-</div>
-<div class="grid g2 mt-m">
-<div class="code-wrap" style="margin-top:0">
-<div class="code-head"><span class="code-label">템플릿</span><button class="copy-btn" data-target="#code-sg-t">복사</button></div>
-<pre class="code-block" id="code-sg-t">후보 파일에서 ast-grep으로 [호출 패턴]을 찾아 파일:함수 단위로 뽑아라. 파일 본문은 출력하지 마라.</pre>
-</div>
-<div class="code-wrap" style="margin-top:0">
-<div class="code-head"><span class="code-label">예시 프롬프트</span><button class="copy-btn" data-target="#code-sg-e">복사</button></div>
-<pre class="code-block" id="code-sg-e">후보 파일에서 ast-grep으로 applyQuote($$$) 호출을 찾아 파일:함수 단위로 뽑아라. 파일 본문은 출력하지 마라.</pre>
-</div>
-</div>
-<p class="dim mt-m" style="font-size:19px">[호출 패턴]의 <code>$$$</code>는 인자 전체를 뜻하는 자리표시입니다. 함수명만 바꿔 끼웁니다.</p>
-</div></section>
 
 <!-- 11 / FOLLOW 5 — 서브에이전트 -->
 <section class="slide"><div class="slide-inner">
-<p class="kicker">즉시 따라하기 (5/5)</p>
+<p class="kicker">즉시 따라하기 (4/4)</p>
 <h2 class="h2">조사 자체를 서브에이전트에 맡긴다</h2>
 <p class="lede">읽는 일은 별도 컨텍스트에서 하고, 본 세션에는 요약 한 덩어리만 돌아옵니다.</p>
 <div class="why">
@@ -698,7 +677,7 @@ h2.h2,.h2{font-size:60px;line-height:1.1}
 </div>
 <div class="mid">→</div>
 <div class="card good-side side">
-<div class="label">B안 · rg → ast-grep → 서브에이전트</div>
+<div class="label">B안 · 검색 → 서브에이전트</div>
 <h3>같은 문장을 세 프롬프트로 나눈다</h3>
 <ul><li>후보를 좁히고, 함수 단위로 뽑고, 요약만 받습니다</li><li>세션에는 파일:함수 목록만 남습니다</li></ul>
 </div>
@@ -759,7 +738,7 @@ h2.h2,.h2{font-size:60px;line-height:1.1}
 <text x="40" y="210" font-size="22" fill="#b8bec8">▮ 파일 읽기 60k · 30%</text>
 <text x="40" y="246" font-size="22" fill="#8a949f">▮ 도구 실행 결과 28k · 14%</text>
 
-<text x="660" y="70" font-size="26" fill="#9aa3ad">B안 종료 · rg → ast-grep → 서브에이전트</text>
+<text x="660" y="70" font-size="26" fill="#9aa3ad">B안 종료 · 검색 → 서브에이전트</text>
 <text x="660" y="112" font-size="30">78k / 200k · 39%</text>
 <rect x="660" y="136" width="500" height="34" fill="#2a2f36"/>
 <rect x="660" y="136" width="40" height="34" fill="#e8eaef"/>

@@ -29,8 +29,6 @@
 ```
 rg -n "validateQty" src/                                        # 문자열로 후보 파일 좁히기
 rg -n --type ts "qty|Qty" src/ tests/                            # 확장자 한정
-ast-grep -p 'validateQty($$$)' -l tsx src/                       # 호출 지점을 구문 단위로
-ast-grep -p 'export function $NAME($$$) { $$$ }' -l ts src/lib/  # 함수 정의 목록
 ```
 
 ## git worktree (6교시 시범 — 참가자는 따라 치지 않는다)
