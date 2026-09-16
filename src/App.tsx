@@ -59,7 +59,8 @@ export default function App() {
 
         <section className="col col-center">
           <Chart candles={candlesBySymbol[selected] ?? []} quote={quote} />
-          <OrderBook quote={quote} onPickPrice={(p) => setOrderPrice(String(p))} />
+          {/* 호가창은 자체 피드를 돌린다. 종목이 바뀌면 key 로 갈아 끼워야 잔량이 섞이지 않는다 */}
+          <OrderBook key={selected} quote={quote} live={live} onPickPrice={(p) => setOrderPrice(String(p))} />
         </section>
 
         <aside className="col col-right">

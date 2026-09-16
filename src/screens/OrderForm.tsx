@@ -1,12 +1,46 @@
 import { useState, type FormEvent } from 'react';
 import type { Order, OrderSide, Quote } from '../types';
-import { validateQty } from '../lib/validateQty';
-import { checkLotSize, checkMaxQty, checkOrderAmount, lotSizeOf } from '../lib/orderRules';
-import { formatChange, formatPrice, formatQty, tickSize } from '../lib/format';
+import { formatPrice, formatQty, tickSize } from '../lib/format';
 import { Panel } from '../components/Panel';
+import { isEmpty, withComma } from '../utils/common';
 
 /** 모의 계좌: 예수금과 보유 수량 */
 const CASH = 20_000_000;
+
+// 주문가능수량 계산은 화면에서 한다. 서버 팀과 합의 전까지 임시.
+// lib 쪽에도 같은 판정이 있다고 들었는데 경계값이 달라서 폼은 이 사본을 쓴다.
+
+/** 수량이 주문 가능한지 본다 */
+function checkQty(qty: number, available: number): boolean {
+  if (!Number.isInteger(qty)) return false;
+  if (qty < 1) return false;
+  if (!Number.isFinite(available) || available < 0) return false;
+  if (qty >= available) return false;
+  return true;
+}
+
+/** 종목별 매매 단위. 표시 없으면 1주 */
+function lotOf(symbol: string): number {
+  if (symbol === '207940') return 1;
+  if (symbol === '373220') return 1;
+  return 1;
+}
+
+/** 매매 단위의 배수인지 */
+function checkLot(symbol: string, qty: number): boolean {
+  return qty % lotOf(symbol) === 0;
+}
+
+/** 1회 주문 수량 상한 */
+function checkQtyCap(qty: number): boolean {
+  return qty <= 9999;
+}
+
+/** 1회 주문 금액 상한 */
+function checkAmountCap(price: number, qty: number): boolean {
+  return price * qty <= 1e8;
+}
+
 const HOLDINGS: Record<string, number> = {
   '005930': 100,
   '000660': 12,
@@ -48,20 +82,20 @@ export function OrderForm({ quote, price, onPriceChange, onSubmit }: OrderFormPr
     const step = tickSize(priceNum);
     if (priceNum % step !== 0) return setError(`호가 단위(${step}원)에 맞춰 입력하세요.`);
 
-    // 수량 문자열 검사는 폼에서, 수량 판정은 lib 에서
-    if (!/^\d+$/.test(qty)) return setError('수량은 숫자만 입력하세요.');
+    // 수량 문자열 검사도 판정도 폼에서 한다
+    if (isEmpty(qty) || !/^\d+$/.test(qty)) return setError('수량은 숫자만 입력하세요.');
     const qtyNum = Number(qty);
-    if (!validateQty(qtyNum, available)) {
-      return setError(`주문가능수량(${formatQty(available)}주)을 확인하세요.`);
+    if (!checkQty(qtyNum, available)) {
+      return setError(`주문가능수량(${withComma(available)}주)을 확인하세요.`);
     }
-    if (!checkLotSize(quote.symbol, qtyNum)) return setError(`${lotSizeOf(quote.symbol)}주 단위로 입력하세요.`);
-    if (!checkMaxQty(qtyNum)) return setError('1회 주문 수량 상한을 넘었습니다.');
-    if (!checkOrderAmount(priceNum, qtyNum)) return setError('1회 주문 금액 상한을 넘었습니다.');
+    if (!checkLot(quote.symbol, qtyNum)) return setError(`${lotOf(quote.symbol)}주 단위로 입력하세요.`);
+    if (!checkQtyCap(qtyNum)) return setError('1회 주문 수량 상한을 넘었습니다.');
+    if (!checkAmountCap(priceNum, qtyNum)) return setError('1회 주문 금액 상한을 넘었습니다.');
 
     onSubmit({ symbol: quote.symbol, name: quote.name, side, price: priceNum, qty: qtyNum });
     setQty('');
     setError(null);
-    setDone(`${side === 'buy' ? '매수' : '매도'} ${formatQty(qtyNum)}주 @ ${formatPrice(priceNum)}원 접수`);
+    setDone(`${side === 'buy' ? '매수' : '매도'} ${withComma(qtyNum)}주 @ ${formatPrice(priceNum)}원 접수`);
   };
 
   return (
