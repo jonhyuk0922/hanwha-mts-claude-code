@@ -24,7 +24,7 @@ npm run dev          # http://localhost:5173
 
 | 브랜치 | 내용 |
 |---|---|
-| `main` | 앱 + 결함 ①②③ + docs + deck (시작점) |
+| `main` | 앱 + 결함 ①②③ + docs (시작점) |
 | `start` | = main |
 | `fix/defect-1` | 결함 ① 실패 테스트 → 수정 (커밋 2개) |
 | `fix/defect-2` | 결함 ② 실패 테스트 → 수정 (커밋 2개) |
@@ -34,6 +34,7 @@ npm run dev          # http://localhost:5173
 | `review-fixture` | = after-b3 |
 | `fix/defect-4` | 결함 ④ 수정 |
 | `after-b4` | 4교시 완료 상태 (CLAUDE.md + `.claude/` 체크인) |
+| `legacy/orderbook-tangled` | 6교시 레거시 분석 시범용. 화면 안에 병합·피드·수량 판정 사본이 얽혀 있고 테스트·린트·타입 검사는 통과. 정답 형상은 `after-b2`, 차이는 `git diff legacy/orderbook-tangled..after-b2 -- src` |
 
 막히면 해당 블록의 `after-*` 브랜치로 갈아탄다: `git switch after-b2`
 
@@ -44,6 +45,7 @@ src/lib/        applyQuote · validateQty · sortByChange · orderRules · forma
 src/screens/    OrderBook · Watchlist · OrderForm · chart/(Chart · Axes · Candles)
 src/data/       quotes · watchlist · orders · candles (목 JSON)
 tests/          순수 함수 테스트
-docs/           워크시트·명령 카드·템플릿
-deck/           교안
+docs/           워크시트·명령 카드·실습 템플릿
 ```
+
+교안 슬라이드는 이 레포에 없다. 강사가 화면으로 띄우고 파일은 교육 당일 따로 전달한다.

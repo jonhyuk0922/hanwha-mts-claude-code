@@ -18,3 +18,11 @@ yarn-error.log*
 # 에이전트 세션 상태 (교육 자료 아님)
 .omc/
 .claude/settings.local.json
+.claude/.stop-retries
+
+# 교안(학습자 HTML 덱)은 레포에서 배포하지 않는다. 별도 전달 (2026-09-18)
+deck/
+
+# 강사 전용 문서는 레포에서 배포하지 않는다 (2026-09-18)
+docs/instructor-notes.md
+docs/templates/CLAUDE.final.md
