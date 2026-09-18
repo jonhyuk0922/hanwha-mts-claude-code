@@ -44,6 +44,7 @@ npm run dev          # http://localhost:5173
 src/lib/        applyQuote · validateQty · sortByChange · orderRules · format
 src/screens/    OrderBook · Watchlist · OrderForm · chart/(Chart · Axes · Candles)
 src/data/       quotes · watchlist · orders · candles (목 JSON)
+src/vendor/mts-bridge/  가상 사내 시세 브리지(레거시, 신규 코드에서 쓰지 않음)
 tests/          순수 함수 테스트
 docs/           워크시트·명령 카드·실습 템플릿
 ```
