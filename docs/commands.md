@@ -129,25 +129,25 @@ Copy-Item docs\templates\settings.local.snippet.json .claude\settings.local.json
 
 ## 훅 두 개 (4교시)
 
-`docs/templates/hooks/` 의 훅 파일을 `.claude/hooks/` 로, 설정 스니펫 `docs/templates/settings.snippet.json` 을 `.claude/settings.json` 으로 복사한다. 레포 루트에서 내 OS 쪽 세 줄을 한 줄씩 친다.
+`docs/templates/hooks/` 의 `check.mjs`·`forbid.mjs` 두 파일만 `.claude/hooks/` 로, 설정 스니펫 `docs/templates/settings.snippet.json` 을 `.claude/settings.json` 으로 복사한다. 파일 이름을 지정해 복사하므로 확인용 `test-forbid.mjs` 는 `.claude/hooks/` 에 들어가지 않는다. 레포 루트에서 내 OS 쪽 세 줄을 한 줄씩 친다.
 
 ```
-mkdir -p .claude/hooks                                                          # 맥
-cp docs/templates/hooks/*.mjs .claude/hooks/                                    # 맥
-cp docs/templates/settings.snippet.json .claude/settings.json                   # 맥
+mkdir -p .claude/hooks                                                                           # 맥
+cp docs/templates/hooks/check.mjs docs/templates/hooks/forbid.mjs .claude/hooks/                 # 맥
+cp docs/templates/settings.snippet.json .claude/settings.json                                    # 맥
 ```
 
 ```
-New-Item -ItemType Directory -Force .claude\hooks                               # 윈도우(PowerShell)
-Copy-Item docs\templates\hooks\*.mjs .claude\hooks\                             # 윈도우(PowerShell)
-Copy-Item docs\templates\settings.snippet.json .claude\settings.json            # 윈도우(PowerShell)
+New-Item -ItemType Directory -Force .claude\hooks                                                # 윈도우(PowerShell)
+Copy-Item docs\templates\hooks\check.mjs, docs\templates\hooks\forbid.mjs .claude\hooks\         # 윈도우(PowerShell). 여러 파일은 쉼표로
+Copy-Item docs\templates\settings.snippet.json .claude\settings.json                             # 윈도우(PowerShell)
 ```
 
 `forbid.mjs`(PreToolUse)는 저장 전에 막고, `check.mjs`(PostToolUse)는 저장 뒤 lint·typecheck 를 돌린다. 설정이 셸을 거치지 않고 `node` 를 바로 부르므로 맥·윈도우가 같고, 실행 권한도 필요 없다. 붙인 뒤 세션을 새로 연다.
 
 ### forbid 훅 확인: 네 가지 입력을 흘려 넣는다
 
-훅은 조용히 안 걸리는 게 제일 위험하다. 붙인 직후 레포 루트에서 한 줄을 친다(맥·윈도우 같다). 마지막 판정 줄의 exit 가 **2 · 0 · 0 · 0** 이면 통과다.
+훅은 조용히 안 걸리는 게 제일 위험하다. 붙인 직후 레포 루트에서 한 줄을 친다(맥·윈도우 같다). `test-forbid.mjs` 는 복사하지 않고 템플릿 자리에서 실행하며, 검사 대상은 기본값 `.claude/hooks/forbid.mjs` 다. 마지막 판정 줄의 exit 가 **2 · 0 · 0 · 0** 이면 통과다.
 
 ```
 node docs/templates/hooks/test-forbid.mjs    # 1) 위반 2 · 2) 정상 0 · 3) 면제 경로(node_modules) 0 · 4) 무관한 도구(Bash) 0
