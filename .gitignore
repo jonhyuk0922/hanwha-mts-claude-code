@@ -19,6 +19,8 @@ yarn-error.log*
 .omc/
 .claude/settings.local.json
 .claude/.stop-retries
+# 2교시 개인 Stop 훅 (settings.local.json 과 짝, 커밋하지 않는다)
+.claude/hooks/stop-check.mjs
 
 # 교안(학습자 HTML 덱)은 레포에서 배포하지 않는다. 별도 전달 (2026-09-18)
 deck/
