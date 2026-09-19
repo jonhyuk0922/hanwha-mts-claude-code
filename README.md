@@ -11,7 +11,7 @@ npm run setup        # 의존성 설치 → "READY: hanwha-mts-claude-code" 가 
 npm run dev          # http://localhost:5173
 ```
 
-`npm run setup` 과 훅(`docs/templates/hooks/*.mjs`)은 node 스크립트라 맥 터미널과 윈도우 PowerShell 에서 같은 명령으로 돈다.
+`npm run setup` 과 `docs/templates/hooks/` 의 훅은 node 스크립트라 맥 터미널과 윈도우 PowerShell 에서 같은 명령으로 돈다. 훅은 교시마다 필요한 파일만 이름을 지정해 `.claude/hooks/` 로 복사한다(명령은 `docs/commands.md`).
 
 ## 명령 5개
 
@@ -50,7 +50,7 @@ src/data/       quotes · watchlist · orders · candles (목 JSON)
 src/vendor/mts-bridge/  가상 사내 시세 브리지(레거시, 신규 코드에서 쓰지 않음)
 tests/          순수 함수 테스트
 docs/           워크시트·명령 카드·실습 템플릿
-docs/templates/hooks/   훅 템플릿 forbid · check · stop-check, 확인용 test-forbid (전부 .mjs)
+docs/templates/hooks/   훅 템플릿(.mjs): stop-check(2교시) · forbid · check(4교시), test-forbid(복사하지 않고 그 자리에서 실행)
 scripts/        setup.mjs (npm run setup)
 ```
 
