@@ -3,9 +3,9 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "교육용 모의 MTS (호가창·관심종목·주문 폼·차트) — 한화투자증권 MTS 개발자 교육",
+  "description": "교육용 모의 MTS (호가창·관심종목·주문 폼·차트), 한화투자증권 MTS 개발자 교육",
   "scripts": {
-    "setup": "bash scripts/setup.sh",
+    "setup": "node scripts/setup.mjs",
     "dev": "vite",
     "build": "vite build",
     "test": "vitest run",

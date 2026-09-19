@@ -5,10 +5,13 @@
 ## 설치
 
 ```bash
-git clone <fork 주소> && cd hanwha-mts-claude-code
+git clone https://github.com/jonhyuk0922/hanwha-mts-claude-code   # fork 는 5교시에
+cd hanwha-mts-claude-code
 npm run setup        # 의존성 설치 → "READY: hanwha-mts-claude-code" 가 찍히면 완료
 npm run dev          # http://localhost:5173
 ```
+
+`npm run setup` 과 훅(`docs/templates/hooks/*.mjs`)은 node 스크립트라 맥 터미널과 윈도우 PowerShell 에서 같은 명령으로 돈다.
 
 ## 명령 5개
 
@@ -47,6 +50,8 @@ src/data/       quotes · watchlist · orders · candles (목 JSON)
 src/vendor/mts-bridge/  가상 사내 시세 브리지(레거시, 신규 코드에서 쓰지 않음)
 tests/          순수 함수 테스트
 docs/           워크시트·명령 카드·실습 템플릿
+docs/templates/hooks/   훅 템플릿 forbid · check · stop-check, 확인용 test-forbid (전부 .mjs)
+scripts/        setup.mjs (npm run setup)
 ```
 
 교안 슬라이드는 이 레포에 없다. 강사가 화면으로 띄우고 파일은 교육 당일 따로 전달한다.
