@@ -46,7 +46,7 @@ docs/
 
 루트에는 빌드 설정, 타입 설정, 린트 설정 파일이 각각 하나씩 있다.
 `index.html`은 진입 HTML이고 `src/main.tsx`를 로드한다.
-`scripts/setup.sh`는 의존성 설치 스크립트다.
+`scripts/setup.mjs`는 의존성 설치 스크립트다.
 
 ## 명령
 
